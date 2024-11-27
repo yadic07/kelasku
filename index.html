@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Platform Belajar Berbagi</title>
     <link rel="icon" href="favicon.jpg" type="image/x-icon">
+    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,21 +17,21 @@
         }
 
         header {
-            background-image:url(bcc.jpg);
-            color: white;
+            background-image:url(backgroun\ atas.jpg);
+            color: rgb(0, 0, 0);
             text-align: center;
             padding: 20px;
         }
 
         nav {
-            background-color: #070101;
+            background-color: #025613;
             display: flex;
             justify-content: center;
             padding: 10px;
         }
 
         nav a {
-            color: white;
+            color: rgb(255, 255, 255);
             padding: 14px 20px;
             text-decoration: none;
             text-align: center;
@@ -43,9 +44,9 @@
         section {
             padding: 20px;
             margin: 20px;
-            background-color: white;
+            background-color: rgb(141, 221, 44);
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(1, 1, 1, 0.1);
         }
 
         h2 {
@@ -53,15 +54,15 @@
         }
 
         .card {
-            background-color: #ecf0f1;
+            background-color: #d9ecef;
             padding: 15px;
             margin: 10px;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.857);
         }
 
         .card h3 {
-            color: #2980B9;
+            color: #297fb9;
         }
 
         .card p {
@@ -69,7 +70,7 @@
         }
 
         footer {
-            background-color: #2C3E50;
+            background-color: #025613;
             color: white;
             text-align: center;
             padding: 20px;
@@ -108,6 +109,7 @@
         .quiz-container button:hover {
             background-color: #3498DB;
         }
+        
     </style>
 </head>
 <body>
@@ -118,30 +120,38 @@
     </header>
 
     <nav>
+        <a href="index.html">Home</a>
         <a href="#courses">Bank Soal</a>
         <a href="#resources">Sumber Belajar</a>
-        <a href="#quiz">Kuis</a>
-        <a href="#contact"> Video Pembelajaran</a>
         <a href="#contact"> Modul Ajar</a>
     </nav>
 
     <section id="courses">
-        <h2>Bank Soal</h2>
+        <h2>Bank Soal Kelas 6 Kurikulum Merdeka</h2>
         <div class="card">
             <h3>Bahasa Indonesia</h3>
-            <p>Silahkan berlatih soal soal bahasa indonesia</p>
+            <p>Silahkan berlatih soal soal bahasa indonesia.</p>
             <a href="Bank Soal.html">Lihat Soal</a>
         </div>
         <div class="card">
-            <h3>Kursus Pembelajaran Mesin</h3>
-            <p>Kenali dasar-dasar AI dan pelajari cara menggunakan algoritma machine learning.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeiAfRFKiuHn9rylOcl0tg2AQD4FshCcj4A3555fyNGaBvunw/viewform?usp=sharing">Lihat Kursus</a>
+            <h3>IPAS</h3>
+            <p>Silahkan berlatih soal soal IPAS.</p>
+            <a href="Bank Soal 2.html">Lihat soal</a>
         </div>
         <div class="card">
-            <h3>Kursus Desain Grafis</h3>
-            <p>Pelajari Adobe Photoshop dan alat desain grafis lainnya untuk membuat desain yang menakjubkan.</p>
-            <a href="">Lihat Kursus</a>
+            <h3>Matematika</h3>
+            <p>Silahkan berlatih soal soal IPAS.</p>
+            <a href="Bank Soal 2.html">Lihat soal</a>
         </div>
+        <div class="card">
+            <h3>Pancasila</h3>
+            <p>Silahkan berlatih soal soal IPAS.</p>
+            <a href="Bank Soal 2.html">Lihat soal</a>
+        </div>
+        <div class="card">
+            <h3>Seni</h3>
+            <p>Silahkan berlatih soal soal IPAS.</p>
+            <a href="Bank Soal 2.html">Lihat soal</a>
     </section>
 
     <section id="resources">
@@ -152,33 +162,49 @@
             <a href="#">Baca Artikel</a>
         </div>
         <div class="card">
-            <h3>Video Tutorial</h3>
+            <h3>Video Pembelajaran</h3>
             <p>Menonton video tutorial untuk memahami materi secara lebih visual.</p>
-            <a href="#">Tonton Video</a>
+            <a href="Video pembelajaran.html">Tonton Video</a>
         </div>
         <div class="card">
             <h3>Forum Diskusi</h3>
             <p>Bergabunglah dengan komunitas kami untuk bertanya dan berdiskusi dengan sesama pelajar.</p>
-            <a href="#">Bergabung Sekarang</a>
+            <a href="forum diskusi.html">Bergabung Sekarang</a>
         </div>
     </section>
 
     <section id="quiz">
-        <h2>Uji Pengetahuan Anda!</h2>
-        <div class="quiz-container">
-            <p><strong>Pertanyaan:</strong> Apa yang dimaksud dengan HTML?</p>
-            <button onclick="alert('HTML adalah bahasa markup yang digunakan untuk membuat struktur halaman web.')">Lihat Jawaban</button>
+        <h2>Modul Ajar</h2>
+        <div class="card">
+            <h3>Artikel Pembelajaran</h3>
+            <p>Baca artikel-artikel yang mengupas berbagai topik dalam dunia teknologi dan pembelajaran.</p>
+            <a href="#">Baca Artikel</a>
         </div>
-        <div class="quiz-container">
-            <p><strong>Pertanyaan:</strong> Apa itu CSS?</p>
-            <button onclick="alert('CSS adalah bahasa yang digunakan untuk mendesain tampilan dan layout halaman web.')">Lihat Jawaban</button>
+        <div class="card">
+            <h3>Video Pembelajaran</h3>
+            <p>Menonton video tutorial untuk memahami materi secara lebih visual.</p>
+            <a href="Video pembelajaran.html">Tonton Video</a>
+        </div>
+        <div class="card">
+            <h3>Forum Diskusi</h3>
+            <p>Bergabunglah dengan komunitas kami untuk bertanya dan berdiskusi dengan sesama pelajar.</p>
+            <a href="forum diskusi.html">Bergabung Sekarang</a>
         </div>
     </section>
 
     <section id="contact">
         <h2>Kontak Kami</h2>
-        <p>Untuk pertanyaan lebih lanjut, silakan hubungi kami di:</p>
-        <p>Email: <a href="mailto:support@platformbelajar.com">support@platformbelajar.com</a></p>
+    <p>Klik tombol di bawah untuk menulis email kepada kami melalui Gmail.</p>
+    <!-- Tautan untuk menulis email di Gmail -->
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yadicahyadi71@guru.sd.belajar.id&su=Judul%20Email&body=Isi%20email%20di%20sini" target="_blank">
+        <button style="padding: 10px 20px; font-size: 16px; background-color: #4285F4; color: white; border: none; border-radius: 5px;">
+            Tulis Email di Gmail
+        </button>
+    </a>
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=yadicahyadi71@guru.sd.belajar.id&su=Judul%20Email&body=Isi%20email%20di%20sin
+    
+    <section id="contact">
+        
         <p>Telepon: 0800-123-4567</p>
     </section>
 
