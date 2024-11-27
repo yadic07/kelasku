@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum Diskusi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .description {
+            text-align: center;
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .discussion-form {
+            margin-bottom: 20px;
+        }
+        .discussion-form input, .discussion-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        .discussion-form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .discussion-form button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #888;
+        }
+        .comments {
+            margin-top: 30px;
+            padding: 10px;
+            background-color: #f2f2f2;
+            border-radius: 4px;
+        }
+        .comment {
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Forum Diskusi Sederhana</h1>
+        <p class="description">Silakan tulis komentar atau pertanyaan Anda di bawah ini.</p>
+
+        <div class="discussion-form">
+            <form id="discussionForm">
+                <input type="text" id="name" placeholder="Nama Anda" required>
+                <textarea id="comment" placeholder="Tulis komentar Anda..." rows="4" required></textarea>
+                <button type="button" onclick="addComment()">Kirim Komentar</button>
+            </form>
+        </div>
+
+        <div class="comments">
+            <h3>Diskusi:</h3>
+            <div id="commentSection">
+                <!-- Komentar akan ditampilkan di sini -->
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Forum Diskusi. Semua hak cipta dilindungi.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Menambahkan komentar ke dalam halaman
+        function addComment() {
+            var name = document.getElementById('name').value;
+            var comment = document.getElementById('comment').value;
+
+            // Validasi input
+            if (name.trim() === "" || comment.trim() === "") {
+                alert("Nama dan komentar tidak boleh kosong!");
+                return;
+            }
+
+            // Membuat elemen baru untuk komentar
+            var commentSection = document.getElementById('commentSection');
+            var newComment = document.createElement('div');
+            newComment.classList.add('comment');
+            newComment.innerHTML = "<strong>" + name + ":</strong><p>" + comment + "</p>";
+
+            // Menambahkan komentar baru ke dalam bagian komentar
+            commentSection.appendChild(newComment);
+
+            // Mengosongkan form input setelah pengiriman
+            document.getElementById('discussionForm').reset();
+        }
+    </script>
+
+</body>
+</html>
