@@ -3,33 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Platform Belajar Berbagi</title>
+    <title>Video Pembelajaran - Lengkap & Terstruktur</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
             color: #333;
         }
-
         header {
-            background-image:url(bcc.jpg);
+            background-color: #4CAF50;
             color: white;
-            text-align: center;
             padding: 20px;
+            text-align: center;
         }
-
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .category {
+            margin-bottom: 40px;
+        }
+        .category h2 {
+            font-size: 1.5em;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .video-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+        .video-card:hover {
+            transform: translateY(-10px);
+        }
+        .video-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+        .video-card .content {
+            padding: 15px;
+        }
+        .video-card h3 {
+            margin-top: 0;
+            font-size: 1em;
+            color: #333;
+        }
+        .video-card a {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .video-card a:hover {
+            background-color: #45a049;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
         nav {
-            background-color: #070101;
+            background-color: #025613;
             display: flex;
             justify-content: center;
             padding: 10px;
         }
 
         nav a {
-            color: white;
+            color: rgb(255, 255, 255);
             padding: 14px 20px;
             text-decoration: none;
             text-align: center;
@@ -39,155 +107,172 @@
             background-color: #2980B9;
         }
 
-        section {
-            padding: 20px;
-            margin: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            color: #2C3E50;
-        }
-
-        .card {
-            background-color: #ecf0f1;
-            padding: 15px;
-            margin: 10px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .card h3 {
-            color: #2980B9;
-        }
-
-        .card p {
-            color: #7f8c8d;
-        }
-
-        footer {
-            background-color: #2C3E50;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-            }
-
-            .card {
-                margin: 5px 0;
-            }
-        }
-
-        .quiz-container {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-
-        .quiz-container button {
-            background-color: #aac91f;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .quiz-container button:hover {
-            background-color: #3498DB;
-        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Soal-soal Bahasa Indonesia</h1>
-        <p>Soal Bahasa Indonesia untuk kelas 6 SD umumnya bertujuan untuk mengukur pemahaman siswa tentang berbagai aspek bahasa Indonesia, baik dalam keterampilan berbicara, membaca, menulis, maupun mendengarkan.</p>
-    </header>
+<header>
+    <h1>Soal-soal Bahasa Indonesia Kelas 6</h1>
+    <p>Temukan berbagai video pembelajaran di bawah ini untuk masing-masing pelajaran.</p>
+</header>
 
-    <section id="courses">
-        <h2>Bank Soal IPAS Kelas 6</h2>
-        <div class="card">
-            <h3>Soal BAB 1</h3>
-            <a href="https://quizizz.com/embed/quiz/67465608157cac1f9a588468">Lihat Soal</a>
-        </div>
-        <div class="card">
-            <h3>Soal BAB 1</h3>
-            <a href="https://quizizz.com/embed/quiz/67465608157cac1f9a588468">Lihat Soal</a>
-        </div>
-        <div class="card">
-            <h3>Soal BAB 1</h3>
-            <a href="https://quizizz.com/embed/quiz/67465608157cac1f9a588468">Lihat Soal</a>
-        </div>
-          
-        <div class="card">
-            <h3>Soal BAB 2</h3>
-            <p>Kenali dasar-dasar AI dan pelajari cara menggunakan algoritma machine learning.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeiAfRFKiuHn9rylOcl0tg2AQD4FshCcj4A3555fyNGaBvunw/viewform?usp=sharing">Lihat Kursus</a>
-        </div>
-        <div class="card">
-            <h3>Kursus Desain Grafis</h3>
-            <p>Pelajari Adobe Photoshop dan alat desain grafis lainnya untuk membuat desain yang menakjubkan.</p>
-            <a href="">Lihat Kursus</a>
-        </div>
-    </section>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="#courses">Bank Soal</a>
+    <a href="#resources">Sumber Belajar</a>
+    <a href="#contact"> Modul Ajar</a>
+</nav>
+<div class="container">
 
-    <section id="resources">
-        <h2>Sumber Belajar</h2>
-        <div class="card">
-            <h3>Artikel Pembelajaran</h3>
-            <p>Baca artikel-artikel yang mengupas berbagai topik dalam dunia teknologi dan pembelajaran.</p>
-            <a href="#">Baca Artikel</a>
+    <!-- Kategori Bahasa Indonesia -->
+    <div class="category">
+        <h2>Bahasa Indonesia</h2>
+        <div class="video-grid">
+            <!-- 50 Link Video Pembelajaran Bahasa Indonesia -->
+            <!-- Ganti URL dengan video yang sesuai -->
+            <!-- Contoh Video 1 -->
+            <div class="video-card">
+                <img src="bab 1 bahasa indonesia.jpg" alt="Video 1">
+                <div class="content">
+                    <h3>Bahasa Indonesia - Video 1</h3>
+                    <a href="https://www.youtube.com/watch?v=11PiafGvJWg&t=21s" target="_blank">Tonton Video</a>
+                </div>
+            </div>
+            <!-- Video 2 -->
+            <div class="video-card">
+                <img src="https://via.placeholder.com/200x120?text=Video+2" alt="Video 2">
+                <div class="content">
+                    <h3>Bahasa Indonesia - Video 2</h3>
+                    <a href="https://www.youtube.com/watch?v=exampleID2" target="_blank">Tonton Video</a>
+                </div>
+            </div>
+            <div class="video-card">
+                <img src="https://via.placeholder.com/200x120?text=Video+2" alt="Video 2">
+                <div class="content">
+                    <h3>Bahasa Indonesia - Video 2</h3>
+                    <a href="https://www.youtube.com/watch?v=exampleID2" target="_blank">Tonton Video</a>
+                </div>
+            </div>
+            <div class="video-card">
+                <img src="https://via.placeholder.com/200x120?text=Video+2" alt="Video 2">
+                <div class="content">
+                    <h3>Bahasa Indonesia - Video 2</h3>
+                    <a href="https://www.youtube.com/watch?v=exampleID2" target="_blank">Tonton Video</a>
+                </div>
+            </div>
+            <div class="video-card">
+                <img src="https://via.placeholder.com/200x120?text=Video+2" alt="Video 2">
+                <div class="content">
+                    <h3>Bahasa Indonesia - Video 2</h3>
+                    <a href="https://www.youtube.com/watch?v=exampleID2" target="_blank">Tonton Video</a>
+                </div>
+            </div>
+            <div class="video-card">
+                <img src="https://via.placeholder.com/200x120?text=Video+2" alt="Video 2">
+                <div class="content">
+                    <h3>Bahasa Indonesia - Video 2</h3>
+                    <a href="https://www.youtube.com/watch?v=exampleID2" target="_blank">Tonton Video</a>
+                </div>
         </div>
-        <div class="card">
-            <h3>Video Tutorial</h3>
-            <p>Menonton video tutorial untuk memahami materi secara lebih visual.</p>
-            <a href="#">Tonton Video</a>
+    </div>
+
+    <!-- Kategori IPA -->
+    <div class="category">
+        <h2>Ilmu Pengetahuan Alam (IPA)</h2>
+        <div class="video-grid">
+            <!-- 50 Link Video Pembelajaran IPA -->
+            <div class="video-card">
+                <img src="https://via.placeholder.com/200x120?text=Video+1" alt="Video 1">
+                <div class="content">
+                    <h3>IPA - Video 1</h3>
+                    <a href="https://www.youtube.com/watch?v=exampleID1" target="_blank">Tonton Video</a>
+                </div>
+            </div>
+            <div class="video-card">
+                <img src="https://via.placeholder.com/200x120?text=Video+2" alt="Video 2">
+                <div class="content">
+                    <h3>IPA - Video 2</h3>
+                    <a href="https://www.youtube.com/watch?v=exampleID2" target="_blank">Tonton Video</a>
+                </div>
+            </div>
+            <!-- Add more video cards for all 50 videos -->
         </div>
-        <div class="card">
-            <h3>Forum Diskusi</h3>
-            <p>Bergabunglah dengan komunitas kami untuk bertanya dan berdiskusi dengan sesama pelajar.</p>
-            <a href="#">Bergabung Sekarang</a>
+    </div>
+
+    <!-- Kategori Matematika -->
+    <div class="category">
+        <h2>Matematika</h2>
+        <div class="video-grid">
+            <!-- 50 Link Video Pembelajaran Matematika -->
+            <div class="video-card">
+                <img src="https://via.placeholder.com/200x120?text=Video+1" alt="Video 1">
+                <div class="content">
+                    <h3>Matematika - Video 1</h3>
+                    <a href="https://www.youtube.com/watch?v=exampleID1" target="_blank">Tonton Video</a>
+                </div>
+            </div>
+            <div class="video-card">
+                <img src="https://via.placeholder.com/200x120?text=Video+2" alt="Video 2">
+                <div class="content">
+                    <h3>Matematika - Video 2</h3>
+                    <a href="https://www.youtube.com/watch?v=exampleID2" target="_blank">Tonton Video</a>
+                </div>
+            </div>
+            <!-- Add more video cards for all 50 videos -->
         </div>
-    </section>
+    </div>
 
-    <section id="contact">
-        <h2>Kontak Kami</h2>
-    <p>Klik tombol di bawah untuk menulis email kepada kami melalui Gmail.</p>
-    <!-- Tautan untuk menulis email di Gmail -->
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yadicahyadi71@guru.sd.belajar.id&su=Judul%20Email&body=Isi%20email%20di%20sini" target="_blank">
-        <button style="padding: 10px 20px; font-size: 16px; background-color: #4285F4; color: white; border: none; border-radius: 5px;">
-            Tulis Email di Gmail
-        </button>
-    </a>
-</section>
+    <!-- Kategori Pancasila -->
+    <div class="category">
+        <h2>Pancasila</h2>
+        <div class="video-grid">
+            <!-- 50 Link Video Pembelajaran Pancasila -->
+            <div class="video-card">
+                <img src="https://via.placeholder.com/200x120?text=Video+1" alt="Video 1">
+                <div class="content">
+                    <h3>Pancasila - Video 1</h3>
+                    <a href="https://www.youtube.com/watch?v=exampleID1" target="_blank">Tonton Video</a>
+                </div>
+            </div>
+            <div class="video-card">
+                <img src="https://via.placeholder.com/200x120?text=Video+2" alt="Video 2">
+                <div class="content">
+                    <h3>Pancasila - Video 2</h3>
+                    <a href="https://www.youtube.com/watch?v=exampleID2" target="_blank">Tonton Video</a>
+                </div>
+            </div>
+            <!-- Add more video cards for all 50 videos -->
+        </div>
+    </div>
 
-<section id="contact">
-    <h2></h2>
-<p></p>
-<!-- Tautan untuk menulis email di Gmail -->
-<a href="https://mail.google.com/mail/?view=cm&fs=1&to=yadicahyadi71@guru.sd.belajar.id&su=Judul%20Email&body=Isi%20email%20di%20sini" target="_blank">
-    
-    
-</a>
+    <!-- Kategori Seni -->
+    <div class="category">
+        <h2>Seni</h2>
+        <div class="video-grid">
+            <!-- 50 Link Video Pembelajaran Seni -->
+            <div class="video-card">
+                <img src="https://via.placeholder.com/200x120?text=Video+1" alt="Video 1">
+                <div class="content">
+                    <h3>Seni - Video 1</h3>
+                    <a href="https://www.youtube.com/watch?v=exampleID1" target="_blank">Tonton Video</a>
+                </div>
+            </div>
+            <div class="video-card">
+                <img src="https://via.placeholder.com/200x120?text=Video+2" alt="Video 2">
+                <div class="content">
+                    <h3>Seni - Video 2</h3>
+                    <a href="https://www.youtube.com/watch?v=exampleID2" target="_blank">Tonton Video</a>
+                </div>
+            </div>
+            <!-- Add more video cards for all 50 videos -->
+        </div>
+    </div>
 
-    
-    </section>
+</div>
 
-    <footer>
-        <p>&copy; 2024 Platform Pembelajaran Online | Semua Hak Dilindungi</p>
-    </footer>
+<footer>
+    <p>&copy; 2024 Video Pembelajaran. Semua hak cipta dilindungi.</p>
+</footer>
 
 </body>
 </html>
