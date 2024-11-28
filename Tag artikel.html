@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artikel Kategori: Pendidikan, Teknologi, dan Inovasi</title>
+    <style>
+        header {
+        background-color: #3498db;
+        padding: 20px;
+        color: white;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+    
+    header nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    header .logo a {
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    header ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+    }
+    
+    header ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+    }
+    
+    header ul li a:hover {
+        text-decoration: underline;
+    }
+        /* Reset default margin dan padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Container utama */
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 50px 0;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+
+        /* Grid Layout untuk kategori */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+
+        .category-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .category-card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .category-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+
+        .category-card p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .category-card a {
+            text-decoration: none;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .category-card a:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsif untuk layar kecil */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .category-card img {
+                height: 180px;
+            }
+
+            .category-card h3 {
+                font-size: 1.5rem;
+            }
+
+            .category-card p {
+                font-size: 0.9rem;
+            }
+
+            .category-card a {
+                padding: 10px 25px;
+            }
+        }
+    </style>
+</head>
+  <!-- Header -->
+  <header>
+    <nav>
+        <div class="logo">
+            <a href="#">Artikel Kategori</a> <!-- Ganti dengan logo atau nama situs -->
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Tag artikel.html">Artikel</a></li>
+            <li><a href="#">Tentang</a></li>
+            <li><a href="#">Kontak</a></li>
+        </ul>
+    </nav>
+</header>
+<body>
+
+    <div class="container">
+        <h1></h1>
+
+        <!-- Grid untuk kategori artikel -->
+        <div class="categories">
+            <!-- Kategori Pendidikan -->
+            <div class="category-card">
+                <img src="art1.jpg" alt="Pendidikan">
+                <div class="category-card-content">
+                    <h3>Pendidikan</h3>
+                    <p>Artikel tentang dunia pendidikan, pengembangan kurikulum, dan inovasi dalam dunia pendidikan di Indonesia.</p>
+                    <a href="Artikel 1.html">Baca Selengkapnya</a>
+                </div>
+            </div>
+
+            <!-- Kategori Teknologi -->
+            <div class="category-card">
+                <img src="https://via.placeholder.com/300x200?text=Teknologi" alt="Teknologi">
+                <div class="category-card-content">
+                    <h3>Teknologi</h3>
+                    <p>Artikel terkait inovasi teknologi terkini, perangkat lunak, dan transformasi digital yang mengubah kehidupan kita.</p>
+                    <a href="#">Baca Selengkapnya</a>
+                </div>
+            </div>
+
+            <!-- Kategori Inovasi -->
+            <div class="category-card">
+                <img src="https://via.placeholder.com/300x200?text=Inovasi" alt="Inovasi">
+                <div class="category-card-content">
+                    <h3>Inovasi</h3>
+                    <p>Berita terbaru tentang inovasi dalam bisnis, teknologi, dan solusi kreatif yang mempengaruhi dunia.</p>
+                    <a href="#">Baca Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Platform Belajar Berbagi</title>
+    <link rel="icon" href="favicon.jpg" type="image/x-icon">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: hsl(0, 0%, 100%);
+            color: #ffffff;
+        }
+
+        header {
+            background-image:url(bg3.jpg);
+            background-size: 1500px 1500px;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #025613;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: rgb(255, 255, 255);
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        nav a:hover {
+            background-color: #2980B9;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color:rgb(87, 109, 87);
+            background-size: 2000px 1500px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
+        }
+
+        h2 {
+            color: #fcfcfd;
+        }
+
+        .card {
+            background-color: hsla(0, 0%, 100%, 0.913);
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.354);
+        }
+
+        .card h3 {
+            color: #297fb9;
+        }
+
+        .card p {
+            color: #7f8c8d;
+        }
+
+        footer {
+            background-color: #025613;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+
+            .card {
+                margin: 5px 0;
+            }
+        }
+
+        .quiz-container {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .quiz-container button {
+            background-color: #aac91f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .quiz-container button:hover {
+            background-color: #3498DB;
+        }
+        /* Reset dan umumkan default styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Styling untuk Heading utama */
+h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #2c3e50;
+}
+
+/* Styling untuk card-container */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+}
+
+/* Styling untuk card */
+.card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+.card a.cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.card a.cta-button:hover {
+    background-color: #2980b9;
+}
+
+/* Responsif untuk layar lebih kecil */
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 style="font-size: 32px;">Selamat Datang di Platform Belajar Berbagi</h1>
+        <p>Temukan berbagai materi pembelajaran yang sesuai dengan kebutuhanmu!</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#courses">Bank Soal</a>
+        <a href="#resources">Sumber Belajar</a>
+        <a href="#contact"> Modul Ajar</a>
+    </nav>
+
+    <section id="courses">
+        <h2>Bank Soal Kelas 6 Kurikulum Merdeka</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Bahasa Indonesia</h3>
+                <p>Silahkan berlatih soal-soal bahasa Indonesia.</p>
+                <a href="Bank Soal.html" class="cta-button">Lihat Soal</a>
+            </div>
+            <div class="card">
+                <h3>IPAS</h3>
+                <p>Silahkan berlatih soal-soal IPAS.</p>
+                <a href="Bank Soal 2.html" class="cta-button">Lihat soal</a>
+            </div>
+            <div class="card">
+                <h3>Matematika</h3>
+                <p>Silahkan berlatih soal-soal Matematika.</p>
+                <a href="Bank Soal 2.html" class="cta-button">Lihat soal</a>
+            </div>
+            <div class="card">
+                <h3>Pancasila</h3>
+                <p>Silahkan berlatih soal-soal Pancasila.</p>
+                <a href="Bank Soal 2.html" class="cta-button">Lihat soal</a>
+            </div>
+            <div class="card">
+                <h3>Seni</h3>
+                <p>Silahkan berlatih soal-soal Seni.</p>
+                <a href="Bank Soal 2.html" class="cta-button">Lihat soal</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="resources">
+        <h2>Sumber Belajar</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Artikel Pembelajaran</h3>
+                <p>Baca artikel-artikel yang mengupas berbagai topik dalam dunia teknologi dan pembelajaran.</p>
+                <a href="#" class="cta-button">Baca Artikel</a>
+            </div>
+            <div class="card">
+                <h3>Video Pembelajaran</h3>
+                <p>Menonton video tutorial untuk memahami materi secara lebih visual.</p>
+                <a href="Video pembelajaran.html" class="cta-button">Tonton Video</a>
+            </div>
+            <div class="card">
+                <h3>Forum Diskusi</h3>
+                <p>Bergabunglah dengan komunitas kami untuk bertanya dan berdiskusi dengan sesama pelajar.</p>
+                <a href="forum diskusi.html" class="cta-button">Bergabung Sekarang</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="quiz">
+        <h2>Modul Ajar</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Artikel Pembelajaran</h3>
+                <p>Baca artikel-artikel yang mengupas berbagai topik dalam dunia teknologi dan pembelajaran.</p>
+                <a href="#" class="cta-button">Baca Artikel</a>
+            </div>
+            <div class="card">
+                <h3>Video Pembelajaran</h3>
+                <p>Menonton video tutorial untuk memahami materi secara lebih visual.</p>
+                <a href="Video pembelajaran.html" class="cta-button">Tonton Video</a>
+            </div>
+            <div class="card">
+                <h3>Forum Diskusi</h3>
+                <p>Bergabunglah dengan komunitas kami untuk bertanya dan berdiskusi dengan sesama pelajar.</p>
+                <a href="forum diskusi.html" class="cta-button">Bergabung Sekarang</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <h2>Kontak Kami</h2>
+    <p>Klik tombol di bawah untuk menulis email kepada kami melalui Gmail.</p>
+    <!-- Tautan untuk menulis email di Gmail -->
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yadicahyadi71@guru.sd.belajar.id&su=Judul%20Email&body=Isi%20email%20di%20sini" target="_blank">
+        <button style="padding: 10px 20px; font-size: 16px; background-color: #4285F4; color: white; border: none; border-radius: 5px;">
+            Tulis Email di Gmail
+        </button>
+    </a>
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=yadicahyadi71@guru.sd.belajar.id&su=Judul%20Email&body=Isi%20email%20di%20sin
+    
+    <section id="contact">
+        
+        <p>Telepon: 0800-123-4567</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Platform Pembelajaran Online | Semua Hak Dilindungi</p>
+    </footer>
+
+</body>
+</html>
