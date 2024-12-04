@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Belajar Bermakna</title>
+    <style>
+        /* Reset dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: url('/JPG/bg7.jpg') no-repeat center/cover;
+            color: #000000;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        /* Navigasi */
+        nav {
+            background-color: #2355d4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        nav a {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #2980b9;
+            border-radius: 5px;
+        }
+
+        /* Section */
+        section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #2355d4;
+        }
+
+        /* Kartu */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Mengurangi ukuran kartu */
+            gap: 20px;
+            justify-items: center;
+            align-items: stretch;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            aspect-ratio: 1 / 1; /* Membuat kartu berbentuk kubus */
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Menjaga tombol tetap di bawah */
+            padding: 15px; /* Menambah padding agar lebih rapi */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .card p {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            font-size: 14px;
+            flex-grow: 1;
+        }
+
+        .card a {
+            display: inline-block;
+            padding: 12px 20px; /* Menambah padding untuk tombol */
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-top: auto; /* Memastikan tombol selalu di bawah */
+            transition: background-color 0.3s;
+            text-align: center; /* Agar teks tombol berada di tengah */
+        }
+
+        .card a:hover {
+            background-color: #2980b9;
+        }
+
+        /* Kontak */
+        #contact p {
+            text-align: center;
+            font-size: 16px;
+            margin: 15px 0;
+        }
+
+        #contact a {
+            display: inline-block;
+            padding: 12px 20px;
+            color: #000000;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px auto;
+            transition: background-color 0.3s ease;
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        #contact a:hover {
+            background-color: #2980b9;
+            color: #ffffff;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2355d4;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 5px 0;
+            }
+
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Platform Belajar Bermakna</h1>
+        <h1>Kelas 6</h1>
+    </header>
+
+    <nav>
+        <a href="/indexpercobaan.html">Home</a>
+        <a href="#courses">Bank Soal</a>
+        <a href="#resources">Sumber Belajar</a>
+        <a href="#contact">Modul Ajar</a>
+    </nav>
+
+    <section id="courses">
+        <h2>Pasilitas Pembelajaran</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="banksoal.jpg" alt="Bank Soal">
+                <h3>Bank Soal</h3>
+                <p>Silahkan berlatih soal-soal dari berbagai mata pelajaran.</p>
+                <a href="Index Bank Soal B.Indo.html">Lihat Soal</a>
+            </div>
+            <div class="card">
+                <img src="sumberbelajar.jpg" alt="Sumber Belajar">
+                <h3>Sumber Belajar</h3>
+                <p>Silahkan Gunakan Sumber Belajar.</p>
+                <a href="Index Bank Soal IPAS.html">Lihat Soal</a>
+            </div>
+            <div class="card">
+                <img src="videopembelajaran.jpg" alt="Video Pembelajaran">
+                <h3>Video Pembelajaran</h3>
+                <p>Silahkan Menggunakan Video Pembelajaran.</p>
+                <a href="Index Bank Soal MTK.html">Lihat Soal</a>
+            </div>
+            <div class="card">
+                <img src="simulasi.jpg" alt="Simulasi Pembelajaran">
+                <h3>Simulasi Pembelajaran </h3>
+                <p>Silahkan Gunakan Berbagai Simulator/aplikasi Pembelajaran</p>
+                <a href="Index Bank Soal Pancasila.html">Lihat Soal</a>
+            </div>
+            <div class="card">
+                <img src="forumdiskusi.jpg" alt="Forum Diskusi">
+                <h3>Forum Diskusi</h3>
+                <p>Silahkan Gunakan Forum ini Untuk Berdiskusi.</p>
+                <a href="Index Bank Soal Seni.html">Lihat Soal</a>
+            </div>
+            <div class="card">
+                <img src="buku.jpg" alt="Buku Digital">
+                <h3>Buku Digital atau E-book</h3>
+                <p>Silahkan Menggali informasi dengan membaca.</p>
+                <a href="Index Bank Soal Muatan Lokal.html">Lihat Soal</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-info">
+            <p><strong>📍 Alamat:</strong> Jalan Raya Taman Purbakala. Kel. Cipari</p>
+            <p><strong>📱 Telepon:</strong> 0881 2071 728</p>
+            <p><strong>✉️ Email:</strong> <a href="mailto:yadicahyadi71@guru.sd.belajar.id">yadicahyadi71@guru.sd.belajar.id</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Platform Pembelajaran Bermakna | Semua Hak Dilindungi</p>
+    </footer>
+</body>
+</html>
