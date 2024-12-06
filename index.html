@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pembelajaran Bermakna</title>
-    <link rel="icon" href="Javicon.jpg" type="image/x-icon">
+    <link rel="icon" href="favicon.jpg" type="image/x-icon">
     <style>
         /* Reset dan Pengaturan Dasar */
         * {
@@ -211,7 +211,7 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 1000;
             left: 0;
             top: 0;
             width: 100%;
@@ -222,8 +222,10 @@
         }
         .modal-content {
             background-color: #fff;
+            border-radius: 10px;
             margin: 5% auto;
             padding: 20px;
+            max-width: 400px;
             border: 1px solid #888;
             width: 50%;
             border-radius: 10px;
@@ -404,13 +406,34 @@
         console.log("Valid Password Hash:", validPasswordHash);
 
         // Perbandingan hash
-        if (hashedUsername === validUsername && hashedPassword === validPasswordHash) {
-            alert("Login berhasil! Mengarahkan ke halaman...");
-            window.location.href = page;  // Arahkan ke halaman kelas jika login sukses
-            closeLoginModal();
-        } else {
-            alert("Username atau password salah! Silakan coba lagi.");
-        }
+if (hashedUsername === validUsername && hashedPassword === validPasswordHash) {
+    // Tampilkan pesan di layar tanpa memerlukan klik "OK"
+    document.body.innerHTML += `
+        <div id="login-success-message" style="
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            background: rgba(255, 255, 255, 0.8); 
+            color: black; 
+            padding: 20px; 
+            border-radius: 8px; 
+            text-align: center; 
+            font-size: 18px; 
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        ">
+            Login berhasil! Mengarahkan ke halaman...
+        </div>
+    `;
+    
+    // Arahkan ke halaman tujuan setelah beberapa detik
+    setTimeout(() => {
+        window.location.href = page;  // Arahkan ke halaman kelas jika login sukses
+    }, 2000); // Tunggu 2 detik sebelum mengarahkan
+} else {
+    // Tampilkan pesan kesalahan jika login gagal
+    alert("Username atau password salah! Silakan coba lagi.");
+}
     }
 
     // Fungsi untuk scroll ke bagian fitur

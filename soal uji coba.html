@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Soal</title>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // Ganti dengan Public Key dari EmailJS
+        })();
+
+        function sendEmail(event) {
+            event.preventDefault(); // Mencegah reload halaman
+
+            const form = event.target;
+            
+            // Membuat PDF dengan jsPDF
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Menambahkan teks ke PDF
+            const nama = form.nama.value;
+            const kelas = form.kelas.value;
+            const pg1 = form.pg1.value;
+            const uraian_26 = form.uraian_26.value;
+            const uraian_36 = form.uraian_36.value;
+
+            doc.text('Form Jawaban', 10, 10);
+            doc.text(`Nama: ${nama}`, 10, 20);
+            doc.text(`Kelas: ${kelas}`, 10, 30);
+            doc.text(`1. Apa ibu kota Indonesia? Jawaban: ${pg1}`, 10, 40);
+            doc.text(`26. Sebutkan 3 warna primer: ${uraian_26}`, 10, 50);
+            doc.text(`36. Jelaskan manfaat gotong royong: ${uraian_36}`, 10, 60);
+
+            // Convert PDF to Blob
+            const pdfData = doc.output('blob');
+
+            // Kirim email dengan attachment PDF
+            const formData = new FormData();
+            formData.append('to_email', 'yadic024@gmail.com');
+            formData.append('subject', 'Jawaban Soal');
+            formData.append('message', 'Berikut adalah jawaban soal dalam bentuk PDF.');
+            formData.append('attachment', pdfData, 'jawaban.pdf');
+
+            // Kirim data melalui emailJS
+            emailjs.sendForm('service_r53h8fw', 'template_5ghbvat', formData)
+                .then(function(response) {
+                    alert('Jawaban berhasil dikirim!');
+                }, function(error) {
+                    alert('Gagal mengirim jawaban. Silakan coba lagi.');
+                    console.log('Error:', error);
+                });
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #0079bf;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        textarea {
+            height: 80px;
+        }
+        button {
+            display: block;
+            background: #0079bf;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: auto;
+        }
+        button:hover {
+            background: #005f8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Form Jawaban</h1>
+        <form onsubmit="sendEmail(event)">
+            <!-- Data Siswa -->
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" required>
+
+            <label for="kelas">Kelas:</label>
+            <input type="text" id="kelas" name="kelas" required>
+
+            <!-- Pilihan Ganda -->
+            <h3>Pilihan Ganda</h3>
+            <label>1. Apa ibu kota Indonesia?</label>
+            <input type="text" name="pg1" placeholder="Jawaban Anda" required>
+
+            <!-- Tambahkan soal lainnya di sini... -->
+
+            <!-- Uraian Singkat -->
+            <h3>Uraian Singkat</h3>
+            <label>26. Sebutkan 3 warna primer!</label>
+            <textarea name="uraian_26" placeholder="Jawaban Anda" required></textarea>
+
+            <!-- Uraian Panjang -->
+            <h3>Uraian Panjang</h3>
+            <label>36. Jelaskan manfaat gotong royong dalam kehidupan masyarakat!</label>
+            <textarea name="uraian_36" placeholder="Jawaban Anda" required></textarea>
+
+            <!-- Tombol Kirim -->
+            <button type="submit">Kirim Jawaban</button>
+        </form>
+    </div>
+</body>
+</html>

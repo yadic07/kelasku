@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz SD Negeri 2 Karangmangu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .header-content {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .header-content h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #5a67d8;
+        }
+        .header-content p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .details label {
+            margin-right: 10px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .details input {
+            flex-grow: 1;
+            padding: 6px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            max-width: 250px;
+        }
+        .questions-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .question {
+            margin-bottom: 10px;
+        }
+        .question h3 {
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+        .divider {
+            border-top: 2px dashed #ddd;
+            margin: 30px 0;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        textarea {
+            height: 100px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #5a67d8;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #434190;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e2e8f0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="quizContainer">
+        <div class="header">
+            <img src="https://via.placeholder.com/100" alt="Logo Sekolah">
+            <div class="header-content">
+                <h1>SD Negeri 2 Karangmangu</h1>
+                <p>Jalan Desa Karangmangu</p>
+            </div>
+        </div>
+
+        <div class="details">
+            <label for="studentName">Nama:</label>
+            <input type="text" id="studentName" name="studentName" placeholder="Masukkan Nama Siswa">
+            <label for="studentClass">Kelas:</label>
+            <input type="text" id="studentClass" name="studentClass" placeholder="Kelas">
+        </div>
+
+        <form id="quizForm">
+            <!-- Soal Pilihan Ganda -->
+            <div class="divider"></div>
+            <h2>Soal Pilihan Ganda</h2>
+            <div class="questions-container">
+                <!-- Soal 1 sampai 25 -->
+                <div class="question">
+                  <h3>1. Apa yang dimaksud dengan tema dalam unsur intrinsik cerita?</h3>
+                  <div class="options">
+                      <label><input type="radio" name="q1" value="Inti cerita"> Inti cerita</label>
+                      <label><input type="radio" name="q1" value="Nama tokoh utama"> Nama tokoh utama</label>
+                      <label><input type="radio" name="q1" value="Lokasi cerita"> Lokasi cerita</label>
+                      <label><input type="radio" name="q1" value="Akhir cerita"> Akhir cerita</label>
+                  </div>
+              </div>
+              
+              <div class="question">
+                  <h3>2. Surat resmi biasanya digunakan untuk keperluan apa?</h3>
+                  <div class="options">
+                      <label><input type="radio" name="q2" value="Berkomunikasi pribadi"> Berkomunikasi pribadi</label>
+                      <label><input type="radio" name="q2" value="Berkomunikasi formal"> Berkomunikasi formal</label>
+                      <label><input type="radio" name="q2" value="Undangan ulang tahun"> Undangan ulang tahun</label>
+                      <label><input type="radio" name="q2" value="Kepentingan keluarga"> Kepentingan keluarga</label>
+                  </div>
+              </div>
+              
+              <div class="question">
+                  <h3>3. Tokoh dalam cerita yang memiliki sifat baik disebut?</h3>
+                  <div class="options">
+                      <label><input type="radio" name="q3" value="Protagonis"> Protagonis</label>
+                      <label><input type="radio" name="q3" value="Antagonis"> Antagonis</label>
+                      <label><input type="radio" name="q3" value="Figuran"> Figuran</label>
+                      <label><input type="radio" name="q3" value="Pendukung"> Pendukung</label>
+                  </div>
+              </div>
+              
+              <div class="question">
+                  <h3>4. Surat pribadi biasanya ditulis kepada siapa?</h3>
+                  <div class="options">
+                      <label><input type="radio" name="q4" value="Pejabat"> Pejabat</label>
+                      <label><input type="radio" name="q4" value="Sahabat atau keluarga"> Sahabat atau keluarga</label>
+                      <label><input type="radio" name="q4" value="Guru"> Guru</label>
+                      <label><input type="radio" name="q4" value="Pelanggan"> Pelanggan</label>
+                  </div>
+              </div>
+              
+              <div class="question">
+                  <h3>5. Apa fungsi latar dalam sebuah cerita?</h3>
+                  <div class="options">
+                      <label><input type="radio" name="q5" value="Menunjukkan konflik cerita"> Menunjukkan konflik cerita</label>
+                      <label><input type="radio" name="q5" value="Membuat cerita lebih panjang"> Membuat cerita lebih panjang</label>
+                      <label><input type="radio" name="q5" value="Menjelaskan waktu dan tempat"> Menjelaskan waktu dan tempat</label>
+                      <label><input type="radio" name="q5" value="Menjelaskan watak tokoh"> Menjelaskan watak tokoh</label>
+                  </div>
+              </div>
+              
+              <div class="question">
+                  <h3>6. Berikut ini adalah ciri-ciri surat resmi, kecuali?</h3>
+                  <div class="options">
+                      <label><input type="radio" name="q6" value="Menggunakan bahasa baku"> Menggunakan bahasa baku</label>
+                      <label><input type="radio" name="q6" value="Ada kop surat"> Ada kop surat</label>
+                      <label><input type="radio" name="q6" value="Berisi pujian"> Berisi pujian</label>
+                      <label><input type="radio" name="q6" value="Menggunakan tanda tangan resmi"> Menggunakan tanda tangan resmi</label>
+                  </div>
+              </div>
+              
+              <div class="question">
+                  <h3>7. Apa tujuan penggunaan tokoh antagonis dalam cerita?</h3>
+                  <div class="options">
+                      <label><input type="radio" name="q7" value="Memperpanjang cerita"> Memperpanjang cerita</label>
+                      <label><input type="radio" name="q7" value="Menimbulkan konflik"> Menimbulkan konflik</label>
+                      <label><input type="radio" name="q7" value="Membuat cerita lucu"> Membuat cerita lucu</label>
+                      <label><input type="radio" name="q7" value="Memperkenalkan tokoh utama"> Memperkenalkan tokoh utama</label>
+                  </div>
+              </div>
+              
+              <div class="question">
+                  <h3>8. Di bawah ini yang termasuk kata sapaan pada surat pribadi adalah?</h3>
+                  <div class="options">
+                      <label><input type="radio" name="q8" value="Dengan hormat"> Dengan hormat</label>
+                      <label><input type="radio" name="q8" value="Hai Sahabatku"> Hai Sahabatku</label>
+                      <label><input type="radio" name="q8" value="Salam Sejahtera"> Salam Sejahtera</label>
+                      <label><input type="radio" name="q8" value="Kepada Yth."> Kepada Yth.</label>
+                  </div>
+              </div>
+              
+              <div class="question">
+                  <h3>9. Cerita rakyat yang menceritakan asal usul suatu tempat disebut?</h3>
+                  <div class="options">
+                      <label><input type="radio" name="q9" value="Legenda"> Legenda</label>
+                      <label><input type="radio" name="q9" value="Fabel"> Fabel</label>
+                      <label><input type="radio" name="q9" value="Mitos"> Mitos</label>
+                      <label><input type="radio" name="q9" value="Sage"> Sage</label>
+                  </div>
+              </div>
+              
+              <div class="question">
+                  <h3>10. Apa arti "penokohan" dalam unsur intrinsik cerita?</h3>
+                  <div class="options">
+                      <label><input type="radio" name="q10" value="Mengatur alur cerita"> Mengatur alur cerita</label>
+                      <label><input type="radio" name="q10" value="Menggambarkan watak tokoh"> Menggambarkan watak tokoh</label>
+                      <label><input type="radio" name="q10" value="Menjelaskan lokasi cerita"> Menjelaskan lokasi cerita</label>
+                      <label><input type="radio" name="q10" value="Menyampaikan pesan moral"> Menyampaikan pesan moral</label>
+                  </div>
+              </div>
+              
+              <div class="question">
+                <h3>11. Surat resmi biasanya diawali dengan apa?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q11" value="Kata sapaan informal"> Kata sapaan informal</label>
+                    <label><input type="radio" name="q11" value="Tanggal dan tempat"> Tanggal dan tempat</label>
+                    <label><input type="radio" name="q11" value="Salam hormat"> Salam hormat</label>
+                    <label><input type="radio" name="q11" value="Identitas pengirim"> Identitas pengirim</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>12. Cerita yang bertujuan memberikan nasihat dan pesan moral disebut?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q12" value="Fabel"> Fabel</label>
+                    <label><input type="radio" name="q12" value="Legenda"> Legenda</label>
+                    <label><input type="radio" name="q12" value="Cerpen"> Cerpen</label>
+                    <label><input type="radio" name="q12" value="Cerbung"> Cerbung</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>13. Sebuah surat yang ditujukan kepada lembaga atau instansi adalah?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q13" value="Surat Pribadi"> Surat Pribadi</label>
+                    <label><input type="radio" name="q13" value="Surat Resmi"> Surat Resmi</label>
+                    <label><input type="radio" name="q13" value="Surat Elektronik"> Surat Elektronik</label>
+                    <label><input type="radio" name="q13" value="Surat Undangan"> Surat Undangan</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>14. Watak tokoh yang tidak berubah dari awal hingga akhir cerita disebut?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q14" value="Tokoh Utama"> Tokoh Utama</label>
+                    <label><input type="radio" name="q14" value="Tokoh Pembantu"> Tokoh Pembantu</label>
+                    <label><input type="radio" name="q14" value="Tokoh Dinamis"> Tokoh Dinamis</label>
+                    <label><input type="radio" name="q14" value="Tokoh Statis"> Tokoh Statis</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>15. Apa yang dimaksud dengan "konflik" dalam cerita?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q15" value="Watak tokoh"> Watak tokoh</label>
+                    <label><input type="radio" name="q15" value="Jalan keluar"> Jalan keluar</label>
+                    <label><input type="radio" name="q15" value="Masalah utama"> Masalah utama</label>
+                    <label><input type="radio" name="q15" value="Kesimpulan cerita"> Kesimpulan cerita</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>16. Apa yang harus ada di akhir surat resmi?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q16" value="Tanda tangan pengirim"> Tanda tangan pengirim</label>
+                    <label><input type="radio" name="q16" value="Kata penutup informal"> Kata penutup informal</label>
+                    <label><input type="radio" name="q16" value="Gambar pendukung"> Gambar pendukung</label>
+                    <label><input type="radio" name="q16" value="Alamat penerima"> Alamat penerima</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>17. Di bawah ini yang termasuk ke dalam latar tempat adalah?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q17" value="Di pagi hari"> Di pagi hari</label>
+                    <label><input type="radio" name="q17" value="Di ruang kelas"> Di ruang kelas</label>
+                    <label><input type="radio" name="q17" value="Pada tahun 2020"> Pada tahun 2020</label>
+                    <label><input type="radio" name="q17" value="Setelah matahari terbenam"> Setelah matahari terbenam</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>18. Siapa yang biasanya menjadi tokoh utama dalam cerita?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q18" value="Tokoh Pembantu"> Tokoh Pembantu</label>
+                    <label><input type="radio" name="q18" value="Tokoh yang banyak dibahas"> Tokoh yang banyak dibahas</label>
+                    <label><input type="radio" name="q18" value="Tokoh Pelengkap"> Tokoh Pelengkap</label>
+                    <label><input type="radio" name="q18" value="Tokoh Antagonis"> Tokoh Antagonis</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>19. Cerita yang diakhiri dengan pesan moral biasanya disebut?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q19" value="Mitos"> Mitos</label>
+                    <label><input type="radio" name="q19" value="Dongeng"> Dongeng</label>
+                    <label><input type="radio" name="q19" value="Legenda"> Legenda</label>
+                    <label><input type="radio" name="q19" value="Fabel"> Fabel</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>20. Surat pribadi biasanya tidak memerlukan?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q20" value="Tanda tangan"> Tanda tangan</label>
+                    <label><input type="radio" name="q20" value="Bahasa baku"> Bahasa baku</label>
+                    <label><input type="radio" name="q20" value="Salam pembuka"> Salam pembuka</label>
+                    <label><input type="radio" name="q20" value="Penutup"> Penutup</label>
+                </div>
+            </div>
+            <div class="question">
+              <h3>21. Apa tujuan utama dari membaca cerita fiksi?</h3>
+              <div class="options">
+                  <label><input type="radio" name="q21" value="Menambah wawasan"> Menambah wawasan</label>
+                  <label><input type="radio" name="q21" value="Hiburan dan imajinasi"> Hiburan dan imajinasi</label>
+                  <label><input type="radio" name="q21" value="Mencari informasi fakta"> Mencari informasi fakta</label>
+                  <label><input type="radio" name="q21" value="Memperbaiki tata bahasa"> Memperbaiki tata bahasa</label>
+              </div>
+          </div>
+          
+          <div class="question">
+              <h3>22. Apa yang dimaksud dengan tokoh protagonis?</h3>
+              <div class="options">
+                  <label><input type="radio" name="q22" value="Tokoh utama cerita"> Tokoh utama cerita</label>
+                  <label><input type="radio" name="q22" value="Tokoh penjahat"> Tokoh penjahat</label>
+                  <label><input type="radio" name="q22" value="Tokoh pembantu"> Tokoh pembantu</label>
+                  <label><input type="radio" name="q22" value="Tokoh sampingan"> Tokoh sampingan</label>
+              </div>
+          </div>
+          
+          <div class="question">
+              <h3>23. Apa yang menjadi ciri utama surat pribadi?</h3>
+              <div class="options">
+                  <label><input type="radio" name="q23" value="Bahasa baku"> Bahasa baku</label>
+                  <label><input type="radio" name="q23" value="Tujuan resmi"> Tujuan resmi</label>
+                  <label><input type="radio" name="q23" value="Penggunaan sapaan akrab"> Penggunaan sapaan akrab</label>
+                  <label><input type="radio" name="q23" value="Format formal"> Format formal</label>
+              </div>
+          </div>
+          
+          <div class="question">
+              <h3>24. Dalam surat resmi, apa fungsi lampiran?</h3>
+              <div class="options">
+                  <label><input type="radio" name="q24" value="Sebagai informasi tambahan"> Sebagai informasi tambahan</label>
+                  <label><input type="radio" name="q24" value="Sebagai judul surat"> Sebagai judul surat</label>
+                  <label><input type="radio" name="q24" value="Sebagai tujuan utama"> Sebagai tujuan utama</label>
+                  <label><input type="radio" name="q24" value="Sebagai pengganti isi surat"> Sebagai pengganti isi surat</label>
+              </div>
+          </div>
+          
+          <div class="question">
+              <h3>25. Apa makna dari pesan moral dalam sebuah cerita?</h3>
+              <div class="options">
+                  <label><input type="radio" name="q25" value="Pelajaran yang dapat diambil"> Pelajaran yang dapat diambil</label>
+                  <label><input type="radio" name="q25" value="Nama tokoh utama"> Nama tokoh utama</label>
+                  <label><input type="radio" name="q25" value="Judul cerita"> Judul cerita</label>
+                  <label><input type="radio" name="q25" value="Ringkasan cerita"> Ringkasan cerita</label>
+              </div>
+          </div>
+          
+            </div>
+
+            <!-- Soal Isian -->
+            <div class="divider"></div>
+            <h2>Soal Isian</h2>
+            <div class="question">
+              <h3>1. Sebutkan 3 unsur intrinsik dalam cerita!</h3>
+              <input type="text" name="q26" placeholder="Jawaban Anda">
+          </div>
+          
+          <div class="question">
+              <h3>2. Apa tujuan utama surat resmi?</h3>
+              <input type="text" name="q27" placeholder="Jawaban Anda">
+          </div>
+          
+          <div class="question">
+              <h3>3. Apa perbedaan utama antara surat pribadi dan surat resmi?</h3>
+              <input type="text" name="q28" placeholder="Jawaban Anda">
+          </div>
+          
+          <div class="question">
+              <h3>4. Sebutkan bagian-bagian penting dari surat resmi!</h3>
+              <input type="text" name="q29" placeholder="Jawaban Anda">
+          </div>
+          
+          <div class="question">
+              <h3>5. Apa yang dimaksud dengan tema dalam unsur intrinsik cerita?</h3>
+              <input type="text" name="q30" placeholder="Jawaban Anda">
+          </div>
+          <div class="question">
+            <h3>6. Apa yang dimaksud dengan latar dalam unsur intrinsik cerita?</h3>
+            <input type="text" name="q31" placeholder="Jawaban Anda">
+        </div>
+        
+        <div class="question">
+            <h3>7. Tuliskan contoh kalimat pembuka dalam surat pribadi!</h3>
+            <input type="text" name="q32" placeholder="Jawaban Anda">
+        </div>
+        
+        <div class="question">
+            <h3>8. Sebutkan ciri-ciri surat resmi!</h3>
+            <input type="text" name="q33" placeholder="Jawaban Anda">
+        </div>
+        
+        <div class="question">
+            <h3>9. Apa peran tokoh utama dalam sebuah cerita?</h3>
+            <input type="text" name="q34" placeholder="Jawaban Anda">
+        </div>
+        
+        <div class="question">
+            <h3>10. Apa tujuan penggunaan salam pembuka dalam surat?</h3>
+            <input type="text" name="q35" placeholder="Jawaban Anda">
+        </div>
+        
+
+            <!-- Soal Uraian -->
+            <div class="divider"></div>
+            <h2>Soal Uraian</h2>
+            <div class="question">
+              <h3>1. Jelaskan unsur-unsur intrinsik yang membangun sebuah cerita secara lengkap!</h3>
+              <textarea name="q36" placeholder="Tuliskan jawaban Anda di sini"></textarea>
+          </div>
+          
+          <div class="question">
+              <h3>2. Tuliskan langkah-langkah menulis surat resmi yang baik dan benar!</h3>
+              <textarea name="q37" placeholder="Tuliskan jawaban Anda di sini"></textarea>
+          </div>
+          
+          <div class="question">
+              <h3>3. Sebutkan dan jelaskan perbedaan mendasar antara surat resmi dan surat pribadi!</h3>
+              <textarea name="q38" placeholder="Tuliskan jawaban Anda di sini"></textarea>
+          </div>
+          
+          <div class="question">
+              <h3>4. Jelaskan peran tema dalam sebuah cerita dan bagaimana cara menemukannya!</h3>
+              <textarea name="q39" placeholder="Tuliskan jawaban Anda di sini"></textarea>
+          </div>
+          
+          <div class="question">
+              <h3>5. Berikan penjelasan tentang fungsi setiap bagian dalam surat resmi!</h3>
+              <textarea name="q40" placeholder="Tuliskan jawaban Anda di sini"></textarea>
+          </div>
+          
+
+            <div class="btn-container">
+                <button type="button" class="btn" id="submitBtn" onclick="validateAndSubmit()">Submit</button>
+                <button type="button" class="btn" id="printBtn" onclick="validateAndPrint()">Cetak</button>
+            </div>
+        </form>
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Fungsi untuk memuat pilihan jawaban yang telah disimpan, namun tidak disimpan di localStorage.
+        window.onload = function() {
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(button => {
+                button.checked = false; // Pastikan semua radio button tidak tercentang ketika halaman dimuat ulang
+            });
+
+            const textInputs = document.querySelectorAll('input[type="text"], textarea');
+            textInputs.forEach(input => {
+                input.value = ""; // Mengosongkan semua input teks dan textarea saat halaman dimuat ulang
+            });
+        };
+
+        function disableForm() {
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.disabled = true;
+            });
+            document.getElementById('submitBtn').style.display = "none"; // Menyembunyikan tombol submit
+        }
+
+        function validateForm() {
+            const studentName = document.getElementById('studentName').value;
+            const studentClass = document.getElementById('studentClass').value;
+            const questions = document.querySelectorAll('.question');
+            let isValid = true;
+
+            if (!studentName || !studentClass) {
+                alert("Nama dan Kelas harus diisi!");
+                isValid = false;
+            }
+            
+
+            // Memastikan setiap soal memiliki jawaban yang terpilih atau terisi
+            questions.forEach(question => {
+                const radios = question.querySelectorAll('input[type="radio"]');
+                const isAnswered = Array.from(radios).some(radio => radio.checked);
+                
+            });
+
+            return isValid;
+        }
+
+        function validateAndSubmit() {
+            if (validateForm()) {
+                alert("Formulir berhasil dikirim!");
+                disableForm();
+            }
+        }
+
+        function validateAndPrint() {
+            if (validateForm()) {
+                window.print();
+            }
+        }
+      
+
+function validateAndSubmit() {
+    if (validateForm()) {
+        submitQuiz();
+        disableForm();
+    }
+}
+
+function validateAndPrint() {
+    if (validateForm()) {
+        window.print();
+    }
+}
+
+function submitQuiz() {
+    const correctAnswers = {
+    q1: "Unsur dalam cerita",
+    q2: "Dua jenis surat",
+    q3: "Pemeran utama cerita",
+    q4: "Pesan moral",
+    q5: "Latar tempat dan waktu",
+    q6: "Nama penulis",
+    q7: "Judul",
+    q8: "Tema cerita",
+    q9: "Surat resmi",
+    q10: "Informasi pribadi",
+    q11: "Tanggal dan tempat",
+    q12: "Fabel",
+    q13: "Surat Resmi",
+    q14: "Tokoh Statis",
+    q15: "Masalah utama",
+    q16: "Tanda tangan pengirim",
+    q17: "Di ruang kelas",
+    q18: "Tokoh yang banyak dibahas",
+    q19: "Dongeng",
+    q20: "Bahasa baku",
+    q21: "Hiburan dan imajinasi",
+    q22: "Tokoh utama cerita",
+    q23: "Penggunaan sapaan akrab",
+    q24: "Sebagai informasi tambahan",
+    q25: "Pelajaran yang dapat diambil"
+    };
+
+    let score = 0;
+    let totalQuestions = Object.keys(correctAnswers).length;
+    let feedback = "";
+
+    for (let key in correctAnswers) {
+        const answer = document.querySelector(`input[name="${key}"]:checked`);
+        if (answer && answer.value === correctAnswers[key]) {
+            score++;
+        } else {
+        }
+    }
+
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `<h3>Hasil Quiz:</h3>
+                           <p>Jawaban Benar: ${score}</p>
+                           ${feedback}`;
+    resultDiv.style.display = "block";
+}
+    </script>
+</body>
+</html>

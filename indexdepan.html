@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Selalu di Bawah</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh; /* Pastikan body memenuhi layar */
+            display: flex;
+            flex-direction: column; /* Susun elemen secara vertikal */
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            flex: 1; /* Isi ruang kosong di atas footer */
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer {
+            background-color: #2355d4;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto; /* Dorong footer ke bawah */
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 5px 0;
+            }
+
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Contoh Halaman</h1>
+</header>
+
+<div class="container">
+    <p>Ini adalah konten utama halaman.</p>
+</div>
+
+<footer>
+    <p>&copy; 2024 Contoh Halaman. Semua hak cipta dilindungi.</p>
+</footer>
+
+</body>
+</html>

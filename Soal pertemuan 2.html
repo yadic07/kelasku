@@ -1,188 +1,308 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ujian Interaktif - SD Negeri 2 Karangmangu</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Arial', sans-serif; background-color: #f4f4f9; color: #333; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 20px; flex-direction: column; }
-    .container { width: 100%; max-width: 1100px; background: #fff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); padding: 20px; margin-top: 20px; }
-    .header { display: flex; align-items: center; justify-content: center; margin-bottom: 30px; border-bottom: 2px solid #4A90E2; padding-bottom: 10px; }
-    .header img { width: 80px; height: auto; margin-right: 20px; }
-    .header .school-info { text-align: center; }
-    .header .school-info h2 { font-size: 24px; color: #4A90E2; }
-    .header .school-info p { font-size: 16px; color: #666; }
-    .separator { border-top: 2px solid #4A90E2; margin: 20px 0; }
-    .student-info { margin-bottom: 20px; text-align: center; }
-    .student-info input { padding: 10px; margin: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; width: 250px; }
-    h1 { text-align: center; color: #4A90E2; margin-bottom: 20px; }
-    .section { margin-bottom: 40px; }
-    .question { font-size: 18px; margin-bottom: 10px; color: #333; }
-    .answers { display: flex; flex-wrap: wrap; margin-bottom: 20px; }
-    .answers label { background: #e6f7ff; padding: 10px; margin: 5px 10px 10px 0; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; width: calc(50% - 10px); }
-    .answers label:hover { background-color: #4A90E2; color: white; }
-    .answers input[type="radio"] { display: none; }
-    .answers input[type="radio"]:checked + label { background-color: #4A90E2; color: #fff; }
-    .input-field, .textarea-field { width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
-    .textarea-field { height: 100px; }
-    button { background-color: #4A90E2; color: white; border: none; padding: 12px 20px; font-size: 18px; cursor: pointer; border-radius: 5px; transition: background-color 0.3s ease; }
-    button:hover { background-color: #357ab7; }
-    .result { margin-top: 20px; font-size: 20px; text-align: center; font-weight: bold; }
-    .result span { color: #4A90E2; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz SD Negeri 2 Karangmangu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .header-content {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .header-content h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #5a67d8;
+        }
+        .header-content p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .details label {
+            margin-right: 10px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .details input {
+            flex-grow: 1;
+            padding: 6px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            max-width: 250px;
+        }
+        .questions-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .question {
+            margin-bottom: 10px;
+        }
+        .question h3 {
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+        .divider {
+            border-top: 2px dashed #ddd;
+            margin: 30px 0;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        textarea {
+            height: 100px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #5a67d8;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #434190;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e2e8f0;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-
-  <div class="container">
-    <!-- Kop Surat -->
-    <div class="header">
-      <img src="logosekolah.png" alt="Logo Sekolah">
-      <div class="school-info">
-        <h2>SD Negeri 2 Karangmangu</h2>
-        <p>Jalan Raya Desa Karangmangu, Kec. Kramatmulya, Kuningan</p>
-      </div>
-    </div>
-
-    <!-- Pembatas Kop Surat dan Soal -->
-    <div class="separator"></div>
-
-    <!-- Form Input Nama dan Kelas -->
-    <div class="student-info">
-      <input type="text" id="studentName" placeholder="Nama Lengkap" required>
-      <input type="text" id="studentClass" placeholder="Kelas" required>
-    </div>
-
-    <h1>Asesmen Formatif B. Indonesia Pertemuan-1</h1>
-    
-    <!-- Bagian Pilihan Ganda -->
-    <div class="section" id="pilihan-ganda">
-      <h2>Pilihan Ganda (20 Soal)</h2>
-
-      <!-- Soal 1 -->
-      <div class="question">
-        <p>1. Siapakah presiden pertama Indonesia?</p>
-        <div class="answers">
-          <input type="radio" id="soal1a" name="soal1" value="a">
-          <label for="soal1a">Soekarno</label>
-
-          <input type="radio" id="soal1b" name="soal1" value="b">
-          <label for="soal1b">Sukarno Hatta</label>
-
-          <input type="radio" id="soal1c" name="soal1" value="c">
-          <label for="soal1c">Joko Widodo</label>
-
-          <input type="radio" id="soal1d" name="soal1" value="d">
-          <label for="soal1d">B.J. Habibie</label>
+    <div class="container" id="quizContainer">
+        <div class="header">
+            <img src="https://via.placeholder.com/100" alt="Logo Sekolah">
+            <div class="header-content">
+                <h1>SD Negeri 2 Karangmangu</h1>
+                <p>Jalan Desa Karangmangu</p>
+            </div>
         </div>
-      </div>
 
-      <!-- Soal 2 -->
-      <div class="question">
-        <p>2. Apa ibu kota Indonesia?</p>
-        <div class="answers">
-          <input type="radio" id="soal2a" name="soal2" value="a">
-          <label for="soal2a">Jakarta</label>
-
-          <input type="radio" id="soal2b" name="soal2" value="b">
-          <label for="soal2b">Surabaya</label>
-
-          <input type="radio" id="soal2c" name="soal2" value="c">
-          <label for="soal2c">Bandung</label>
-
-          <input type="radio" id="soal2d" name="soal2" value="d">
-          <label for="soal2d">Medan</label>
+        <div class="details">
+            <label for="studentName">Nama:</label>
+            <input type="text" id="studentName" name="studentName" placeholder="Masukkan Nama Siswa">
+            <label for="studentClass">Kelas:</label>
+            <input type="text" id="studentClass" name="studentClass" placeholder="Kelas">
         </div>
-      </div>
 
-      <!-- Soal 3 -->
-      <div class="question">
-        <p>3. Apa nama ibu kota Jepang?</p>
-        <div class="answers">
-          <input type="radio" id="soal3a" name="soal3" value="a">
-          <label for="soal3a">Tokyo</label>
+        <form id="quizForm">
+            <!-- Soal Pilihan Ganda -->
+            <div class="divider"></div>
+            <h2>Soal Pilihan Ganda</h2>
+            <div class="questions-container">
+                <!-- Soal 1 sampai 25 -->
+                <div class="question">
+                    <h3>1. Apa warna langit pada hari cerah?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="Biru"> Biru</label>
+                        <label><input type="radio" name="q1" value="Hijau"> Hijau</label>
+                        <label><input type="radio" name="q1" value="Merah"> Merah</label>
+                        <label><input type="radio" name="q1" value="Kuning"> Kuning</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <h3>2. Berapa hasil dari 2 + 2?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="3"> 3</label>
+                        <label><input type="radio" name="q2" value="4"> 4</label>
+                        <label><input type="radio" name="q2" value="5"> 5</label>
+                        <label><input type="radio" name="q2" value="6"> 6</label>
+                    </div>
+                </div>
 
-          <input type="radio" id="soal3b" name="soal3" value="b">
-          <label for="soal3b">Kyoto</label>
+                <!-- Soal 25 -->
+                <div class="question">
+                    <h3>25. Siapa presiden pertama Indonesia?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q25" value="Soekarno"> Soekarno</label>
+                        <label><input type="radio" name="q25" value="Sukarno"> Sukarno</label>
+                        <label><input type="radio" name="q25" value="Hatta"> Hatta</label>
+                        <label><input type="radio" name="q25" value="Soeharto"> Soeharto</label>
+                    </div>
+                </div>
+            </div>
 
-          <input type="radio" id="soal3c" name="soal3" value="c">
-          <label for="soal3c">Osaka</label>
+            <!-- Soal Isian -->
+            <div class="divider"></div>
+            <h2>Soal Isian</h2>
+            <div class="question">
+                <h3>1. Siapa penemu lampu pijar?</h3>
+                <input type="text" name="q26" placeholder="Jawaban Anda">
+            </div>
 
-          <input type="radio" id="soal3d" name="soal3" value="d">
-          <label for="soal3d">Hiroshima</label>
-        </div>
-      </div>
+            <!-- Soal Uraian -->
+            <div class="divider"></div>
+            <h2>Soal Uraian</h2>
+            <div class="question">
+                <h3>1. Jelaskan proses fotosintesis secara singkat!</h3>
+                <textarea name="q36" placeholder="Tuliskan jawaban Anda di sini"></textarea>
+            </div>
 
-      <!-- Tambahkan soal lainnya sesuai kebutuhan -->
+            <div class="btn-container">
+                <button type="button" class="btn" id="submitBtn" onclick="validateAndSubmit()">Submit</button>
+                <button type="button" class="btn" id="printBtn" onclick="validateAndPrint()">Cetak</button>
+            </div>
+        </form>
+        <div id="result" class="result" style="display: none;"></div>
     </div>
 
-    <!-- Bagian Isian Singkat -->
-    <div class="section" id="isian-singkat">
-      <h2>Isian Singkat (5 Soal)</h2>
-      <div class="question">
-        <p>1. Siapa penemu telepon?</p>
-        <input type="text" class="input-field" id="isian1" placeholder="Jawaban...">
-      </div>
-      <!-- Soal Isian Singkat Lainnya -->
-    </div>
+    <script>
+        // Fungsi untuk memuat pilihan jawaban yang telah disimpan, namun tidak disimpan di localStorage.
+        window.onload = function() {
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(button => {
+                button.checked = false; // Pastikan semua radio button tidak tercentang ketika halaman dimuat ulang
+            });
 
-    <!-- Bagian Soal Uraian -->
-    <div class="section" id="uraian">
-      <h2>Soal Uraian (5 Soal)</h2>
-      <div class="question">
-        <p>1. Jelaskan proses fotosintesis pada tumbuhan!</p>
-        <textarea class="textarea-field" id="uraian1" placeholder="Jawaban..."></textarea>
-      </div>
-      <!-- Soal Uraian Lainnya -->
-    </div>
+            const textInputs = document.querySelectorAll('input[type="text"], textarea');
+            textInputs.forEach(input => {
+                input.value = ""; // Mengosongkan semua input teks dan textarea saat halaman dimuat ulang
+            });
+        };
 
-    <!-- Tombol Kirim -->
-    <div class="section">
-      <button id="submitBtn">Kirim Jawaban</button>
-    </div>
-
-    <!-- Hasil -->
-    <div class="result" id="result"></div>
-
-  </div>
-
-  <script>
-    // JavaScript untuk menangani pengiriman dan hasil jawaban
-    document.getElementById("submitBtn").addEventListener("click", function() {
-      let studentName = document.getElementById("studentName").value;
-      let studentClass = document.getElementById("studentClass").value;
-
-      if (studentName === "" || studentClass === "") {
-        alert("Mohon lengkapi nama dan kelas!");
-        return;
-      }
-
-      let resultText = `Nama: ${studentName}, Kelas: ${studentClass}\n`;
-
-      // Pilihan Ganda
-      let pilihanGanda = ['soal1', 'soal2', 'soal3'];
-      pilihanGanda.forEach((soal, index) => {
-        let answer = document.querySelector(`input[name="${soal}"]:checked`);
-        if (answer) {
-          resultText += `Soal ${index + 1}: ${answer.nextElementSibling.innerText}\n`;
-        } else {
-          resultText += `Soal ${index + 1}: Belum dijawab\n`;
+        function disableForm() {
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.disabled = true;
+            });
+            document.getElementById('submitBtn').style.display = "none"; // Menyembunyikan tombol submit
         }
-      });
 
-      // Isian Singkat
-      let isianSingkat = document.getElementById("isian1").value;
-      resultText += `Isian Singkat: ${isianSingkat || "Belum dijawab"}\n`;
+        function validateForm() {
+            const studentName = document.getElementById('studentName').value;
+            const studentClass = document.getElementById('studentClass').value;
+            const questions = document.querySelectorAll('.question');
+            let isValid = true;
 
-      // Uraian
-      let uraian = document.getElementById("uraian1").value;
-      resultText += `Uraian: ${uraian || "Belum dijawab"}\n`;
+            if (!studentName || !studentClass) {
+                alert("Nama dan Kelas harus diisi!");
+                isValid = false;
+            }
+            
 
-      // Menampilkan hasil
-      document.getElementById("result").innerText = resultText;
-    });
-  </script>
+            // Memastikan setiap soal memiliki jawaban yang terpilih atau terisi
+            questions.forEach(question => {
+                const radios = question.querySelectorAll('input[type="radio"]');
+                const isAnswered = Array.from(radios).some(radio => radio.checked);
 
+                
+                    
+                
+                
+            });
+
+            return isValid;
+        }
+
+        function validateAndSubmit() {
+            if (validateForm()) {
+                alert("Formulir berhasil dikirim!");
+                disableForm();
+            }
+        }
+
+        function validateAndPrint() {
+            if (validateForm()) {
+                window.print();
+            }
+        }
+      
+
+function validateAndSubmit() {
+    if (validateForm()) {
+        submitQuiz();
+        disableForm();
+    }
+}
+
+function validateAndPrint() {
+    if (validateForm()) {
+        window.print();
+    }
+}
+
+function submitQuiz() {
+    const correctAnswers = {
+        q1: "Biru",
+        q2: "4",
+        q25: "Soekarno",
+    };
+
+    let score = 0;
+    let totalQuestions = Object.keys(correctAnswers).length;
+    let feedback = "";
+
+    for (let key in correctAnswers) {
+        const answer = document.querySelector(`input[name="${key}"]:checked`);
+        if (answer && answer.value === correctAnswers[key]) {
+            score++;
+        } else {
+            feedback += `<p>Soal ${key} jawaban Anda salah. Jawaban yang benar adalah: ${correctAnswers[key]}</p>`;
+        }
+    }
+
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `<h3>Hasil Quiz:</h3>
+                           <p>Jawaban Benar: ${score} dari ${totalQuestions} soal pilihan ganda</p>
+                           ${feedback}`;
+    resultDiv.style.display = "block";
+}
+    </script>
 </body>
 </html>
