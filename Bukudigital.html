@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buku Digital Kelas 6</title>
+    <link rel="icon" href="dl.png" type="image/x-icon">
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: url('bg7.jpg') no-repeat center/cover;
+            color: #000000;
+            text-align: center;
+            padding: 60px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        /* Navigation */
+        nav {
+            background: #2355d4;
+            display: flex;
+            justify-content: center;
+            padding: 5px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #28337d;
+            transform: scale(1.1);
+        }
+
+        /* Container */
+        .container {
+            flex: 1;
+            padding: 30px 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        /* Book Section */
+        .category {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .category h2 {
+            font-size: 1.8em;
+            color: #000000;
+            margin-bottom: 10px;
+        }
+
+        /* Book Grid */
+        .book-shelf {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .book {
+            width: 150px;
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .book:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .book a {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-decoration: none;
+            padding: 8px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2355d4;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Buku Digital Kelas 6</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="kelas6.html">Kembali</a>
+        <a href="Bank Soal.html">Bank Soal</a>
+        <a href="#">Modul Ajar</a>
+        <a href="#">Video Pembelajaran</a>
+        <a href="#">Buku Digital</a>
+        <a href="#">Forum Diskusi</a>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <div class="category">
+            <h2>Buku Siswa</h2>
+            <h3>Kurikulum merdeka</h3>
+        </div>
+
+        <div class="book-shelf">
+            <div class="book" style="background-image: url('Bahasa-Indonesia-BS-KLS-VI-Cover.png');">
+                <a href="BSINDO6.html">B.Indonesia</a>
+            </div>
+            <div class="book" style="background-image: url('IPAS-BS-KLS-VI-Cover.png');">
+                <a href="BSIPAS6.html">IPAS</a>
+            </div>
+            <div class="book" style="background-image: url('Pendidikan-Pancasila-BS-KLS-VI-Cover.png');">
+                <a href="soal_indo_formatif_3.html">Pancasila</a>
+            </div>
+            <div class="book" style="background-image: url('Matematika_BS_KLS_VI_Cover.png');">
+                <a href="soal_indo_formatif_4.html">Matematika</a>
+            </div>
+            <div class="book" style="background-image: url('book5.jpg');">
+                <a href="soal_indo_formatif_5.html">Formatif 1.5</a>
+            </div>
+            <div class="book" style="background-image: url('book6.jpg');">
+                <a href="soal_indo_formatif_6.html">Formatif 1.6</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Buku Digital. Semua hak cipta dilindungi.</p>
+    </footer>
+
+</body>
+</html>
