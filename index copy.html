@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembelajaran Bermakna</title>
+    <link rel="icon" href="dl.png" type="image/x-icon">
+    <style>
+        /* Reset dan Pengaturan Dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2193b0, #6dd5ed);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        a {
+            text-decoration: none;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+        .header img.logo {
+            width: 200px;
+        }
+
+        /* Menu Garis Tiga */
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+        .menu-icon div {
+            width: 100%;
+            height: 3px;
+            background-color: #333;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .menu-icon.open div:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .menu-icon.open div:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-icon.open div:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Menu Dropdown */
+        .dropdown-menu {
+            position: absolute;
+            top: 80px;
+            right: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideDown 0.3s ease-out forwards;
+        }
+        .dropdown-menu.open {
+            display: flex;
+        }
+        .dropdown-menu a {
+            padding: 12px 20px;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .dropdown-menu a:hover {
+            background-color: #2193b0;
+        }
+
+        /* Animasi */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 380px 20px 350px; /* Mengurangi padding atas untuk menyeimbangkan */
+            color: #fff;
+        }
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        .hero .btn {
+            padding: 15px 30px;
+            font-size: 16px;
+            color: #fff;
+            background: #ff6f00;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .hero .btn:hover {
+            background: #e65c00;
+        }
+
+        /* Fitur Section */
+        .features {
+            background: #f9f9f9;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .features h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #0079bf;
+        }
+        .features .feature-list {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: nowrap; /* Membuat item berada dalam satu baris */
+            overflow-x: auto; /* Jika terlalu banyak, bisa di-scroll horizontal */
+            margin-top: 20px;
+        }
+        .features .feature {
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            flex: 1 1 15%; /* Lebar fleksibel, min 15% untuk setiap item */
+            max-width: 250px; /* Lebar maksimal item */
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .features .feature img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .features .feature h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .features .feature p {
+            font-size: 14px;
+            color: #666;
+        }
+        .features .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            background: #0079bf;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        footer p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        footer a {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fff;
+            border-radius: 10px;
+            margin: 5% auto;
+            padding: 20px;
+            max-width: 400px;
+            border: 1px solid #888;
+            width: 50%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .modal-header, .modal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-close {
+            font-size: 30px;
+            cursor: pointer;
+            color: #333;
+        }
+        .modal form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .modal form button {
+            padding: 12px 20px;
+            background-color: #ff6f00;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .modal form button:hover {
+            background-color: #e65c00;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div>
+            <img src="logosdn2krmgu.png" alt="Logo" class="logo">
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="javascript:void(0)" onclick="openLoginModal('kelas1.html')">Kelas 1</a>
+            <a href="javascript:void(0)" onclick="openLoginModal('kelas2.html')">Kelas 2</a>
+            <a href="javascript:void(0)" onclick="openLoginModal('kelas3.html')">Kelas 3</a>
+            <a href="javascript:void(0)" onclick="openLoginModal('kelas4.html')">Kelas 4</a>
+            <a href="javascript:void(0)" onclick="openLoginModal('kelas5.html')">Kelas 5</a>
+            <a href="javascript:void(0)" onclick="openLoginModal('kelas6.html')">Kelas 6</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Selamat Datang di Belajar Bermakna</h1>
+        <p>
+            Temukan materi pembelajaran lengkap, interaktif, dan menyenangkan. Dapatkan pengalaman belajar terbaik untuk meraih prestasi terbaik!
+        </p>
+        <button class="btn" onclick="scrollToSection()">Mulai Belajar Sekarang</button>
+    </section>
+
+    <!-- Fitur Section -->
+    <section class="features" id="pilihKelas">
+        <h2>Pilih Kelas</h2>
+        <div class="feature-list">
+            <a href="javascript:void(0)" onclick="openLoginModal('kelas1.html')" class="feature">
+                <img src="1.jpg" alt="Prestasi">
+                <h3>Kelas 1</h3>
+                <p>Latihan soal yang membantu siswa kelas 1.</p>
+            </a>
+            <a href="javascript:void(0)" onclick="openLoginModal('kelas2.html')" class="feature">
+                <img src="2.jpg" alt="Prestasi">
+                <h3>Kelas 2</h3>
+                <p>Latihan soal yang membantu siswa kelas 2.</p>
+            </a>
+            <a href="javascript:void(0)" onclick="openLoginModal('kelas3.html')" class="feature">
+                <img src="3.jpg" alt="Prestasi">
+                <h3>Kelas 3</h3>
+                <p>Latihan soal yang membantu siswa kelas 3.</p>
+            </a>
+            <a href="javascript:void(0)" onclick="openLoginModal('kelas4.html')" class="feature">
+                <img src="4.jpg" alt="Prestasi">
+                <h3>Kelas 4</h3>
+                <p>Panduan belajar untuk siswa kelas 4 agar lebih siap ujian.</p>
+            </a>
+            <a href="javascript:void(0)" onclick="openLoginModal('kelas5.html')" class="feature">
+                <img src="5.jpg" alt="Prestasi">
+                <h3>Kelas 5</h3>
+                <p>Panduan belajar untuk siswa kelas 5 agar lebih siap ujian.</p>
+            </a>
+            <a href="javascript:void(0)" onclick="openLoginModal('kelas6.html')" class="feature">
+                <img src="6.jpg" alt="Prestasi">
+                <h3>Kelas 6</h3>
+                <p>Panduan belajar untuk siswa kelas 6 agar lebih siap ujian.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Pembelajaran Bermakna. All rights reserved.</p>
+    </footer>
+
+    <!-- Modal Login -->
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Login</h2>
+            <span class="modal-close" onclick="closeLoginModal()">&times;</span>
+        </div>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Fungsi untuk hashing password menggunakan SHA-256
+    async function hashPassword(password) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(password);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+    }
+
+    // Fungsi untuk membuka modal login
+    function openLoginModal(page) {
+        const modal = document.getElementById('loginModal');
+        modal.style.display = "block";
+
+        const form = document.getElementById('loginForm');
+        form.onsubmit = async function (event) {
+            event.preventDefault();
+            await checkLogin(page);
+        };
+    }
+
+    // Fungsi untuk menutup modal login
+    function closeLoginModal() {
+        const modal = document.getElementById('loginModal');
+        modal.style.display = "none";
+    }
+
+    // Fungsi untuk mengecek login
+    async function checkLogin(page) {
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        // Hash input username dan password
+        const hashedUsername = await hashPassword(username);
+        const hashedPassword = await hashPassword(password);
+
+        // Debug log untuk memeriksa hasil hash
+        console.log("Hashed Username:", hashedUsername);
+        console.log("Hashed Password:", hashedPassword);
+
+        // Kredensial yang diizinkan
+        const validUsername = "8396b5fadb3f99488dbe27ce78a3eac4d5569d67e6ceb79ece0ccaeb5186871d"; // Hash untuk "kelas6"
+        const validPasswordHash = "ca1d925507a27d3fe3ed7075549e988133a37d46f6c0c6241c49aa3af8cdfaac"; // Hash untuk "Kelas2024@!"
+
+        // Debug log untuk kredensial yang valid
+        console.log("Valid Username Hash:", validUsername);
+        console.log("Valid Password Hash:", validPasswordHash);
+
+        // Perbandingan hash
+if (hashedUsername === validUsername && hashedPassword === validPasswordHash) {
+    // Tampilkan pesan di layar tanpa memerlukan klik "OK"
+    document.body.innerHTML += `
+        <div id="login-success-message" style="
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            background: rgba(255, 255, 255, 0.8); 
+            color: black; 
+            padding: 20px; 
+            border-radius: 8px; 
+            text-align: center; 
+            font-size: 18px; 
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        ">
+            Login berhasil! Mengarahkan ke halaman...
+        </div>
+    `;
+    
+    // Arahkan ke halaman tujuan setelah beberapa detik
+    setTimeout(() => {
+        window.location.href = page;  // Arahkan ke halaman kelas jika login sukses
+    }, ); // Tunggu 2 detik sebelum mengarahkan
+} else {
+    // Tampilkan pesan kesalahan jika login gagal
+    alert("Username atau password salah! Silakan coba lagi.");
+}
+    }
+
+    // Fungsi untuk scroll ke bagian fitur
+    function scrollToSection() {
+        const section = document.getElementById('pilihKelas');
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+
+    </script>
+
+</body>
+</html>
