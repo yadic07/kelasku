@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz SD Negeri 2 Karangmangu</title>
+    <link rel="icon" href="dl.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .header-content {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .header-content h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #5a67d8;
+        }
+        .header-content p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .details label {
+            margin-right: 10px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .details input {
+            flex-grow: 1;
+            padding: 6px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            max-width: 250px;
+        }
+        .questions-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .question {
+            margin-bottom: 10px;
+        }
+        .question h3 {
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+        .divider {
+            border-top: 2px dashed #ddd;
+            margin: 30px 0;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        textarea {
+            height: 100px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #5a67d8;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #434190;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e2e8f0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="quizContainer">
+        <div class="header">
+            <img src="logosekolah.png" alt="Logo Sekolah">
+            <div class="header-content">
+                <h1>SD Negeri 2 Karangmangu</h1>
+                <p>Jalan Desa Karangmangu</p>
+            </div>
+        </div>
+
+        <div class="details">
+            <label for="studentName">Nama:</label>
+            <input type="text" id="studentName" name="studentName" placeholder="Masukkan Nama Siswa">
+            <label for="studentClass">Kelas:</label>
+            <input type="text" id="studentClass" name="studentClass" placeholder="Kelas">
+        </div>
+
+        <form id="quizForm">
+            <!-- Soal Pilihan Ganda -->
+            <div class="divider"></div>
+            <h1>Soal Pilihan Ganda</h1>
+            <h2>“Aku Anak Indonesia”</h2>
+            <p>Hana melangkahkan kakinya dengan gelisah. Dia menendang-nendang kerikil yang ia temui sepanjang jalan. Raut mukanya tampak cemas. Ini adalah hari pertamanya masuk sekolah baru di Indonesia. Keluarganya baru saja pindah dari Kyoto, Jepang, tempat ayahnya menyelesaikan pendidikan doktor.</p>
+            <p>Sesampai di halaman sekolah yang rindang, Pak Rizal, ayahnya, menawari Hana untuk ikut menemaninya masuk ke kelas. Namun, Hana menolak. Meski khawatir, dia merasa malu kalau harus ditemani orang tuanya. Di Kyoto, dia bahkan sudah berangkat dan pulang sekolah sendiri sejak kelas 1 SD.</p>
+
+            <p>“Hana, kamu anak pemberani. Jangan khawatir, anak-anak Indonesia ramah-ramah. Mereka pasti akan senang punya teman baru,” kata ayahnya. Hana mengangguk.</p>
+            
+            <p>“Nanti Ayah akan datang lagi menjemputmu ya. Ayah perlu pergi dulu ke tukang cukur, rambut ayah sudah gondrong begini,” tambah ayahnya lagi sambil menepuk pundak Hana.</p>
+            
+            <p>Jarak rumah Hana dengan SDN Gaharu hanya lima ratus meter, sehingga dia bisa berjalan kaki ke sekolah. Begitu masuk melewati gerbang sekolah, bel berdentang. Semua siswa berlarian masuk ke kelas masing-masing. Hana mencari kelas dengan lambang VI di atas pintu.</p>
+            
+            <p>Begitu Hana masuk, Bu Pertiwi, guru kelas enam, menyambutnya dengan senyuman lebar.</p>
+            
+            <p>“Ah, kamu pasti Hana. Ayo masuk. Ibu carikan tempat duduk dulu untuk meletakkan tasmu, lalu berkenalan dengan teman-teman sekelasmu.”</p>
+            
+            <p>Hana mengangguk malu-malu. Dia merasa seluruh pasang mata di kelas ini sedang menatapnya. Dia mendengar bisik-bisik meski tidak jelas apa yang mereka bicarakan. Dada Hana berdegup semakin kencang.</p>
+            
+            <p>Bu Pertiwi menyilakan Hana untuk berdiri di depan kelas dan memperkenalkan diri.</p>
+            
+            <p>“Selamat pagi teman-teman…” katanya mengawali perkenalan. Kemarin, Hana sudah berlatih di depan cermin agar dia tidak canggung mengucapkan kata-kata perkenalan dalam bahasa Indonesia.</p>
+            
+            <p>“Tolong suaranya lebih keras lagi, biar semuanya bisa mendengar,” kata Bu Pertiwi.</p>
+            
+            <p>“Nama saya Hana. Saya berusia dua belas tahun. Saya pindah dari Kyoto, Jepang. Ayah saya baru menamatkan kuliahnya di sana. Kami pindah ke kota ini karena ayah saya akan bekerja di sini. Saya senang berkenalan dengan teman-teman semua. Arigato. Eh, terima kasih.” Hana mengakhiri perkenalannya dengan menjura, membungkukkan badannya.</p>
+            
+            <p>Ketika kembali berdiri tegak, ia melihat senyum terkembang dari teman-teman sekelasnya. Hana lega, kecemasannya berkurang.</p>
+            
+            <p>“Terima kasih Hana. Ada yang ingin kalian tanyakan pada Hana?” ujar Bu Pertiwi.</p>
+            
+            <p>Seorang anak laki-laki mengacungkan tangan. “Kamu asalnya dari mana? Oh ya, namaku Arjuna, biasa dipanggil Juna.”</p>
+            
+            <p>Teman-teman yang lain bersorak, “Huuu…” Sepertinya Juna memang anak yang suka mencari perhatian. Hana bingung, bagaimana harus menjawab pertanyaan Juna. Di Jepang, dia dengan mudah menjawab bahwa dia berasal dari Indonesia. Tapi di Indonesia, dia harus menjawab apa?</p>
+            
+            <p>“Saya berasal dari Indonesia…” kata Hana pelan dan ragu.</p>
+            
+            <p>Teman-teman tertawa. Bu Pertiwi menengahi, “Mungkin maksud Arjuna, Hana lahir di mana?”</p>
+            
+            <p>“Oh… saya lahir di Makassar.”</p>
+            
+            <p>“Berarti kamu asli Makassar,” sahut Juna dari bangku paling belakang.</p>
+            
+            <p>“Tapi… ayah saya berasal dari Padang dan ibu saya berasal dari Sunda,” tambah Hana, menyanggah ucapan Juna itu.</p>
+            
+            <p>Bu Pertiwi angkat bicara, “Sekarang ini memang susah kalau ditanya asalnya atau aslinya dari mana, karena manusia semakin terhubung dan juga berpindah-pindah. Seperti Hana, misalnya, yang punya orang tua dari daerah dan suku yang berbeda. Yang jelas, Hana adalah anak Indonesia. Betul kan, Hana?” Hana mengangguk.</p>
+            
+            <p>“Jadi, apa yang membuat kalian mengaku sebagai anak Indonesia?” tanya Bu Pertiwi ke seluruh kelas.</p>
+            
+            <p>“Karena kita lahir di Indonesia,” jawab Salim sambil mengacungkan tangannya.</p>
+            
+            <p>“Tapi ... adikku, Naomi, lahir di Kyoto dan dia tetap anak Indonesia,” sanggah Hana, yang mulai berani menyampaikan pendapatnya.</p>
+            
+            <p>“Hana benar. Aku lahir di Berlin. Orang tuaku Jawa. Aku tetap anak Indonesia,” sahut Agni, gadis berkacamata yang duduk paling depan.</p>
+            
+            <p>“Kalian sama-sama benar. Anak Indonesia adalah anak-anak yang lahir atau tinggal di Indonesia, atau anak-anak yang ayah ibunya atau salah satu orang tuanya orang Indonesia. Apalagi yang membuat kita Indonesia?” lanjut Bu Pertiwi.</p>
+            
+            <p>“Karena kita bisa berbahasa Indonesia, Bu,” kata Melodi dengan nada bicara yang lembut.</p>
+            
+            <p>Hati Hana menciut. Dia merasa belum mahir benar berbahasa Indonesia. Di sekolah lamanya, bahasa pengantar yang dipakai adalah bahasa Jepang dan bahasa Inggris. Rupanya Bu Pertiwi melihat perubahan raut wajah Hana. Dia meminta Hana menjelaskan apa yang menjadi kekhawatirannya.</p>
+            
+            <p>Setelah mendengar curahan hati Hana, Bu Pertiwi berusaha membesarkan hatinya. “Jangan khawatir. Dulu Agni ketika pindah ke kelas dua juga belum lancar berbahasa Indonesia. Tapi, bapak ibu guru dan semua teman ikut membantu. Sekarang, Agni sudah mahir berbahasa Indonesia dan bahkan buku kumpulan cerpennya baru saja terbit.”</p>
+            
+            <p>Agni tampak tersipu.</p>
+            
+            <p>“Jangan khawatir, Hana. Nanti aku juga bisa ajari kamu bahasa Jawa,” timpal Juna. Seketika teriakan “huuu ... ” kembali bergema.</p>
+            
+            <p>Tiba-tiba Salim berteriak sambil menunjuk ke jendela. “Hantuuu!” Semua mata menoleh ke arah yang ditunjuk Salim. Hana melihat ada kepala botak yang muncul dan tenggelam dari balik jendela yang kusennya dipasang tinggi, khas arsitektur gedung peninggalan Belanda. Bu Pertiwi melangkah menuju pintu untuk melihat siapa yang ada di luar. Tidak mungkin ada hantu di siang bolong. Anak-anak ribut sambil menunjuk-nunjuk ke arah jendela. Ternyata itu adalah Pak Rizal, ayah Hana, yang rambutnya sudah habis tercukur.</p>
+            
+            <p>“Maaf, Bu Pertiwi, saya mau menyusulkan oleh-oleh dari Jepang untuk teman-teman Hana. Tadi tidak sempat terbawa Hana karena dia terburu-buru,” Pak Rizal berkata dari jendela.</p>
+            
+            <p>Hana baru sadar bahwa dia melupakan cendera mata yang sudah dia siapkan untuk teman-teman barunya. Kelas kembali riuh. Hana mengedarkan kantung-kantung berisi permen Wagashi dan sisir Tsuge, buah tangan khas dari Tokyo. Hatinya menghangat karena teman-teman barunya memang ramah dan senang hati menerimanya sebagai penghuni kelas yang baru. Hana menyalami temannya satu per satu dan mencoba menghafalkan nama-nama mereka. Sampai di ujung kelas, siswa yang terakhir dia salami berkata, “Jangan sampai lupa, namaku Juna.”</p>
+            
+            <div class="questions-container">
+                <!-- Soal 1 sampai 25 -->
+                <div class="question">
+                    <h3>1. Apa yang menjadi kekhawatiran utama Hana ketika pertama kali masuk ke kelas di Indonesia?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="Takut tidak diterima teman-teman"> Takut tidak diterima teman-teman</label>
+                        <label><input type="radio" name="q1" value="Tidak bisa berbahasa Indonesia dengan baik"> Tidak bisa berbahasa Indonesia dengan baik</label>
+                        <label><input type="radio" name="q1" value="Tidak bisa menemukan kelas"> Tidak bisa menemukan kelas</label>
+                        <label><input type="radio" name="q1" value="Takut terlambat"> Takut terlambat</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>2. Bagaimana Hana berkenalan dengan teman-temannya di kelas?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="Mereka mendekatinya dan bertanya langsung"> Mereka mendekatinya dan bertanya langsung</label>
+                        <label><input type="radio" name="q2" value="Hana diperkenalkan oleh Bu Pertiwi di depan kelas"> Hana diperkenalkan oleh Bu Pertiwi di depan kelas</label>
+                        <label><input type="radio" name="q2" value="Hana menulis namanya di papan tulis"> Hana menulis namanya di papan tulis</label>
+                        <label><input type="radio" name="q2" value="Teman-temannya datang ke rumah Hana"> Teman-temannya datang ke rumah Hana</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>3. Apa yang dimaksud dengan kata "menjura" dalam cerita tersebut?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="Berdiri tegak dengan tangan di samping"> Berdiri tegak dengan tangan di samping</label>
+                        <label><input type="radio" name="q3" value="Membungkukkan badan dengan menangkupkan kedua tangan"> Membungkukkan badan dengan menangkupkan kedua tangan</label>
+                        <label><input type="radio" name="q3" value="Menundukkan kepala sebagai tanda hormat"> Menundukkan kepala sebagai tanda hormat</label>
+                        <label><input type="radio" name="q3" value="Melambaikan tangan"> Melambaikan tangan</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>4. Apa yang dimaksud dengan "siang bolong" dalam cerita ini?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q4" value="Pagi hari saat matahari terbit"> Pagi hari saat matahari terbit</label>
+                        <label><input type="radio" name="q4" value="Siang hari saat matahari sedang panas-panasnya"> Siang hari saat matahari sedang panas-panasnya</label>
+                        <label><input type="radio" name="q4" value="Sore hari saat matahari mulai terbenam"> Sore hari saat matahari mulai terbenam</label>
+                        <label><input type="radio" name="q4" value="Waktu malam hari"> Waktu malam hari</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>5. Apa yang dirasakan Hana saat pertama kali berkenalan dengan teman-temannya di kelas?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q5" value="Hana merasa sangat percaya diri"> Hana merasa sangat percaya diri</label>
+                        <label><input type="radio" name="q5" value="Hana merasa malu dan cemas"> Hana merasa malu dan cemas</label>
+                        <label><input type="radio" name="q5" value="Hana merasa takut karena teman-temannya tampak menakutkan"> Hana merasa takut karena teman-temannya tampak menakutkan</label>
+                        <label><input type="radio" name="q5" value="Hana merasa sangat senang bertemu teman baru"> Hana merasa sangat senang bertemu teman baru</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>6. Apa yang dimaksud dengan kata "degup" dalam cerita ini?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q6" value="Suara langkah kaki"> Suara langkah kaki</label>
+                        <label><input type="radio" name="q6" value="Suara denyut jantung"> Suara denyut jantung</label>
+                        <label><input type="radio" name="q6" value="Suara petir"> Suara petir</label>
+                        <label><input type="radio" name="q6" value="Suara burung"> Suara burung</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>7. Apa yang dimaksud dengan kata "menciut" dalam cerita ini?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q7" value="Menjadi besar dan bersemangat"> Menjadi besar dan bersemangat</label>
+                        <label><input type="radio" name="q7" value="Menjadi takut atau tawar dalam perasaan"> Menjadi takut atau tawar dalam perasaan</label>
+                        <label><input type="radio" name="q7" value="Menjadi lebih berani"> Menjadi lebih berani</label>
+                        <label><input type="radio" name="q7" value="Menjadi lebih senang"> Menjadi lebih senang</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>8. Apa yang Hana takutkan terkait bahasa Indonesia?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q8" value="Hana takut tidak bisa berbicara bahasa Indonesia dengan baik"> Hana takut tidak bisa berbicara bahasa Indonesia dengan baik</label>
+                        <label><input type="radio" name="q8" value="Hana takut bahasa Indonesia sulit dipahami"> Hana takut bahasa Indonesia sulit dipahami</label>
+                        <label><input type="radio" name="q8" value="Hana takut tidak diterima teman-temannya"> Hana takut tidak diterima teman-temannya</label>
+                        <label><input type="radio" name="q8" value="Hana takut akan berbicara bahasa Jepang secara salah"> Hana takut akan berbicara bahasa Jepang secara salah</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>9. Siapa yang berusaha membesarkan hati Hana ketika dia merasa khawatir dengan kemampuan berbahasa Indonesia?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q9" value="Pak Rizal"> Pak Rizal</label>
+                        <label><input type="radio" name="q9" value="Bu Pertiwi"> Bu Pertiwi</label>
+                        <label><input type="radio" name="q9" value="Juna"> Juna</label>
+                        <label><input type="radio" name="q9" value="Agni"> Agni</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>10. Mengapa Hana merasa lega setelah berdiri di depan kelas dan memperkenalkan diri?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q10" value="Karena teman-temannya menyambut dengan senyum"> Karena teman-temannya menyambut dengan senyum</label>
+                        <label><input type="radio" name="q10" value="Karena Bu Pertiwi memberinya pujian"> Karena Bu Pertiwi memberinya pujian</label>
+                        <label><input type="radio" name="q10" value="Karena dia akhirnya dapat berbicara dengan bahasa Indonesia dengan baik"> Karena dia akhirnya dapat berbicara dengan bahasa Indonesia dengan baik</label>
+                        <label><input type="radio" name="q10" value="Karena teman-temannya tidak tertawa atau mengejeknya"> Karena teman-temannya tidak tertawa atau mengejeknya</label>
+                    </div>
+                </div>
+                
+                <!-- Tambahkan soal 11-25 dalam format yang sama, memastikan semua soal relevan dengan teks dan kosakata dalam cerita "Aku Anak Indonesia". -->
+                
+              
+                <div class="question">
+                    <h3>11. Apa yang dapat kita simpulkan dari tindakan teman-teman Hana di kelas?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="Mereka sangat tertutup dan tidak mau berkenalan"> Mereka sangat tertutup dan tidak mau berkenalan</label>
+                        <label><input type="radio" name="q11" value="Mereka terbuka dan siap membantu Hana dalam beradaptasi"> Mereka terbuka dan siap membantu Hana dalam beradaptasi</label>
+                        <label><input type="radio" name="q11" value="Mereka tidak peduli dengan kedatangan Hana"> Mereka tidak peduli dengan kedatangan Hana</label>
+                        <label><input type="radio" name="q11" value="Mereka merasa heran dengan budaya Indonesia"> Mereka merasa heran dengan budaya Indonesia</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>12. Apa yang dapat diartikan dengan kata “berdentang” dalam cerita ini?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="Suara angin yang kencang"> Suara angin yang kencang</label>
+                        <label><input type="radio" name="q12" value="Suara pintu yang terbuka"> Suara pintu yang terbuka</label>
+                        <label><input type="radio" name="q12" value="Suara keras seperti besi dipukul"> Suara keras seperti besi dipukul</label>
+                        <label><input type="radio" name="q12" value="Suara musik dari alat musik tradisional"> Suara musik dari alat musik tradisional</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>13. Apa pesan moral yang dapat diambil dari cerita "Aku Anak Indonesia"?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="Kita harus bisa berbicara banyak bahasa"> Kita harus bisa berbicara banyak bahasa</label>
+                        <label><input type="radio" name="q13" value="Pentingnya beradaptasi dan menghormati budaya baru"> Pentingnya beradaptasi dan menghormati budaya baru</label>
+                        <label><input type="radio" name="q13" value="Semua orang harus memiliki kemampuan berbicara yang sama"> Semua orang harus memiliki kemampuan berbicara yang sama</label>
+                        <label><input type="radio" name="q13" value="Kita harus hidup mandiri dan tidak bergantung pada orang lain"> Kita harus hidup mandiri dan tidak bergantung pada orang lain</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>14. Apa yang dimaksud dengan "cendera mata" dalam konteks cerita ini?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="Hadiah dari teman-teman untuk Hana"> Hadiah dari teman-teman untuk Hana</label>
+                        <label><input type="radio" name="q14" value="Kenang-kenangan yang diberikan oleh orang tua Hana"> Kenang-kenangan yang diberikan oleh orang tua Hana</label>
+                        <label><input type="radio" name="q14" value="Barang yang dibawa dari bepergian sebagai kenang-kenangan"> Barang yang dibawa dari bepergian sebagai kenang-kenangan</label>
+                        <label><input type="radio" name="q14" value="Sebuah buku cerita yang dibaca oleh Hana"> Sebuah buku cerita yang dibaca oleh Hana</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>15. Apa yang bisa dipelajari dari sikap teman-teman Hana terhadap dirinya?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="Mereka menerima Hana dengan senang hati meskipun berasal dari budaya berbeda"> Mereka menerima Hana dengan senang hati meskipun berasal dari budaya berbeda</label>
+                        <label><input type="radio" name="q15" value="Mereka tidak menyambut Hana dengan baik karena budaya mereka berbeda"> Mereka tidak menyambut Hana dengan baik karena budaya mereka berbeda</label>
+                        <label><input type="radio" name="q15" value="Mereka merasa tidak nyaman dengan kehadiran Hana"> Mereka merasa tidak nyaman dengan kehadiran Hana</label>
+                        <label><input type="radio" name="q15" value="Mereka mengabaikan Hana yang datang dari negara lain"> Mereka mengabaikan Hana yang datang dari negara lain</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>16. Apa arti dari kata "arsitektur" yang digunakan dalam cerita ini?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q16" value="Seni merancang bangunan dan struktur"> Seni merancang bangunan dan struktur</label>
+                        <label><input type="radio" name="q16" value="Seni menggambar pemandangan alam"> Seni menggambar pemandangan alam</label>
+                        <label><input type="radio" name="q16" value="Seni memasak makanan tradisional"> Seni memasak makanan tradisional</label>
+                        <label><input type="radio" name="q16" value="Seni menari dalam budaya Indonesia"> Seni menari dalam budaya Indonesia</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>17. Dalam cerita ini, bagaimana Hana mengatasi rasa cemasnya tentang bahasa Indonesia?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q17" value="Dengan meminta bantuan teman-temannya untuk belajar bersama"> Dengan meminta bantuan teman-temannya untuk belajar bersama</label>
+                        <label><input type="radio" name="q17" value="Dengan belajar sendiri di rumah"> Dengan belajar sendiri di rumah</label>
+                        <label><input type="radio" name="q17" value="Dengan tidak berusaha sama sekali"> Dengan tidak berusaha sama sekali</label>
+                        <label><input type="radio" name="q17" value="Dengan selalu bertanya kepada guru di sekolah"> Dengan selalu bertanya kepada guru di sekolah</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>18. Apa makna dari kata "membesarkan hati" dalam cerita ini?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q18" value="Menguatkan dan membuat lebih percaya diri"> Menguatkan dan membuat lebih percaya diri</label>
+                        <label><input type="radio" name="q18" value="Membuat orang lain merasa bahagia"> Membuat orang lain merasa bahagia</label>
+                        <label><input type="radio" name="q18" value="Membantu orang lain dalam kesulitan"> Membantu orang lain dalam kesulitan</label>
+                        <label><input type="radio" name="q18" value="Mengejek seseorang yang tidak percaya diri"> Mengejek seseorang yang tidak percaya diri</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>19. Bagaimana cara teman-teman Hana menyambutnya saat pertama kali ia datang ke sekolah?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q19" value="Mereka menyambutnya dengan senyuman dan ajakan berkenalan"> Mereka menyambutnya dengan senyuman dan ajakan berkenalan</label>
+                        <label><input type="radio" name="q19" value="Mereka terlihat tidak tertarik dan tidak berbicara dengannya"> Mereka terlihat tidak tertarik dan tidak berbicara dengannya</label>
+                        <label><input type="radio" name="q19" value="Mereka berlari menjauhi Hana karena takut"> Mereka berlari menjauhi Hana karena takut</label>
+                        <label><input type="radio" name="q19" value="Mereka tidak menyadari kedatangannya"> Mereka tidak menyadari kedatangannya</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>20. Apa yang dipelajari oleh Hana tentang keberagaman budaya di Indonesia?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q20" value="Indonesia memiliki beragam kebudayaan yang harus dihargai"> Indonesia memiliki beragam kebudayaan yang harus dihargai</label>
+                        <label><input type="radio" name="q20" value="Indonesia adalah negara yang seragam dalam budaya"> Indonesia adalah negara yang seragam dalam budaya</label>
+                        <label><input type="radio" name="q20" value="Semua kebudayaan Indonesia harus diubah agar menjadi satu"> Semua kebudayaan Indonesia harus diubah agar menjadi satu</label>
+                        <label><input type="radio" name="q20" value="Keberagaman budaya di Indonesia tidak penting untuk diketahui"> Keberagaman budaya di Indonesia tidak penting untuk diketahui</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>21. Dalam cerita ini, bagaimana Hana menggambarkan suasana sekolah setelah beradaptasi?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q21" value="Sekolah terasa seperti rumah kedua bagi Hana"> Sekolah terasa seperti rumah kedua bagi Hana</label>
+                        <label><input type="radio" name="q21" value="Hana merasa terasing dan tidak nyaman di sekolah"> Hana merasa terasing dan tidak nyaman di sekolah</label>
+                        <label><input type="radio" name="q21" value="Sekolah terasa sangat membosankan bagi Hana"> Sekolah terasa sangat membosankan bagi Hana</label>
+                        <label><input type="radio" name="q21" value="Hana merasa lebih suka di rumah daripada di sekolah"> Hana merasa lebih suka di rumah daripada di sekolah</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>22. Bagaimana cara Hana mengatasi rasa takutnya berbicara di depan kelas?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q22" value="Dengan latihan berbicara di depan kaca"> Dengan latihan berbicara di depan kaca</label>
+                        <label><input type="radio" name="q22" value="Dengan berbicara perlahan-lahan saat presentasi"> Dengan berbicara perlahan-lahan saat presentasi</label>
+                        <label><input type="radio" name="q22" value="Dengan meminta bantuan teman-temannya"> Dengan meminta bantuan teman-temannya</label>
+                        <label><input type="radio" name="q22" value="Dengan tidak berbicara sama sekali"> Dengan tidak berbicara sama sekali</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>23. Apa yang membuat Hana merasa lebih percaya diri dalam berbicara bahasa Indonesia?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q23" value="Bantuan dari teman-teman yang mendukungnya"> Bantuan dari teman-teman yang mendukungnya</label>
+                        <label><input type="radio" name="q23" value="Keterampilan berbicara yang sudah dikuasai"> Keterampilan berbicara yang sudah dikuasai</label>
+                        <label><input type="radio" name="q23" value="Kemampuan bahasa Indonesia yang tinggi"> Kemampuan bahasa Indonesia yang tinggi</label>
+                        <label><input type="radio" name="q23" value="Tidak ada dukungan dari siapa pun"> Tidak ada dukungan dari siapa pun</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>24. Apa yang dirasakan Hana saat pertama kali bertemu dengan Bu Pertiwi?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q24" value="Hana merasa tidak nyaman karena Bu Pertiwi sangat ketat"> Hana merasa tidak nyaman karena Bu Pertiwi sangat ketat</label>
+                        <label><input type="radio" name="q24" value="Hana merasa senang karena Bu Pertiwi sangat ramah"> Hana merasa senang karena Bu Pertiwi sangat ramah</label>
+                        <label><input type="radio" name="q24" value="Hana merasa terintimidasi karena Bu Pertiwi sangat galak"> Hana merasa terintimidasi karena Bu Pertiwi sangat galak</label>
+                        <label><input type="radio" name="q24" value="Hana merasa tidak ada yang perlu dikhawatirkan"> Hana merasa tidak ada yang perlu dikhawatirkan</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>25. Apa yang menjadi tantangan terbesar bagi Hana ketika bersekolah di Indonesia?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q25" value="Kesulitan berbicara bahasa Indonesia dengan lancar"> Kesulitan berbicara bahasa Indonesia dengan lancar</label>
+                        <label><input type="radio" name="q25" value="Tidak ada teman di sekolah"> Tidak ada teman di sekolah</label>
+                        <label><input type="radio" name="q25" value="Menyesuaikan diri dengan peraturan sekolah yang ketat"> Menyesuaikan diri dengan peraturan sekolah yang ketat</label>
+                        <label><input type="radio" name="q25" value="Kesulitan mengenal budaya Indonesia"> Kesulitan mengenal budaya Indonesia</label>
+                    </div>
+                </div>
+                
+          
+            </div>
+
+            <!-- Soal Isian -->
+            <div class="divider"></div>
+            <h2>Soal Isian</h2>
+            <div class="question">
+                <h3>1. Apa yang menjadi kekhawatiran Hana di hari pertama sekolah?</h3>
+                <input type="text" name="q1" placeholder="Jawaban Anda">
+            </div>
+            
+            <div class="question">
+                <h3>2. Dari mana Hana dan keluarganya baru saja pindah?</h3>
+                <input type="text" name="q2" placeholder="Jawaban Anda">
+            </div>
+            
+            <div class="question">
+                <h3>3. Siapa yang membantu Hana untuk memperkenalkan diri di depan kelas?</h3>
+                <input type="text" name="q3" placeholder="Jawaban Anda">
+            </div>
+            
+            <div class="question">
+                <h3>4. Apa nama sekolah baru Hana?</h3>
+                <input type="text" name="q4" placeholder="Jawaban Anda">
+            </div>
+            
+            <div class="question">
+                <h3>5. Apa yang Hana bawa untuk dibagikan kepada teman-temannya?</h3>
+                <input type="text" name="q5" placeholder="Jawaban Anda">
+            </div>
+            
+      
+
+            <!-- Soal Uraian -->
+            <div class="divider"></div>
+            <h2>Soal Uraian</h2>
+            <div class="question">
+              <h3>1. Jelaskan unsur-unsur intrinsik yang membangun sebuah cerita secara lengkap!</h3>
+              <textarea name="q36" placeholder="Tuliskan jawaban Anda di sini"></textarea>
+          </div>
+          
+          <div class="question">
+              <h3>2. Tuliskan langkah-langkah menulis surat resmi yang baik dan benar!</h3>
+              <textarea name="q37" placeholder="Tuliskan jawaban Anda di sini"></textarea>
+          </div>
+          
+          <div class="question">
+              <h3>3. Sebutkan dan jelaskan perbedaan mendasar antara surat resmi dan surat pribadi!</h3>
+              <textarea name="q38" placeholder="Tuliskan jawaban Anda di sini"></textarea>
+          </div>
+          
+          <div class="question">
+              <h3>4. Jelaskan peran tema dalam sebuah cerita dan bagaimana cara menemukannya!</h3>
+              <textarea name="q39" placeholder="Tuliskan jawaban Anda di sini"></textarea>
+          </div>
+          
+          <div class="question">
+              <h3>5. Berikan penjelasan tentang fungsi setiap bagian dalam surat resmi!</h3>
+              <textarea name="q40" placeholder="Tuliskan jawaban Anda di sini"></textarea>
+          </div>
+          
+
+            <div class="btn-container">
+                <button type="button" class="btn" id="submitBtn" onclick="validateAndSubmit()">Submit</button>
+                <button type="button" class="btn" id="printBtn" onclick="validateAndPrint()">Cetak</button>
+            </div>
+        </form>
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Fungsi untuk memuat pilihan jawaban yang telah disimpan, namun tidak disimpan di localStorage.
+        window.onload = function() {
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(button => {
+                button.checked = false; // Pastikan semua radio button tidak tercentang ketika halaman dimuat ulang
+            });
+
+            const textInputs = document.querySelectorAll('input[type="text"], textarea');
+            textInputs.forEach(input => {
+                input.value = ""; // Mengosongkan semua input teks dan textarea saat halaman dimuat ulang
+            });
+        };
+
+        function disableForm() {
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.disabled = true;
+            });
+            document.getElementById('submitBtn').style.display = "none"; // Menyembunyikan tombol submit
+        }
+
+        function validateForm() {
+            const studentName = document.getElementById('studentName').value;
+            const studentClass = document.getElementById('studentClass').value;
+            const questions = document.querySelectorAll('.question');
+            let isValid = true;
+
+            if (!studentName || !studentClass) {
+                alert("Nama dan Kelas harus diisi!");
+                isValid = false;
+            }
+            
+
+            // Memastikan setiap soal memiliki jawaban yang terpilih atau terisi
+            questions.forEach(question => {
+                const radios = question.querySelectorAll('input[type="radio"]');
+                const isAnswered = Array.from(radios).some(radio => radio.checked);
+                
+            });
+
+            return isValid;
+        }
+
+        function validateAndSubmit() {
+            if (validateForm()) {
+                alert("Formulir berhasil dikirim!");
+                disableForm();
+            }
+        }
+
+        function validateAndPrint() {
+            if (validateForm()) {
+                window.print();
+            }
+        }
+      
+
+function validateAndSubmit() {
+    if (validateForm()) {
+        submitQuiz();
+        disableForm();
+    }
+}
+
+function validateAndPrint() {
+    if (validateForm()) {
+        window.print();
+    }
+}
+
+function submitQuiz() {
+    const correctAnswers = {
+        q1: "Takut tidak diterima teman-teman",
+        q2: "Hana diperkenalkan oleh Bu Pertiwi di depan kelas",
+        q3: "Membungkukkan badan dengan menangkupkan kedua tangan",
+        q4: "Siang hari saat matahari sedang panas-panasnya",
+        q5: "Hana merasa malu dan cemas",
+        q6: "Suara denyut jantung",
+        q7: "Menjadi takut atau tawar dalam perasaan",
+        q8: "Hana takut tidak bisa berbicara bahasa Indonesia dengan baik",
+        q9: "Bu Pertiwi",
+        q10: "Karena teman-temannya tidak tertawa atau mengejeknya",
+        q11: "Mereka terbuka dan siap membantu Hana dalam beradaptasi",
+        q12: "Suara keras seperti besi dipukul",
+        q13: "Pentingnya beradaptasi dan menghormati budaya baru",
+        q14: "Barang yang dibawa dari bepergian sebagai kenang-kenangan",
+        q15: "Mereka menerima Hana dengan senang hati meskipun berasal dari budaya berbeda",
+    q16: "Seni merancang bangunan dan struktur",
+    q17: "Dengan meminta bantuan teman-temannya untuk belajar bersama",
+    q18: "Menguatkan dan membuat lebih percaya diri",
+    q19: "Mereka menyambutnya dengan senyuman dan ajakan berkenalan",
+    q20: "Indonesia memiliki beragam kebudayaan yang harus dihargai",
+    q21: "Sekolah terasa seperti rumah kedua bagi Hana",
+    q22: "Dengan latihan berbicara di depan kaca",
+    q23: "Bantuan dari teman-teman yang mendukungnya",
+    q24: "Hana merasa senang karena Bu Pertiwi sangat ramah",
+    q25: "Kesulitan berbicara bahasa Indonesia dengan lancar"
+    };
+
+    let score = 0;
+    let totalQuestions = Object.keys(correctAnswers).length;
+    let feedback = "";
+
+    for (let key in correctAnswers) {
+        const answer = document.querySelector(`input[name="${key}"]:checked`);
+        if (answer && answer.value === correctAnswers[key]) {
+            score++;
+        } else {
+        }
+    }
+
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `<h3>Hasil Quiz:</h3>
+                           <p>Jawaban Benar: ${score}</p>
+                           ${feedback}`;
+    resultDiv.style.display = "block";
+}
+    </script>
+</body>
+</html>

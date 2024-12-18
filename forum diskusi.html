@@ -3,282 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forum Diskusi Guru dan Siswa</title>
+    <title>Forum Diskusi Minimalis</title>
     <style>
+        /* Styling Minimalis */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
+            background-color: #f9f9f9;
             color: #333;
         }
-        .discussion-form input, .discussion-form textarea, .discussion-form select {
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .post-form, .post {
+            margin-bottom: 20px;
+        }
+        input, textarea, button {
             width: 100%;
             padding: 10px;
-            margin: 10px 0;
+            margin: 5px 0;
             border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1em;
+            border-radius: 5px;
+            box-sizing: border-box;
         }
-        .discussion-form button {
+        textarea {
+            resize: none;
+        }
+        button {
             background-color: #4CAF50;
             color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1.1em;
-            border-radius: 4px;
             cursor: pointer;
+            font-size: 1em;
         }
-        .discussion-form button:hover {
+        button:hover {
             background-color: #45a049;
         }
-        .comments {
-            margin-top: 30px;
-        }
-        .comment {
-            padding: 10px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            position: relative;
-        }
-        .reply-button, .delete-button {
-            background-color: #2980b9;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            font-size: 0.9em;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 5px;
-        }
-        .delete-button {
+        .delete-btn {
             background-color: #e74c3c;
+            color: #fff;
+            font-size: 0.9em;
+            padding: 5px 10px;
+            width: auto;
+            display: inline-block;
+            margin-top: 10px;
         }
-        .reply-button:hover {
-            background-color: #1f6390;
-        }
-        .delete-button:hover {
+        .delete-btn:hover {
             background-color: #c0392b;
         }
-        .reply-form {
-            margin-top: 10px;
-            padding: 10px;
+        .post {
             background-color: #f4f4f4;
-            border-radius: 4px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
         }
-        footer {
-            text-align: center;
-            margin-top: 20px;
+        strong {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .comment-box {
+            display: none;
+            margin-top: 10px;
+        }
+        .comment-box input {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+        .comment-box input.comment-name {
+            width: 60%;
+        }
+        .comment-box textarea.comment-content {
+            width: 100%;
+            height: 60px;
+        }
+        .comment-box button {
+            background-color: #3498db;
             font-size: 0.9em;
-            color: #888;
+            padding: 5px 10px;
+            width: auto;
+        }
+        .comment-box button:hover {
+            background-color: #2980b9;
+        }
+        .reply-btn, .admin-reply-btn, .back-btn {
+            font-size: 0.8em;
+            padding: 5px 10px;
+            width: auto;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .reply-btn {
+            background-color: #3498db;
+        }
+        .reply-btn:hover {
+            background-color: #2980b9;
+        }
+        .admin-reply-btn {
+            background-color: #f39c12;
+        }
+        .admin-reply-btn:hover {
+            background-color: #e67e22;
+        }
+        .back-btn {
+            background-color: #95a5a6;
+        }
+        .back-btn:hover {
+            background-color: #7f8c8d;
+        }
+        .comments {
+            margin-bottom: 10px;
+        }
+        .comment {
+            margin-bottom: 10px;
+        }
+        .comment strong {
+            font-weight: bold;
+        }
+        .admin-comment {
+            background-color: #fbe3e4;
+            padding: 10px;
+            border: 1px solid #e74c3c;
+            border-radius: 5px;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+        .top-bar a {
+            text-decoration: none;
+            color: white;
+            background-color: #95a5a6;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .top-bar a:hover {
+            background-color: #7f8c8d;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <h1>Forum Diskusi Guru dan Siswa</h1>
-        <p class="description">Diskusikan pertanyaan dan jawaban di sini.</p>
-
-        <!-- Form login -->
-        <div id="loginForm" class="discussion-form">
-            <input type="text" id="loginName" placeholder="Masukkan nama" required>
-            <input type="password" id="loginPassword" placeholder="Masukkan password" required>
-            <button type="button" onclick="login()">Login</button>
-            <p id="loginError" style="color: red; display: none;">Nama atau password salah</p>
+        <!-- Tombol Kembali di Pojok Kiri Atas -->
+        <div class="top-bar">
+            <a href="kelas6.html" class="back-btn">&#8592; Kembali</a>
         </div>
 
-        <!-- Forum setelah login -->
-        <div id="forumSection" style="display: none;">
-            <div class="discussion-form">
-                <select id="role">
-                    <option value="siswa">Siswa</option>
-                    <option value="guru">Guru</option>
-                </select>
-                <input type="text" id="name" placeholder="Nama Anda" required>
-                <textarea id="comment" placeholder="Tulis komentar Anda..." rows="4" required></textarea>
-                <button type="button" onclick="addComment()">Kirim Komentar</button>
-            </div>
+        <h1>Forum Diskusi</h1>
 
-            <div class="comments">
-                <h3>Diskusi:</h3>
-                <div id="commentSection">
-                    <!-- Komentar akan ditampilkan di sini -->
-                </div>
-            </div>
+        <!-- Form untuk menambah postingan -->
+        <div class="post-form">
+            <input type="text" id="authorName" placeholder="Nama Anda">
+            <textarea id="postContent" rows="3" placeholder="Tambahkan postingan..."></textarea>
+            <button onclick="addPost()">Tambah Postingan</button>
         </div>
 
-        <footer>
-            <p>&copy; 2024 Forum Diskusi. Semua hak cipta dilindungi.</p>
-        </footer>
+        <h2>Daftar Postingan</h2>
+        <div id="postList"></div>
     </div>
 
     <script>
-        let comments = JSON.parse(localStorage.getItem('comments')) || [];
-        let currentUser = null;
+        const postList = document.getElementById("postList");
 
-        // Login function
-        function login() {
-            const name = document.getElementById('loginName').value.trim();
-            const password = document.getElementById('loginPassword').value.trim();
+        // Kata sandi admin (ubah sesuai kebutuhan)
+        const adminPassword = "admin123";
 
-            // Simulasi login (admin: guru, password: admin)
-            if (name === "admin" && password === "admin") {
-                currentUser = { name: "admin", role: "guru" };
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
-                showForum();
-            } else if (name !== "" && password !== "") {
-                currentUser = { name, role: "siswa" };
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
-                showForum();
-            } else {
-                document.getElementById('loginError').style.display = "block";
-            }
+        // Fungsi untuk menyimpan data ke localStorage
+        function saveToLocalStorage(data) {
+            localStorage.setItem('forumData', JSON.stringify(data));
         }
 
-        // Show forum section after login
-        function showForum() {
-            document.getElementById('loginForm').style.display = "none";
-            document.getElementById('forumSection').style.display = "block";
-            renderComments();
+        // Fungsi untuk memuat data dari localStorage
+        function loadFromLocalStorage() {
+            const data = localStorage.getItem('forumData');
+            return data ? JSON.parse(data) : [];
         }
 
-        // Add a new comment or reply
-        function addComment(parentId = null, replyInput = null) {
-            const role = document.getElementById('role').value;
-            const name = document.getElementById('name').value.trim();
-            const commentText = parentId ? replyInput.value.trim() : document.getElementById('comment').value.trim();
+        // Data forum yang disimpan
+        let forumData = loadFromLocalStorage();
 
-            if (!name || !commentText) {
-                alert("Nama dan komentar tidak boleh kosong!");
-                return;
-            }
-
-            const comment = {
-                id: Date.now(),
-                role,
-                name,
-                text: commentText,
-                parentId,
-                replies: [],
-            };
-
-            if (parentId) {
-                const parentComment = findCommentById(comments, parentId);
-                parentComment.replies.push(comment);
-            } else {
-                comments.push(comment);
-            }
-
-            saveComments();
-            renderComments();
-        }
-
-        // Delete comment by id (only admin)
-        function deleteComment(id) {
-            if (currentUser && currentUser.role === "guru") {
-                if (!confirm("Apakah Anda yakin ingin menghapus komentar ini?")) return;
-
-                comments = deleteCommentById(comments, id);
-                saveComments();
-                renderComments();
-            } else {
-                alert("Hanya admin yang dapat menghapus komentar!");
-            }
-        }
-
-        // Find a comment by ID
-        function findCommentById(commentList, id) {
-            for (const comment of commentList) {
-                if (comment.id === id) return comment;
-                const found = findCommentById(comment.replies, id);
-                if (found) return found;
-            }
-            return null;
-        }
-
-        // Delete comment and replies by ID
-        function deleteCommentById(commentList, id) {
-            return commentList.filter(comment => {
-                if (comment.id === id) return false;
-                comment.replies = deleteCommentById(comment.replies, id);
-                return true;
+        // Fungsi untuk menampilkan postingan dari data
+        function renderPosts() {
+            postList.innerHTML = '';
+            forumData.forEach((post, index) => {
+                const postDiv = document.createElement("div");
+                postDiv.classList.add("post");
+                postDiv.innerHTML = `
+                    <strong>${post.author}</strong>
+                    <p>${post.content}</p>
+                    <div class="comments">
+                        ${post.comments.map(comment => `
+                            <div class="comment ${comment.isAdmin ? 'admin-comment' : ''}">
+                                <strong>${comment.name}</strong>
+                                <p>Balasan: ${comment.text}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <button class="delete-btn" onclick="confirmDelete(${index})">Hapus</button>
+                    <button class="reply-btn" onclick="toggleCommentBox(this)">Balas</button>
+                    <button class="admin-reply-btn" onclick="adminReply(${index}, this)">Balas Sebagai Admin</button>
+                    <div class="comment-box">
+                        <input type="text" placeholder="Masukkan nama Anda..." class="comment-name" />
+                        <textarea placeholder="Balasan..." class="comment-content"></textarea>
+                        <button onclick="addComment(${index}, this)">Kirim</button>
+                        <a href="javascript:void(0)" class="back-btn" onclick="hideCommentBox(this)">Kembali</a>
+                    </div>
+                `;
+                postList.appendChild(postDiv);
             });
         }
 
-        // Save comments to localStorage
-        function saveComments() {
-            localStorage.setItem('comments', JSON.stringify(comments));
-        }
+        // Fungsi untuk menambahkan postingan
+        function addPost() {
+            const authorName = document.getElementById("authorName").value.trim();
+            const postContent = document.getElementById("postContent").value.trim();
 
-        // Render all comments
-        function renderComments() {
-            const commentSection = document.getElementById('commentSection');
-            commentSection.innerHTML = "";
-            comments.forEach(comment => renderComment(commentSection, comment));
-        }
-
-        // Render a single comment
-        function renderComment(container, comment) {
-            const commentDiv = document.createElement('div');
-            commentDiv.classList.add('comment');
-            commentDiv.innerHTML = `
-                <strong>${comment.name} (${comment.role}):</strong>
-                <p>${comment.text}</p>
-                <button class="reply-button" onclick="toggleReplyForm(${comment.id}, this)">Balas</button>
-                ${currentUser && currentUser.role === "guru" ? `<button class="delete-button" onclick="deleteComment(${comment.id})">Hapus</button>` : ""}
-                <div class="replies"></div>
-            `;
-
-            container.appendChild(commentDiv);
-
-            const repliesContainer = commentDiv.querySelector('.replies');
-            comment.replies.forEach(reply => renderComment(repliesContainer, reply));
-        }
-
-        // Toggle reply form
-        function toggleReplyForm(parentId, replyButton) {
-            const parentCommentDiv = replyButton.parentElement;
-            const existingForm = parentCommentDiv.querySelector('.reply-form');
-
-            if (existingForm) {
-                existingForm.remove();
+            if (authorName === "" || postContent === "") {
+                alert("Nama dan konten postingan tidak boleh kosong.");
                 return;
             }
 
-            const replyForm = document.createElement('div');
-            replyForm.classList.add('reply-form');
-            replyForm.innerHTML = `
-                <textarea placeholder="Tulis balasan Anda..." rows="2"></textarea>
-                <button onclick="addComment(${parentId}, this.previousElementSibling)">Kirim Balasan</button>
-            `;
+            // Tambahkan postingan ke data
+            forumData.push({
+                author: authorName,
+                content: postContent,
+                comments: []
+            });
 
-            parentCommentDiv.appendChild(replyForm);
+            // Simpan data dan render ulang
+            saveToLocalStorage(forumData);
+            renderPosts();
+
+            // Reset input
+            document.getElementById("authorName").value = "";
+            document.getElementById("postContent").value = "";
         }
 
-        // Load current user from localStorage
-        window.onload = () => {
-            const storedUser = JSON.parse(localStorage.getItem('currentUser'));
-            if (storedUser) {
-                currentUser = storedUser;
-                showForum();
+        // Fungsi konfirmasi hapus dengan kata sandi
+        function confirmDelete(index) {
+            const passwordInput = prompt("Masukkan kata sandi admin untuk menghapus postingan:");
+            if (passwordInput === null) return; // Cancel prompt
+            if (passwordInput === adminPassword) {
+                forumData.splice(index, 1);
+                saveToLocalStorage(forumData);
+                renderPosts();
+                alert("Postingan berhasil dihapus.");
+            } else {
+                alert("Kata sandi salah! Tidak dapat menghapus postingan.");
             }
-        };
+        }
 
+        // Fungsi untuk menambahkan komentar
+        function addComment(index, button) {
+            const commentName = button.parentElement.querySelector('.comment-name').value.trim();
+            const commentContent = button.parentElement.querySelector('.comment-content').value.trim();
+
+            if (commentName === "" || commentContent === "") {
+                alert("Nama dan komentar tidak boleh kosong.");
+                return;
+            }
+
+            // Tambahkan komentar ke data
+            forumData[index].comments.push({
+                name: commentName,
+                text: commentContent,
+                isAdmin: false
+            });
+
+            // Simpan data dan render ulang
+            saveToLocalStorage(forumData);
+            renderPosts();
+        }
+
+        // Fungsi untuk menambahkan balasan sebagai admin
+        function adminReply(index, button) {
+            const passwordInput = prompt("Masukkan kata sandi admin:");
+            if (passwordInput !== adminPassword) {
+                alert("Kata sandi salah! Tidak dapat menambahkan balasan admin.");
+                return;
+            }
+
+            const commentContent = prompt("Masukkan balasan sebagai admin:");
+            if (commentContent.trim() === "") {
+                alert("Balasan tidak boleh kosong.");
+                return;
+            }
+
+            // Tambahkan balasan admin ke data
+            forumData[index].comments.push({
+                name: "Admin",
+                text: commentContent,
+                isAdmin: true
+            });
+
+            // Simpan data dan render ulang
+            saveToLocalStorage(forumData);
+            renderPosts();
+        }
+
+        // Fungsi untuk menampilkan dan menyembunyikan kolom komentar
+        function toggleCommentBox(button) {
+            const commentBox = button.nextElementSibling.nextElementSibling;
+            if (commentBox.style.display === "none" || commentBox.style.display === "") {
+                commentBox.style.display = "block";
+            }
+        }
+
+        // Fungsi untuk menyembunyikan kolom komentar
+        function hideCommentBox(button) {
+            const commentBox = button.parentElement;
+            commentBox.style.display = "none";
+        }
+
+        // Render postingan saat halaman dimuat
+        renderPosts();
     </script>
-
 </body>
 </html>
