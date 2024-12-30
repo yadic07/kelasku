@@ -204,12 +204,11 @@
             
             // Iterate through all students and update their status
             studentRows.forEach((row, index) => {
-                const studentId = index + 1; // Get the student ID from the row index
-                const studentStatusCell = document.getElementById(`status-${studentId}`);
-                const studentStatusTimeCell = document.getElementById(`time-${studentId}`);
-                
+                const studentId = index + 1;
                 const studentRecord = attendanceData.find(record => record.id === studentId);
-                
+                const studentStatusCell = row.querySelector(`#status-${studentId}`);
+                const studentStatusTimeCell = row.querySelector(`#time-${studentId}`);
+
                 if (studentRecord) {
                     const status = studentRecord.status;
                     const reason = studentRecord.status === 'Absent' ? studentRecord.reason : 'N/A';
@@ -222,8 +221,11 @@
             });
         }
 
-        // Load previous attendance data from localStorage and display it in the log
-        function loadAttendanceLog() {
+        // Function to load the attendance data and show it
+        function loadAttendanceData() {
+            updateAllStudentStatus();
+
+            // Load previous attendance data from localStorage and display it in the log
             attendanceData.forEach(entry => {
                 const logEntry = document.createElement('tr');
                 const statusIcon = entry.status === 'Present' ? '✔' : '✘';
@@ -237,8 +239,8 @@
             });
         }
 
-        // Load the attendance log on page load
-        loadAttendanceLog();
+        // Load the attendance data on page load
+        loadAttendanceData();
 
         // Function to delete the log if the correct admin key is entered
         function deleteLog() {
