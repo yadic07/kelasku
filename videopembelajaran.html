@@ -125,6 +125,19 @@
             padding: 20px;
             background-color: #f5f5f5;
         }
+            @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 5px 0;
+            }
+
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -132,9 +145,7 @@
         <img src="logosdn2krmgu.png" alt="Logo Video Pembelajaran">
         <nav>
             <a href="kelas6.html">Kembali</a>
-            <a href="#">Video Pembelajaran</a>
-            <a href="#">Modul Ajar</a>
-            <a href="#">Forum Diskusi</a>
+
         </nav>
     </header>
 
