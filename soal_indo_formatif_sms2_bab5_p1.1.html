@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menuliskan Ide dengan Peta Berpikir</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 20px;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            flex-grow: 1;
+        }
+        .logo {
+            width: 150px;
+            height: auto;
+        }
+        .content {
+            padding: 20px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .input-group input {
+            width: 48%;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 10px;
+            border: 2px solid #ccc;
+        }
+        .question {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        .divider {
+            margin: 20px 0;
+            border-top: 2px solid #ccc;
+        }
+        .divider-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #333;
+        }
+        .divider-title::before,
+        .divider-title::after {
+            content: "";
+            flex: 1;
+            height: 2px;
+            background-color: #ccc;
+            margin: 0 10px;
+        }
+        .mindmap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .mindmap .center {
+            width: 220px;
+            height: 120px;
+            background-color: #f0f8ff;
+            border: 3px solid #007BFF;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #007BFF;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .mindmap input {
+            width: 180px;
+            height: 80px;
+            text-align: center;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            outline: none;
+            transition: border-color 0.3s, transform 0.2s;
+        }
+        .mindmap input:focus {
+            border-color: #007BFF;
+            transform: scale(1.05);
+        }
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            margin: 10px;
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        /* Tombol Kembali */
+        .back-button {
+            background-color: #28a745;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            padding: 10px 20px;
+        }
+        .back-button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+        /* Disabled input */
+        .disabled {
+            background-color: #f0f0f0;
+            border: 2px solid #ddd;
+            color: #888;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="capture" class="container">
+        <header>
+
+            <h1>Menuliskan Ide dengan Peta Berpikir</h1>
+        </header>
+        <div class="content">
+            <div class="input-group">
+                <input type="text" id="name" placeholder="Nama" required>
+                <input type="text" id="class" placeholder="Kelas" required>
+            </div>
+
+            <div class="divider-title">
+                <span>Soal Formatif SEMESTER 2 </span>
+            </div>
+            <div class="divider"></div>
+            <div class="divider-title">
+                <span>bahasa indonesia pertemuan KE-1.1 </span>
+            </div>
+            <div class="divider"></div>
+
+            <div class="question">
+                <p><strong>Masalah:</strong> Bagaimana cara memecahkan masalah pantai yang penuh sampah?</p>
+                <p><strong>Tugas:</strong> Tuliskan ide-ide kalian di peta berpikir. Kalian juga boleh melengkapi ide kalian dengan gambar.</p>
+            </div>
+
+            <div class="mindmap">
+                <div class="center">Pantai Penuh Sampah</div>
+                <input type="text" id="idea1" placeholder="Ide 1" required>
+                <input type="text" id="idea2" placeholder="Ide 2" required>
+                <input type="text" id="idea3" placeholder="Ide 3" required>
+                <input type="text" id="idea4" placeholder="Ide 4" required>
+            </div>
+            <div class="buttons">
+                <button onclick="submitIdeas()">Submit</button>
+                <button onclick="generatePDF()">Cetak PDF</button>
+                <button class="back-button" onclick="window.history.back()">Kembali</button>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2024 | Peta Berpikir Kreatif</p>
+        </footer>
+    </div>
+
+    <script>
+        function submitIdeas() {
+            const name = document.getElementById('name').value.trim();
+            const studentClass = document.getElementById('class').value.trim();
+            const ideas = [];
+
+            if (!name || !studentClass) {
+                alert("Nama dan Kelas harus diisi!");
+                return;
+            }
+
+            for (let i = 1; i <= 4; i++) {
+                const idea = document.getElementById(`idea${i}`).value.trim();
+                if (idea) {
+                    ideas.push(idea);
+                }
+            }
+
+            // Disable inputs after submission
+            document.getElementById('name').disabled = true;
+            document.getElementById('class').disabled = true;
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`idea${i}`).disabled = true;
+            }
+
+            // Apply disabled styling
+            document.getElementById('name').classList.add('disabled');
+            document.getElementById('class').classList.add('disabled');
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`idea${i}`).classList.add('disabled');
+            }
+
+            alert("Ide telah disubmit dan jawaban terkunci!");
+        }
+
+        async function generatePDF() {
+            const captureElement = document.getElementById("capture");
+
+            // Gunakan html2canvas untuk menangkap elemen
+            const canvas = await html2canvas(captureElement);
+
+            // Konversi canvas ke gambar
+            const imgData = canvas.toDataURL("image/png");
+
+            // Buat dokumen PDF
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF("p", "mm", "a4");
+
+            // Tambahkan gambar ke PDF
+            const pdfWidth = 210; // Lebar A4 dalam mm
+            const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+            pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+            pdf.save("Peta_Berpikir.pdf");
+        }
+    </script>
+</body>
+</html>

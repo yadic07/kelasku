@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz SD Negeri 2 Karangmangu</title>
+    <link rel="icon" href="dl.png" type="image/x-icon">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .header-content {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .header-content h1 {
+            font-size: 24px;
+            color: #5a67d8;
+            margin: 0;
+        }
+
+        .header-content p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .details label {
+            margin-right: 10px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .details input {
+            flex-grow: 1;
+            padding: 6px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            max-width: 250px;
+        }
+
+        .questions-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .question {
+            margin-bottom: 10px;
+        }
+
+        .question h3 {
+            margin-bottom: 10px;
+            color: #2d3748;
+            font-size: 16px;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .divider {
+            border-top: 2px dashed #ddd;
+            margin: 30px 0;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #5a67d8;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            background-color: #434190;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e2e8f0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="quizContainer">
+        <div class="header">
+            <img src="logosekolah.png" alt="Logo Sekolah">
+            <div class="header-content">
+                <h1>Asesmen Formatif</h1>
+                <h2>B.Indonesia Semester 2</h2>
+                <p>Pertemuan ke 1</p>
+            </div>
+        </div>
+
+        <div class="details">
+            <label for="studentName">Nama:</label>
+            <input type="text" id="studentName" name="studentName" placeholder="Masukkan Nama Siswa">
+            <label for="studentClass">Kelas:</label>
+            <input type="text" id="studentClass" name="studentClass" placeholder="Kelas">
+        </div>
+
+        <form id="quizForm">
+            <!-- Soal Pilihan Ganda -->
+            <div class="divider"></div>
+            <h2>Soal Pilihan Ganda</h2>
+            <div class="questions-container">
+                <!-- Soal 1 sampai 10 -->
+                <div class="question">
+                    <h3>1. Apa yang membedakan Foto 5.2 (pantai bersih) dengan Foto 5.3 (pantai penuh sampah)?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="Kebersihan pantai"> Kebersihan pantai</label>
+                        <label><input type="radio" name="q1" value="Warna laut"> Warna laut</label>
+                        <label><input type="radio" name="q1" value="Jumlah pengunjung"> Jumlah pengunjung</label>
+                        <label><input type="radio" name="q1" value="Jenis pasir"> Jenis pasir</label>
+                    </div>
+                </div>
+
+                <!-- Soal 2 -->
+                <div class="question">
+                    <h3>2. Apa yang menjadi masalah utama pada foto 5.3 (pantai penuh sampah)?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="Kurangnya pengunjung"> Kurangnya pengunjung</label>
+                        <label><input type="radio" name="q2" value="Sampah yang berserakan"> Sampah yang berserakan</label>
+                        <label><input type="radio" name="q2" value="Warna laut yang gelap"> Warna laut yang gelap</label>
+                        <label><input type="radio" name="q2" value="Hewan yang terancam punah"> Hewan yang terancam punah</label>
+                    </div>
+                </div>
+
+                <!-- Tambahkan soal lain sesuai dengan format ini -->
+
+            </div>
+
+            <!-- Soal Isian -->
+            <div class="divider"></div>
+            <h2>Soal Isian</h2>
+            <div class="question">
+                <h3>1. Sebutkan dua alasan mengapa sampah di pantai dapat membahayakan kehidupan laut!</h3>
+                <input type="text" name="q1" id="q1" placeholder="Jawaban Anda...">
+            </div>
+
+            <!-- Tambahkan soal lain sesuai dengan format ini -->
+
+            <div class="btn-container">
+                <button type="button" class="btn" id="submitBtn" onclick="validateAndSubmit()">Submit</button>
+                <button type="button" class="btn" id="printBtn" onclick="printResults()">Print</button>
+            </div>
+        </form>
+
+        <!-- Hasil Quiz -->
+        <div class="result" id="quizResult" style="display:none;">
+            <h2>Hasil Quiz</h2>
+            <p>Nama: <span id="resultName"></span></p>
+            <p>Kelas: <span id="resultClass"></span></p>
+            <p>Skor: <span id="score"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function validateAndSubmit() {
+            var studentName = document.getElementById("studentName").value;
+            var studentClass = document.getElementById("studentClass").value;
+
+            if (studentName === "" || studentClass === "") {
+                alert("Harap mengisi nama dan kelas.");
+                return;
+            }
+
+            var answers = document.getElementsByName("q1");
+            var score = 0;
+
+            // Example validation for first question
+            if (answers[0].checked) {
+                score++;
+            }
+
+            // Set result values
+            document.getElementById("resultName").innerText = studentName;
+            document.getElementById("resultClass").innerText = studentClass;
+            document.getElementById("score").innerText = score + "/10";
+
+            // Show result
+            document.getElementById("quizResult").style.display = "block";
+        }
+
+        function printResults() {
+            var content = document.getElementById("quizResult").innerHTML;
+            var printWindow = window.open('', '', 'height=400,width=600');
+            printWindow.document.write('<html><head><title>Hasil Quiz</title></head><body>');
+            printWindow.document.write(content);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+        }
+    </script>
+</body>
+</html>

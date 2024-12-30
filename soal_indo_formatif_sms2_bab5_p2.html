@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz SD Negeri 2 Karangmangu</title>
+    <link rel="icon" href="dl.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .header-content {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .header-content h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #5a67d8;
+        }
+        .header-content p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .details label {
+            margin-right: 10px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .details input {
+            flex-grow: 1;
+            padding: 6px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            max-width: 250px;
+        }
+        .questions-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .question {
+            margin-bottom: 10px;
+        }
+        .question h3 {
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+        .divider {
+            border-top: 2px dashed #ddd;
+            margin: 30px 0;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        textarea {
+            height: 100px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #5a67d8;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #434190;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e2e8f0;
+            border-radius: 4px;
+        }
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .image-container img {
+            width: 60%; /* Atur lebar gambar sesuai dengan keinginan */
+            height: auto; /* Jaga agar rasio gambar tetap terjaga */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="quizContainer">
+        <div class="header">
+            <div class="header-content">
+                <h1>ASESMEN FORMATIF</h1>
+                <h2>B.Indonesia Semester 2</h2>
+                <p>Pertemuan Pembelajaran ke-2</p>
+            </div>
+        </div>
+
+        <div class="details">
+            <label for="studentName">Nama:</label>
+            <input type="text" id="studentName" name="studentName" placeholder="Masukkan Nama Siswa">
+            <label for="studentClass">Kelas:</label>
+            <input type="text" id="studentClass" name="studentClass" placeholder="Kelas">
+        </div>
+
+        <form id="quizForm">
+            <!-- Soal Pilihan Ganda -->
+            <div class="divider"></div>
+            <h1>Soal Pilihan Ganda</h1>
+            <h2>“Isabel dan Melati Wijsen:
+                Aktivis Lingkungan dan Pendiri Bye Bye Plastic Bag”</h2>
+            <div class="content">
+                <!-- Gambar 5.4 Isabel dan Melati Wijsen -->
+                <div class="image-container">
+                    <img src="aktivis lingkungan indo1.2.png" alt="Isabel dan Melati Wijsen">
+                </div>
+                <div class="caption">
+                    <p><strong>Gambar 5.4:</strong> Isabel dan Melati Wijsen</p>
+                    <p><em>Sumber: CNN Travel (2021)</em></p>
+                </div>
+        
+                <!-- Paragraf Isi -->
+                <div class="text-content">
+                    <p>Melati dan Isabel, yang berumur 12 dan 10 tahun, adalah kakak adik dari Pulau Bali. Sejak kecil, mereka suka bertualang, seperti bersepeda ke daerah-daerah pedesaan. Alam Bali adalah tempat bermain mereka.</p>
+                    <p>Di sekolah, Melati dan Isabel belajar tentang orang-orang yang mengubah dunia, seperti Nelson Mandela, Martin Luther King, dan Mahatma Gandhi. Terinspirasi dari tokoh-tokoh tersebut, Melati dan Isabel berpikir, “Perubahan apa, ya, yang bisa kita buat sekarang sebagai anak-anak Pulau Bali?”</p>
+                    <p>Ternyata jawabannya ada di depan mata mereka. Di pantai, Melati sering melihat tumpukan sampah plastik. Ketika bersepeda, Isabel selalu melihat sampah plastik bertebaran. Mereka sadar bahwa tempat bermain mereka yang indah semakin kotor, dan waktunya untuk mereka berkata, “Cukup!”</p>
+                    <p>Melati dan Isabel tahu mereka harus berjuang untuk membuat Pulau Bali bebas dari sampah plastik. Gerakan ini mereka namakan Bye Bye Plastic Bag. Mereka pun membuat petisi untuk mengurangi sampah plastik. Selain petisi, mereka juga ingin mendorong Gubernur Bali untuk membuat peraturan yang melarang kantong plastik.</p>
+                    <p>Banyak orang meremehkan Melati dan Isabel karena mereka masih anak-anak. Melati dan Isabel kembali ingat pelajaran mengenai Mahatma Gandhi yang melakukan mogok makan, atau puasa, untuk mendorong perubahan. Mengikuti kegigihan Gandhi, Melati dan Isabel berjuang keras agar Gubernur Bali mau bertemu dengan mereka.</p>
+                    <p>Setelah mogok makan selama 24 jam, Gubernur Bali akhirnya bersedia menemui Melati dan Isabel. Pertemuan ini membuka banyak pintu agar Bye Bye Plastic Bag dapat bekerja sama dengan berbagai cabang pemerintahan.</p>
+                    <p>Selama 6 tahun, Melati dan Isabel juga berjuang bersama-sama banyak orang dan media. Akhirnya pada 2019, Bali menyatakan larangannya terhadap plastik sekali pakai! Melati dan Isabel pun diundang ke United Nation, TED Talks, dan mendapatkan berbagai penghargaan termasuk gelar “Anak remaja paling berpengaruh” oleh Forbes, Times, dan CNN.</p>
+                    <p>Melati dan Isabel menunjukkan bahwa usia bukanlah masalah. Semakin lama, gerakan Bye Bye Plastic Bag menjadi semakin besar dan tersebar ke seluruh dunia.</p>
+                    <p>“Kami, anak-anak, mungkin hanya 25 persen populasi dunia, tetapi kami adalah 100 persen masa depan.”</p>
+                </div>
+            </div>
+            
+            <div class="questions-container">
+                <!-- Soal 1 sampai 25 -->
+                <div class="question">
+                <h3>1. Apa yang menjadi inspirasi utama bagi Melati dan Isabel untuk memulai gerakan mereka?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="Keindahan alam yang kotor"> Keindahan alam yang kotor</label>
+                    <label><input type="radio" name="q1" value="Mereka sering berpetualang"> Mereka sering berpetualang</label>
+                    <label><input type="radio" name="q1" value="Belajar tentang tokoh-tokoh dunia"> Belajar tentang tokoh-tokoh dunia</label>
+                    <label><input type="radio" name="q1" value="Mereka ingin mendapatkan penghargaan"> Mereka ingin mendapatkan penghargaan</label>
+                </div>
+            </div>
+                <div class="question">
+                    <h3>2. Apa langkah pertama yang dilakukan Melati dan Isabel untuk mengurangi sampah plastik?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="Membuat petisi"> Membuat petisi</label>
+                        <label><input type="radio" name="q2" value="Mogok makan"> Mogok makan</label>
+                        <label><input type="radio" name="q2" value="Mengadakan kampanye media sosial"> Mengadakan kampanye media sosial</label>
+                        <label><input type="radio" name="q2" value="Mengundang orang tua mereka"> Mengundang orang tua mereka</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>3. Apa yang membuat Gubernur Bali akhirnya menemui Melati dan Isabel?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="Mereka mogok makan"> Mereka mogok makan</label>
+                        <label><input type="radio" name="q3" value="Mereka mendapatkan dukungan dari media"> Mereka mendapatkan dukungan dari media</label>
+                        <label><input type="radio" name="q3" value="Mereka menyebarkan petisi"> Mereka menyebarkan petisi</label>
+                        <label><input type="radio" name="q3" value="Mereka mengundang sang gubernur ke acara sekolah"> Mereka mengundang sang gubernur ke acara sekolah</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>4. Mengapa banyak orang awalnya meremehkan Melati dan Isabel?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q4" value="Karena mereka masih anak-anak"> Karena mereka masih anak-anak</label>
+                        <label><input type="radio" name="q4" value="Karena ide mereka terlalu sederhana"> Karena ide mereka terlalu sederhana</label>
+                        <label><input type="radio" name="q4" value="Karena mereka tidak memiliki dana"> Karena mereka tidak memiliki dana</label>
+                        <label><input type="radio" name="q4" value="Karena gerakan mereka tidak populer"> Karena gerakan mereka tidak populer</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>5. Apa arti dari istilah "sekali pakai" dalam konteks plastik?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q5" value="Plastik yang hanya digunakan satu kali lalu dibuang"> Plastik yang hanya digunakan satu kali lalu dibuang</label>
+                        <label><input type="radio" name="q5" value="Plastik yang bisa didaur ulang"> Plastik yang bisa didaur ulang</label>
+                        <label><input type="radio" name="q5" value="Plastik yang digunakan untuk makanan"> Plastik yang digunakan untuk makanan</label>
+                        <label><input type="radio" name="q5" value="Plastik yang dibuat dengan bahan organik"> Plastik yang dibuat dengan bahan organik</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>6. Apa dampak terbesar dari gerakan Bye Bye Plastic Bag?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q6" value="Larangan plastik sekali pakai di Bali"> Larangan plastik sekali pakai di Bali</label>
+                        <label><input type="radio" name="q6" value="Dukungan masyarakat untuk daur ulang"> Dukungan masyarakat untuk daur ulang</label>
+                        <label><input type="radio" name="q6" value="Penghargaan yang mereka terima"> Penghargaan yang mereka terima</label>
+                        <label><input type="radio" name="q6" value="Popularitas mereka di media"> Popularitas mereka di media</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>7. Bagaimana Melati dan Isabel mendapatkan perhatian dari masyarakat internasional?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q7" value="Melalui presentasi di TED Talks dan United Nations"> Melalui presentasi di TED Talks dan United Nations</label>
+                        <label><input type="radio" name="q7" value="Melalui posting di media sosial"> Melalui posting di media sosial</label>
+                        <label><input type="radio" name="q7" value="Melalui gerakan lokal"> Melalui gerakan lokal</label>
+                        <label><input type="radio" name="q7" value="Melalui kampanye door-to-door"> Melalui kampanye door-to-door</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>8. Apa pelajaran penting yang bisa diambil dari cerita Melati dan Isabel?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q8" value="Usia tidak menghalangi seseorang untuk membuat perubahan besar"> Usia tidak menghalangi seseorang untuk membuat perubahan besar</label>
+                        <label><input type="radio" name="q8" value="Mogok makan adalah cara yang efektif untuk protes"> Mogok makan adalah cara yang efektif untuk protes</label>
+                        <label><input type="radio" name="q8" value="Media sosial adalah alat yang kuat untuk perubahan"> Media sosial adalah alat yang kuat untuk perubahan</label>
+                        <label><input type="radio" name="q8" value="Kerja sama dengan pemerintah adalah kunci utama"> Kerja sama dengan pemerintah adalah kunci utama</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>9. Apa yang dilakukan Melati dan Isabel untuk menyebarkan ide mereka ke seluruh dunia?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q9" value="Berbicara di forum internasional seperti United Nations"> Berbicara di forum internasional seperti United Nations</label>
+                        <label><input type="radio" name="q9" value="Mengirim surat ke berbagai negara"> Mengirim surat ke berbagai negara</label>
+                        <label><input type="radio" name="q9" value="Mengadakan kampanye di luar negeri"> Mengadakan kampanye di luar negeri</label>
+                        <label><input type="radio" name="q9" value="Menggunakan selebriti untuk menyebarkan pesan"> Menggunakan selebriti untuk menyebarkan pesan</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>10. Mengapa istilah "penghargaan" penting dalam cerita Melati dan Isabel?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q10" value="Penghargaan memberi pengakuan dan mendorong semangat mereka"> Penghargaan memberi pengakuan dan mendorong semangat mereka</label>
+                        <label><input type="radio" name="q10" value="Penghargaan menarik perhatian media"> Penghargaan menarik perhatian media</label>
+                        <label><input type="radio" name="q10" value="Penghargaan membantu mereka mendapatkan dana"> Penghargaan membantu mereka mendapatkan dana</label>
+                        <label><input type="radio" name="q10" value="Penghargaan meningkatkan rasa percaya diri"> Penghargaan meningkatkan rasa percaya diri</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <h3>11. Apa yang dimaksud dengan kata "bertualang" dalam konteks cerita Melati dan Isabel?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="Berpetualang menjelajahi tempat baru"> Berpetualang menjelajahi tempat baru</label>
+                        <label><input type="radio" name="q11" value="Belajar di dalam kelas"> Belajar di dalam kelas</label>
+                        <label><input type="radio" name="q11" value="Mengadakan acara di sekolah"> Mengadakan acara di sekolah</label>
+                        <label><input type="radio" name="q11" value="Menyusun rencana gerakan sosial"> Menyusun rencana gerakan sosial</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>12. Bagaimana cara Melati dan Isabel menunjukkan bahwa mereka serius dengan gerakan mereka?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="Dengan melakukan mogok makan"> Dengan melakukan mogok makan</label>
+                        <label><input type="radio" name="q12" value="Dengan membuat video promosi"> Dengan membuat video promosi</label>
+                        <label><input type="radio" name="q12" value="Dengan mengundang selebriti untuk mendukung"> Dengan mengundang selebriti untuk mendukung</label>
+                        <label><input type="radio" name="q12" value="Dengan mendistribusikan brosur ke masyarakat"> Dengan mendistribusikan brosur ke masyarakat</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>13. Apa tujuan utama dari petisi yang dibuat oleh Melati dan Isabel?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="Mengurangi penggunaan kantong plastik di Bali"> Mengurangi penggunaan kantong plastik di Bali</label>
+                        <label><input type="radio" name="q13" value="Mendapatkan dukungan dari negara lain"> Mendapatkan dukungan dari negara lain</label>
+                        <label><input type="radio" name="q13" value="Menyebarkan kesadaran tentang kebersihan pantai"> Menyebarkan kesadaran tentang kebersihan pantai</label>
+                        <label><input type="radio" name="q13" value="Menciptakan program daur ulang plastik"> Menciptakan program daur ulang plastik</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>14. Apa arti kata "terinspirasi" dalam konteks cerita ini?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="Mendapatkan ide dari sesuatu"> Mendapatkan ide dari sesuatu</label>
+                        <label><input type="radio" name="q14" value="Mengikuti arahan dengan ketat"> Mengikuti arahan dengan ketat</label>
+                        <label><input type="radio" name="q14" value="Berinovasi dengan sesuatu yang baru"> Berinovasi dengan sesuatu yang baru</label>
+                        <label><input type="radio" name="q14" value="Mencoba sesuatu tanpa rencana"> Mencoba sesuatu tanpa rencana</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>15. Apa yang membedakan gerakan Melati dan Isabel dengan gerakan lainnya?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="Gerakan mereka dimulai oleh anak-anak"> Gerakan mereka dimulai oleh anak-anak</label>
+                        <label><input type="radio" name="q15" value="Gerakan mereka berfokus pada daur ulang"> Gerakan mereka berfokus pada daur ulang</label>
+                        <label><input type="radio" name="q15" value="Gerakan mereka hanya untuk orang Bali"> Gerakan mereka hanya untuk orang Bali</label>
+                        <label><input type="radio" name="q15" value="Gerakan mereka dilakukan tanpa dukungan pemerintah"> Gerakan mereka dilakukan tanpa dukungan pemerintah</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>16. Apa yang menjadi tantangan terbesar bagi Melati dan Isabel?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q16" value="Mendapatkan perhatian dari pemerintah"> Mendapatkan perhatian dari pemerintah</label>
+                        <label><input type="radio" name="q16" value="Menggalang dana untuk proyek mereka"> Menggalang dana untuk proyek mereka</label>
+                        <label><input type="radio" name="q16" value="Menyebarkan informasi kepada masyarakat"> Menyebarkan informasi kepada masyarakat</label>
+                        <label><input type="radio" name="q16" value="Mengatur waktu di antara kegiatan sekolah"> Mengatur waktu di antara kegiatan sekolah</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>17. Apa yang bisa kita pelajari dari cara Melati dan Isabel membangun gerakan mereka?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q17" value="Ketekunan adalah kunci kesuksesan"> Ketekunan adalah kunci kesuksesan</label>
+                        <label><input type="radio" name="q17" value="Media sosial adalah platform utama"> Media sosial adalah platform utama</label>
+                        <label><input type="radio" name="q17" value="Dukungan finansial adalah hal yang penting"> Dukungan finansial adalah hal yang penting</label>
+                        <label><input type="radio" name="q17" value="Kerja keras tidak selalu diperlukan"> Kerja keras tidak selalu diperlukan</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>18. Bagaimana kata "meremehkan" dapat dijelaskan dalam konteks ini?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q18" value="Menganggap rendah kemampuan orang lain"> Menganggap rendah kemampuan orang lain</label>
+                        <label><input type="radio" name="q18" value="Memberikan dukungan dengan setengah hati"> Memberikan dukungan dengan setengah hati</label>
+                        <label><input type="radio" name="q18" value="Menghargai usaha orang lain"> Menghargai usaha orang lain</label>
+                        <label><input type="radio" name="q18" value="Meningkatkan rasa percaya diri orang lain"> Meningkatkan rasa percaya diri orang lain</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>19. Mengapa mogok makan dianggap sebagai cara efektif untuk menyampaikan pesan?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q19" value="Karena ini menunjukkan keseriusan dan komitmen"> Karena ini menunjukkan keseriusan dan komitmen</label>
+                        <label><input type="radio" name="q19" value="Karena ini adalah tradisi lama"> Karena ini adalah tradisi lama</label>
+                        <label><input type="radio" name="q19" value="Karena ini adalah cara yang paling mudah"> Karena ini adalah cara yang paling mudah</label>
+                        <label><input type="radio" name="q19" value="Karena ini tidak membutuhkan persiapan"> Karena ini tidak membutuhkan persiapan</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>20. Apa yang membuat gerakan Melati dan Isabel terus berkembang?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q20" value="Dukungan masyarakat dan media internasional"> Dukungan masyarakat dan media internasional</label>
+                        <label><input type="radio" name="q20" value="Penghargaan yang mereka terima"> Penghargaan yang mereka terima</label>
+                        <label><input type="radio" name="q20" value="Kampanye yang dilakukan oleh pemerintah"> Kampanye yang dilakukan oleh pemerintah</label>
+                        <label><input type="radio" name="q20" value="Bantuan dari keluarga mereka"> Bantuan dari keluarga mereka</label>
+                    </div>
+                </div>
+                
+               
+          
+            </div>
+
+            <!-- Soal Isian -->
+            <div class="divider"></div>
+            <h2>Soal Isian</h2>
+
+            <div class="question">
+                <h3>1. Apa yang dimaksud dengan istilah "bertualang" dalam konteks cerita Melati dan Isabel, dan bagaimana hal ini berhubungan dengan aksi mereka?</h3>
+                <input type="text" name="q1" placeholder="Jawaban Anda">
+            </div>
+            
+            <div class="question">
+                <h3>2. Jelaskan bagaimana "terinspirasi" dari tokoh-tokoh dunia membantu Melati dan Isabel untuk memulai gerakan Bye Bye Plastic Bag.</h3>
+                <input type="text" name="q2" placeholder="Jawaban Anda">
+            </div>
+            
+            <div class="question">
+                <h3>3. Apa yang dimaksud dengan "gerakan" dalam konteks perubahan sosial, dan bagaimana gerakan ini bisa memengaruhi kebijakan pemerintah?</h3>
+                <input type="text" name="q3" placeholder="Jawaban Anda">
+            </div>
+            
+            <div class="question">
+                <h3>4. Bagaimana petisi yang dibuat oleh Melati dan Isabel dapat memberikan dampak besar terhadap kebijakan di Bali?</h3>
+                <input type="text" name="q4" placeholder="Jawaban Anda">
+            </div>
+            
+            <div class="question">
+                <h3>5. Mengapa banyak orang yang awalnya meremehkan usaha Melati dan Isabel? Jelaskan bagaimana sikap mereka dapat memotivasi orang lain.</h3>
+                <input type="text" name="q5" placeholder="Jawaban Anda">
+            </div>
+            
+
+            <div class="btn-container">
+                <button type="button" class="btn" id="submitBtn" onclick="validateAndSubmit()">Submit</button>
+                <button type="button" class="btn" id="printBtn" onclick="validateAndPrint()">Cetak</button>
+            </div>
+        </form>
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Fungsi untuk memuat pilihan jawaban yang telah disimpan, namun tidak disimpan di localStorage.
+        window.onload = function() {
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(button => {
+                button.checked = false; // Pastikan semua radio button tidak tercentang ketika halaman dimuat ulang
+            });
+    
+            const textInputs = document.querySelectorAll('input[type="text"], textarea');
+            textInputs.forEach(input => {
+                input.value = ""; // Mengosongkan semua input teks dan textarea saat halaman dimuat ulang
+            });
+        };
+    
+        function disableForm() {
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.disabled = true;
+            });
+            document.getElementById('submitBtn').style.display = "none"; // Menyembunyikan tombol submit
+        }
+    
+        function validateForm() {
+            const studentName = document.getElementById('studentName').value;
+            const studentClass = document.getElementById('studentClass').value;
+            const questions = document.querySelectorAll('.question');
+            let isValid = true;
+    
+            if (!studentName || !studentClass) {
+                alert("Nama dan Kelas harus diisi!");
+                isValid = false;
+            }
+    
+            // Memastikan setiap soal memiliki jawaban yang terpilih atau terisi
+            questions.forEach(question => {
+                const radios = question.querySelectorAll('input[type="radio"]');
+                const isAnswered = Array.from(radios).some(radio => radio.checked);
+    
+                if (!isAnswered && question.querySelector('input[type="text"], textarea') == null) {
+                    alert("Semua soal harus dijawab!");
+                    isValid = false;
+                }
+            });
+    
+            return isValid;
+        }
+    
+        function validateAndSubmit() {
+            if (validateForm()) {
+                submitQuiz();
+                disableForm();
+            }
+        }
+    
+        function validateAndPrint() {
+            if (validateForm()) {
+                window.print();
+            }
+        }
+    
+        function submitQuiz() {
+            const correctAnswers = {
+    q1: "Belajar tentang tokoh-tokoh dunia", // Jawaban soal 1
+    q2: "Membuat petisi", // Jawaban soal 2
+    q3: "Mereka mogok makan", // Jawaban soal 3
+    q4: "Karena mereka masih anak-anak", // Jawaban soal 4
+    q5: "Plastik yang hanya digunakan satu kali lalu dibuang", // Jawaban soal 5
+    q6: "Larangan plastik sekali pakai di Bali", // Jawaban soal 6
+    q7: "Melalui presentasi di TED Talks dan United Nations", // Jawaban soal 7
+    q8: "Usia tidak menghalangi seseorang untuk membuat perubahan besar", // Jawaban soal 8
+    q9: "Berbicara di forum internasional seperti United Nations", // Jawaban soal 9
+    q10: "Penghargaan memberi pengakuan dan mendorong semangat mereka", // Jawaban soal 10
+    q11: "Berpetualang menjelajahi tempat baru", // Jawaban soal 11
+    q12: "Dengan melakukan mogok makan", // Jawaban soal 12
+    q13: "Mengurangi penggunaan kantong plastik di Bali", // Jawaban soal 13
+    q14: "Mendapatkan ide dari sesuatu", // Jawaban soal 14
+    q15: "Gerakan mereka dimulai oleh anak-anak", // Jawaban soal 15
+    q16: "Mendapatkan perhatian dari pemerintah", // Jawaban soal 16
+    q17: "Ketekunan adalah kunci kesuksesan", // Jawaban soal 17
+    q18: "Menganggap rendah kemampuan orang lain", // Jawaban soal 18
+    q19: "Karena ini menunjukkan keseriusan dan komitmen", // Jawaban soal 19
+    q20: "Dukungan masyarakat dan media internasional" // Jawaban soal 20
+            };
+    
+            let score = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+            let feedback = "<ul>"; // Start a list for feedback
+    
+            // Validate and collect feedback for multiple choice questions
+            for (let key in correctAnswers) {
+                const answer = document.querySelector(`input[name="${key}"]:checked`);
+                if (answer && answer.value === correctAnswers[key]) {
+                    score++;
+                } else {
+                    feedback += `<li>Soal ${key.replace('q', '')}: Jawaban yang benar adalah "${correctAnswers[key]}"</li>`;
+                }
+            }
+    
+            // Validate and collect feedback for short answer questions
+            const shortAnswers = {
+                q1: "Bertualang berarti perjalanan Melati dan Isabel untuk mengatasi tantangan dalam mengurangi plastik, yang berhubungan dengan usaha mereka untuk membuat perubahan di Bali.",
+    q2: "Melati dan Isabel terinspirasi oleh tokoh-tokoh seperti Greta Thunberg yang berjuang untuk lingkungan, sehingga mereka termotivasi untuk mengurangi plastik di Bali.",
+    q3: "Gerakan adalah usaha bersama untuk membuat perubahan. Jika banyak orang mendukung, gerakan ini bisa mengubah keputusan pemerintah, seperti melarang plastik di Bali.",
+    q4: "Petisi mereka mengumpulkan banyak dukungan, sehingga pemerintah Bali akhirnya memutuskan untuk melarang plastik sekali pakai.",
+    q5: "Banyak yang meremehkan karena mereka masih muda, tapi ketekunan dan semangat mereka menunjukkan bahwa siapa pun bisa membuat perubahan, memberi semangat kepada orang lain untuk ikut beraksi."
+            };
+    
+            for (let key in shortAnswers) {
+                const answer = document.querySelector(`input[name="${key}"]`);
+                if (answer && answer.value.toLowerCase() === shortAnswers[key].toLowerCase()) {
+                    score++;
+                } else {
+                    feedback += `<li>Soal ${key.replace('q', '')}: Jawaban yang benar adalah "${shortAnswers[key]}"</li>`;
+                }
+            }
+    
+            // Validate and collect feedback for essay questions
+            const essayAnswers = {
+                q1: "tidak ada soal uraian",
+                q2: "tidak ada soal uraian",
+                q3: "tidak ada soal uraian",
+                q4: "tidak ada soal uraian",
+                q5: "tidak ada soal uraian"
+            };
+    
+            for (let key in essayAnswers) {
+                const answer = document.querySelector(`textarea[name="${key}"]`);
+                if (answer && answer.value.trim().length > 0) {
+                    // This can be customized to include partial matching or keyword checks
+                    feedback += `<li>Soal ${key.replace('q', '')}: Jawaban yang diterima cukup memadai.</li>`;
+                } else {
+                    feedback += `<li>Soal ${key.replace('q', '')}: tidak ada soal uraian!</li>`;
+                }
+            }
+    
+            feedback += "</ul>"; // End the list
+    
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `<h3>Hasil Quiz:</h3>
+                                   <p>Jawaban Benar: ${score} dari ${totalQuestions}</p>
+                                   <h4>Feedback:</h4>
+                                   ${feedback}`;
+            resultDiv.style.display = "block";
+        }
+    </script>
+    
+    
+    
+    </body>
+    </html>

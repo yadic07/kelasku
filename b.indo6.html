@@ -35,11 +35,25 @@
         .category {
             margin-bottom: 40px;
         }
+                nav {
+            background-color: #2355d4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+        }
         .category h2 {
             font-size: 1.5em;
             color: #333;
             text-align: center;
             margin-bottom: 20px;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            align-items: stretch;
         }
         .video-grid {
             display: flex;
@@ -47,6 +61,7 @@
             gap: 20px;
             flex-wrap: wrap;
         }
+        
         .video-card {
             background-color: white;
             border-radius: 8px;
@@ -118,18 +133,19 @@
             background-color: #2980B9;
         }
         /* Responsive Adjustments */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 1.5em;
-    }
-    header p {
-        font-size: 0.9em;
-    }
-    nav a {
-        padding: 8px 10px;
-        font-size: 0.9em;
-    }
-}
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 5px 0;
+            }
+
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+        }
 
     </style>
 </head>
