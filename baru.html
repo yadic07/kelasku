@@ -193,19 +193,26 @@
             // Disable buttons after attendance is marked
             const buttons = button.closest('tr').querySelectorAll('button');
             buttons.forEach(btn => btn.disabled = true);
-
-            // Update all student statuses globally
-            updateAllStudentStatus();
         }
 
-        // Function to update the status of all students
+        // Function to download attendance as Excel
+        function downloadExcel() {
+            const worksheet = XLSX.utils.json_to_sheet(attendanceData, {
+                header: ["id", "name", "status", "time", "date", "reason"]
+            });
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Attendance Report");
+
+            // Write to a file and trigger the download
+            XLSX.writeFile(workbook, "attendance_report.xlsx");
+        }
+
+        // Function to update all student status when `localStorage` is updated in another tab
         function updateAllStudentStatus() {
-            const studentRows = table.querySelectorAll('tr');
-            
-            // Iterate through all students and update their status
-            studentRows.forEach((row, index) => {
-                const studentId = index + 1;
-                const studentRecord = attendanceData.find(record => record.id === studentId);
+            const studentRows = document.querySelectorAll('#studentTable tr');
+            studentRows.forEach(row => {
+                const studentId = row.id.split('-')[1];
+                const studentRecord = attendanceData.find(record => record.id === parseInt(studentId));
                 const studentStatusCell = row.querySelector(`#status-${studentId}`);
                 const studentStatusTimeCell = row.querySelector(`#time-${studentId}`);
 
@@ -213,7 +220,7 @@
                     const status = studentRecord.status;
                     const reason = studentRecord.status === 'Absent' ? studentRecord.reason : 'N/A';
                     const time = studentRecord.time;
-                    
+
                     // Update the student status
                     studentStatusCell.innerHTML = `<span class="badge ${status === 'Present' ? 'bg-success' : 'bg-danger'}">${status}</span>`;
                     studentStatusTimeCell.innerText = time;
@@ -221,26 +228,18 @@
             });
         }
 
-        // Function to load the attendance data and show it
-        function loadAttendanceData() {
-            updateAllStudentStatus();
-
-            // Load previous attendance data from localStorage and display it in the log
-            attendanceData.forEach(entry => {
-                const logEntry = document.createElement('tr');
-                const statusIcon = entry.status === 'Present' ? '✔' : '✘';
-                logEntry.innerHTML = `
-                    <td>${entry.date}</td>
-                    <td>${entry.name}</td>
-                    <td>${statusIcon}</td>
-                    <td>${entry.status === 'Absent' ? entry.reason : 'N/A'}</td>
-                `;
-                logList.appendChild(logEntry);
-            });
-        }
+        // Listen for changes in localStorage and update status across all tabs
+        window.addEventListener('storage', function(event) {
+            if (event.key === 'attendanceData') {
+                const updatedAttendanceData = JSON.parse(event.newValue);
+                attendanceData.length = 0;
+                attendanceData.push(...updatedAttendanceData);
+                updateAllStudentStatus(); // Update UI in current tab
+            }
+        });
 
         // Load the attendance data on page load
-        loadAttendanceData();
+        updateAllStudentStatus();
 
         // Function to delete the log if the correct admin key is entered
         function deleteLog() {
