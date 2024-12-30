@@ -1,312 +1,266 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Platform Belajar Berbagi</title>
-    <link rel="icon" href="favicon.jpg" type="image/x-icon">
-    
+    <title>Absensi Online</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: hsl(0, 0%, 100%);
-            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
         }
-
-        header {
-            background-image:url(bg3.jpg);
-            background-size: 1500px 1500px;
-            color: rgb(255, 255, 255);
-            text-align: center;
-            padding: 20px;
-        }
-
-        nav {
-            background-color: #025613;
-            display: flex;
-            justify-content: center;
-            padding: 10px;
-        }
-
-        nav a {
-            color: rgb(255, 255, 255);
-            padding: 14px 20px;
-            text-decoration: none;
-            text-align: center;
-        }
-
-        nav a:hover {
-            background-color: #2980B9;
-        }
-
-        section {
-            padding: 20px;
-            margin: 20px;
-            background-color:rgb(87, 109, 87);
-            background-size: 2000px 1500px;
+        .container {
+            margin-top: 50px;
+            background: #ffffff;
+            padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
-        h2 {
-            color: #fcfcfd;
-        }
-
-        .card {
-            background-color: hsla(0, 0%, 100%, 0.913);
-            padding: 15px;
-            margin: 10px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.354);
-        }
-
-        .card h3 {
-            color: #297fb9;
-        }
-
-        .card p {
-            color: #7f8c8d;
-        }
-
-        footer {
-            background-color: #025613;
-            color: white;
+        h1 {
             text-align: center;
-            padding: 20px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            margin-bottom: 20px;
+            color: #495057;
         }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-            }
-
-            .card {
-                margin: 5px 0;
-            }
-        }
-
-        .quiz-container {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
+        table {
             margin-top: 20px;
         }
-
-        .quiz-container button {
-            background-color: #aac91f;
-            color: white;
-            padding: 10px 20px;
+        .btn-primary {
+            background-color: #007bff;
             border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .absent-btn, .present-btn {
+            width: 100%;
             cursor: pointer;
-            border-radius: 5px;
         }
-
-        .quiz-container button:hover {
-            background-color: #3498DB;
+        .input-group {
+            margin-top: 20px;
         }
-        /* Reset dan umumkan default styling */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f6f9;
-    color: #333;
-    line-height: 1.6;
-}
-
-/* Styling untuk Heading utama */
-h2 {
-    text-align: center;
-    font-size: 32px;
-    margin-bottom: 40px;
-    color: #2c3e50;
-}
-
-/* Styling untuk card-container */
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 0 20px;
-}
-
-/* Styling untuk card */
-.card {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-}
-
-.card h3 {
-    font-size: 24px;
-    color: #2c3e50;
-    margin-bottom: 15px;
-}
-
-.card p {
-    font-size: 16px;
-    color: #7f8c8d;
-    margin-bottom: 20px;
-}
-
-.card a.cta-button {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: #3498db;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.card a.cta-button:hover {
-    background-color: #2980b9;
-}
-
-/* Responsif untuk layar lebih kecil */
-@media (max-width: 768px) {
-    .card-container {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .card-container {
-        grid-template-columns: 1fr;
-    }
-
-    h2 {
-        font-size: 28px;
-    }
-}
-
+        .absent-reason {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Sistem Absensi Siswa</h1>
+        <button class="btn btn-info mb-3" onclick="downloadExcel()">Download Attendance Report (Excel)</button>
 
-    <header>
-        <h1 style="font-size: 32px;">Selamat Datang di Platform Belajar Berbagi</h1>
-        <p>Temukan berbagai materi pembelajaran yang sesuai dengan kebutuhanmu!</p>
-    </header>
+        <!-- Attendance Table -->
+        <table class="table table-bordered">
+            <thead class="table-light">
+                <tr>
+                    <th>No</th>
+                    <th>Nama Siswa</th>
+                    <th>Action</th>
+                    <th>Status</th>
+                    <th>Waktu</th>
+                </tr>
+            </thead>
+            <tbody id="studentTable">
+                <!-- Rows will be dynamically added here -->
+            </tbody>
+        </table>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="#courses">Bank Soal</a>
-        <a href="#resources">Sumber Belajar</a>
-        <a href="#contact"> Modul Ajar</a>
-    </nav>
-
-    <section id="courses">
-        <h2>Bank Soal Kelas 6 Kurikulum Merdeka</h2>
-        <div class="card-container">
-            <div class="card">
-                <h3>Bahasa Indonesia</h3>
-                <p>Silahkan berlatih soal-soal bahasa Indonesia.</p>
-                <a href="Bank Soal.html" class="cta-button">Lihat Soal</a>
-            </div>
-            <div class="card">
-                <h3>IPAS</h3>
-                <p>Silahkan berlatih soal-soal IPAS.</p>
-                <a href="Bank Soal 2.html" class="cta-button">Lihat soal</a>
-            </div>
-            <div class="card">
-                <h3>Matematika</h3>
-                <p>Silahkan berlatih soal-soal Matematika.</p>
-                <a href="Bank Soal 2.html" class="cta-button">Lihat soal</a>
-            </div>
-            <div class="card">
-                <h3>Pancasila</h3>
-                <p>Silahkan berlatih soal-soal Pancasila.</p>
-                <a href="Bank Soal 2.html" class="cta-button">Lihat soal</a>
-            </div>
-            <div class="card">
-                <h3>Seni</h3>
-                <p>Silahkan berlatih soal-soal Seni.</p>
-                <a href="Bank Soal 2.html" class="cta-button">Lihat soal</a>
-            </div>
+        <!-- Attendance Log Table -->
+        <div id="attendanceLog" class="mt-4">
+            <h3>Attendance Log:</h3>
+            <table class="table table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Nama Siswa</th>
+                        <th>Status</th>
+                        <th>Alasan (bila tidak hadir)</th>
+                    </tr>
+                </thead>
+                <tbody id="logList">
+                    <!-- Log entries will be dynamically added here -->
+                </tbody>
+            </table>
         </div>
-    </section>
-    
-    <section id="resources">
-        <h2>Sumber Belajar</h2>
-        <div class="card-container">
-            <div class="card">
-                <h3>Artikel Pembelajaran</h3>
-                <p>Baca artikel-artikel yang mengupas berbagai topik dalam dunia teknologi dan pembelajaran.</p>
-                <a href="#" class="cta-button">Baca Artikel</a>
-            </div>
-            <div class="card">
-                <h3>Video Pembelajaran</h3>
-                <p>Menonton video tutorial untuk memahami materi secara lebih visual.</p>
-                <a href="Video pembelajaran.html" class="cta-button">Tonton Video</a>
-            </div>
-            <div class="card">
-                <h3>Forum Diskusi</h3>
-                <p>Bergabunglah dengan komunitas kami untuk bertanya dan berdiskusi dengan sesama pelajar.</p>
-                <a href="forum diskusi.html" class="cta-button">Bergabung Sekarang</a>
-            </div>
-        </div>
-    </section>
-    
-    <section id="quiz">
-        <h2>Modul Ajar</h2>
-        <div class="card-container">
-            <div class="card">
-                <h3>Artikel Pembelajaran</h3>
-                <p>Baca artikel-artikel yang mengupas berbagai topik dalam dunia teknologi dan pembelajaran.</p>
-                <a href="#" class="cta-button">Baca Artikel</a>
-            </div>
-            <div class="card">
-                <h3>Video Pembelajaran</h3>
-                <p>Menonton video tutorial untuk memahami materi secara lebih visual.</p>
-                <a href="Video pembelajaran.html" class="cta-button">Tonton Video</a>
-            </div>
-            <div class="card">
-                <h3>Forum Diskusi</h3>
-                <p>Bergabunglah dengan komunitas kami untuk bertanya dan berdiskusi dengan sesama pelajar.</p>
-                <a href="forum diskusi.html" class="cta-button">Bergabung Sekarang</a>
-            </div>
-        </div>
-    </section>
-    
-    <section id="contact">
-        <h2>Kontak Kami</h2>
-    <p>Klik tombol di bawah untuk menulis email kepada kami melalui Gmail.</p>
-    <!-- Tautan untuk menulis email di Gmail -->
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yadicahyadi71@guru.sd.belajar.id&su=Judul%20Email&body=Isi%20email%20di%20sini" target="_blank">
-        <button style="padding: 10px 20px; font-size: 16px; background-color: #4285F4; color: white; border: none; border-radius: 5px;">
-            Tulis Email di Gmail
-        </button>
-    </a>
-<a href="https://mail.google.com/mail/?view=cm&fs=1&to=yadicahyadi71@guru.sd.belajar.id&su=Judul%20Email&body=Isi%20email%20di%20sin
-    
-    <section id="contact">
-        
-        <p>Telepon: 0800-123-4567</p>
-    </section>
 
-    <footer>
-        <p>&copy; 2024 Platform Pembelajaran Online | Semua Hak Dilindungi</p>
-    </footer>
+        <!-- Admin Area for Deleting Logs -->
+        <div class="input-group mb-3 mt-5">
+            <input type="password" id="adminKey" class="form-control" placeholder="Enter Admin Key" aria-label="Enter Admin Key">
+            <button class="btn btn-danger" onclick="deleteLog()">Delete Log</button>
+        </div>
+        <div id="adminMessage" class="alert alert-info mt-2" style="display: none;"></div>
+    </div>
 
+    <script>
+        const students = [
+            { name: 'John Doe', pin: '1' },
+            { name: 'Jane Smith', pin: '2' },
+            { name: 'Alice Johnson', pin: '3' },
+            { name: 'Bob Brown', pin: '4' }
+        ];
+
+        const table = document.getElementById('studentTable');
+        const logList = document.getElementById('logList');
+        const attendanceData = JSON.parse(localStorage.getItem('attendanceData')) || [];
+        const ADMIN_KEY = "admin123"; // Set the admin key (password) here
+
+        let studentCount = 0;
+
+        // Dynamically create student rows
+        students.forEach(student => {
+            studentCount++;
+            const row = document.createElement('tr');
+            row.id = `student-${studentCount}`;
+
+            row.innerHTML = `
+                <td>${studentCount}</td>
+                <td>${student.name}</td>
+                <td>
+                    <input type="password" id="pin-${studentCount}" class="form-control mb-2" placeholder="Enter PIN">
+                    <button class="btn btn-success btn-sm present-btn" onclick="markAttendance(this, 'Present', '${student.name}', ${studentCount})">Present</button>
+                    <button class="btn btn-danger btn-sm absent-btn" onclick="showReasonInput(${studentCount})">Absent</button>
+                    <div id="reason-group-${studentCount}" class="absent-reason" style="display: none;">
+                        <input type="text" id="reason-${studentCount}" class="form-control mt-2" placeholder="Please enter the reason for being absent">
+                        <button class="btn btn-primary mt-2" onclick="markAttendance(this, 'Absent', '${student.name}', ${studentCount})">Submit Absence</button>
+                    </div>
+                </td>
+                <td id="status-${studentCount}"></td>
+                <td id="time-${studentCount}"></td>
+            `;
+
+            table.appendChild(row);
+        });
+
+        // Function to show the reason input for Absent
+        function showReasonInput(studentId) {
+            const reasonGroup = document.getElementById(`reason-group-${studentId}`);
+            reasonGroup.style.display = 'block';
+        }
+
+        // Function to mark attendance
+        function markAttendance(button, status, name, studentId) {
+            const pinInput = document.getElementById(`pin-${studentId}`);
+            const enteredPin = pinInput.value.trim();
+            const correctPin = students[studentId - 1].pin;
+
+            if (enteredPin !== correctPin) {
+                alert('Incorrect PIN!');
+                return;
+            }
+
+            const reasonInput = document.getElementById(`reason-${studentId}`).value.trim();
+            const statusCell = document.getElementById(`status-${studentId}`);
+            const timeCell = document.getElementById(`time-${studentId}`);
+            const currentTime = new Date().toLocaleString();
+
+            // Get today's date
+            const today = new Date().toLocaleDateString();
+
+            if (status === 'Absent' && !reasonInput) {
+                alert('Please provide a reason for being absent!');
+                return;
+            }
+
+            // Set attendance status
+            statusCell.innerHTML = `<span class="badge ${status === 'Present' ? 'bg-success' : 'bg-danger'}">${status}</span>`;
+            timeCell.innerText = currentTime;
+
+            // Log attendance
+            const reason = status === 'Absent' ? reasonInput : 'N/A';
+            const logEntry = document.createElement('tr');
+            const statusIcon = status === 'Present' ? '✔' : '✘';
+            logEntry.innerHTML = `
+                <td>${today}</td>
+                <td>${name}</td>
+                <td>${statusIcon}</td>
+                <td>${reason}</td>
+            `;
+            logList.appendChild(logEntry);
+
+            // Save attendance data
+            const attendanceRecord = { id: studentId, name: name, status: status, time: currentTime, date: today, reason: reason };
+            attendanceData.push(attendanceRecord);
+
+            // Update localStorage with the latest attendance data
+            localStorage.setItem('attendanceData', JSON.stringify(attendanceData));
+
+            // Hide the reason input
+            const reasonGroup = document.getElementById(`reason-group-${studentId}`);
+            reasonGroup.style.display = 'none';
+
+            // Disable buttons after attendance is marked
+            const buttons = button.closest('tr').querySelectorAll('button');
+            buttons.forEach(btn => btn.disabled = true);
+
+            // Update all student statuses globally
+            updateAllStudentStatus();
+        }
+
+        // Function to update the status of all students
+        function updateAllStudentStatus() {
+            const studentRows = table.querySelectorAll('tr');
+            
+            // Iterate through all students and update their status
+            studentRows.forEach((row, index) => {
+                const studentId = index + 1; // Get the student ID from the row index
+                const studentStatusCell = document.getElementById(`status-${studentId}`);
+                const studentStatusTimeCell = document.getElementById(`time-${studentId}`);
+                
+                const studentRecord = attendanceData.find(record => record.id === studentId);
+                
+                if (studentRecord) {
+                    const status = studentRecord.status;
+                    const reason = studentRecord.status === 'Absent' ? studentRecord.reason : 'N/A';
+                    const time = studentRecord.time;
+                    
+                    // Update the student status
+                    studentStatusCell.innerHTML = `<span class="badge ${status === 'Present' ? 'bg-success' : 'bg-danger'}">${status}</span>`;
+                    studentStatusTimeCell.innerText = time;
+                }
+            });
+        }
+
+        // Load previous attendance data from localStorage and display it in the log
+        function loadAttendanceLog() {
+            attendanceData.forEach(entry => {
+                const logEntry = document.createElement('tr');
+                const statusIcon = entry.status === 'Present' ? '✔' : '✘';
+                logEntry.innerHTML = `
+                    <td>${entry.date}</td>
+                    <td>${entry.name}</td>
+                    <td>${statusIcon}</td>
+                    <td>${entry.status === 'Absent' ? entry.reason : 'N/A'}</td>
+                `;
+                logList.appendChild(logEntry);
+            });
+        }
+
+        // Load the attendance log on page load
+        loadAttendanceLog();
+
+        // Function to delete the log if the correct admin key is entered
+        function deleteLog() {
+            const adminKey = document.getElementById('adminKey').value;
+            const messageDiv = document.getElementById('adminMessage');
+
+            if (adminKey === ADMIN_KEY) {
+                localStorage.removeItem('attendanceData');  // Remove the log data from localStorage
+                attendanceData.length = 0;  // Clear the in-memory attendance data
+                logList.innerHTML = '';  // Clear the log table
+                messageDiv.style.display = 'block';
+                messageDiv.className = 'alert alert-success';
+                messageDiv.innerHTML = 'Attendance log has been successfully deleted!';
+            } else {
+                messageDiv.style.display = 'block';
+                messageDiv.className = 'alert alert-danger';
+                messageDiv.innerHTML = 'Invalid admin key! Please try again.';
+            }
+
+            // Clear the input field
+            document.getElementById('adminKey').value = '';
+        }
+    </script>
 </body>
 </html>
