@@ -1,289 +1,252 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Platform Belajar Bermakna</title>
-    <link rel="icon" href="dl.png" type="image/x-icon">
-    <style>
-        /* Reset dasar */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Platform Belajar Bermakna — Kelas 6</title>
+  <link rel="icon" href="dl.png" type="image/x-icon"/>
 
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            background-color: #f4f6f9;
-            color: #333;
-        }
+  <style>
+    /* Reset ringkas */
+    *,*::before,*::after{box-sizing:border-box}
+    html:focus-within{scroll-behavior:smooth}
+    body,h1,h2,h3,p{margin:0}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
 
-        /* Header */
-        header {
-            background: url('bg7.jpg') no-repeat center/cover;
-            color: #000000;
-            text-align: center;
-            padding: 50px 20px;
-        }
+    /* Tokens */
+    :root{
+      --bg:#f6f8fb;
+      --surface:#ffffff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --brand:#0ea5e9;         /* sky-500 */
+      --brand-600:#0284c7;     /* sky-600 */
+      --accent:#22c55e;
 
-        header h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
+      --card:#ffffff;
+      --radius:16px;
+      --shadow:0 12px 28px rgba(2,8,23,.10);
+      --border:1px solid color-mix(in oklab, var(--muted) 22%, transparent);
 
-        header p {
-            font-size: 18px;
-        }
+      --container:1200px;
+      --ring:0 0 0 3px rgba(14,165,233,.35);
 
-        /* Navigasi */
-        nav {
-            background-color: #2355d4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 20px;
-        }
+      /* Kartu horizontal ramping */
+      --card-w:210px;
+      --thumb-h:96px;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b1220; --surface:#0f172a; --text:#e5e7eb; --muted:#94a3b8;
+        --card:#111827; --shadow:0 10px 30px rgba(2,8,23,.35);
+      }
+    }
 
-        nav a {
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
+    /* Base */
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,"Helvetica Neue",Arial,"Noto Sans";
+      background:
+        radial-gradient(1200px 380px at 8% -8%, color-mix(in oklab, var(--brand) 15%, transparent), transparent 60%),
+        radial-gradient(1000px 360px at 110% -20%, color-mix(in oklab, var(--accent) 15%, transparent), transparent 60%),
+        var(--bg);
+      color:var(--text); line-height:1.6; min-height:100dvh; display:flex; flex-direction:column;
+    }
+    a:focus-visible,button:focus-visible,input:focus-visible{outline:none;box-shadow:var(--ring);border-radius:.6rem}
 
-        nav a:hover {
-            background-color: #2980b9;
-            border-radius: 5px;
-        }
+    /* HEADER (foto + overlay, konsep awal) */
+    header.hero{
+      position:relative; text-align:center; color:#fff;
+      padding:clamp(36px,6.5vw,72px) 20px; overflow:hidden; isolation:isolate;
+    }
+    header.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:url('bg7.jpg') center/cover no-repeat;transform:scale(1.02)}
+    header.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(2,8,23,.50),rgba(2,8,23,.40) 40%,rgba(2,8,23,.50))}
+    .hero h1{font-size:clamp(26px,4.6vw,40px);font-weight:800;letter-spacing:.2px;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+    .hero p.sub{font-size:clamp(13px,2.2vw,17px);margin-top:6px;opacity:.95;text-shadow:0 1px 12px rgba(0,0,0,.28)}
 
-        /* Section */
-        section {
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    /* NAV putih + chip ala gambar */
+    .nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e5e7eb;backdrop-filter:blur(8px)}
+    .nav .inner{max-width:var(--container);margin-inline:auto;padding:10px 16px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+    .navlinks{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+    .navlinks a{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:8px 12px;border-radius:12px;font-weight:600;font-size:15.5px;
+      color:#64748b;transition:background-color .18s,color .18s,transform .18s
+    }
+    .navlinks a:hover{background:#f1f7ff;color:#0f172a}
+    .navlinks a[aria-current="page"], .navlinks a.active{
+      background:#dbeafe; color:#0f172a; font-weight:700; box-shadow:inset 0 1px 0 rgba(255,255,255,.6)
+    }
 
-        section h2 {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: #2355d4;
-        }
+    /* Section wrapper */
+    .section{max-width:var(--container);margin:0 auto;padding:32px 20px}
+    .section h2{text-align:center;font-size:clamp(21px,2.6vw,26px);letter-spacing:.2px;margin-bottom:16px;color:var(--brand-600)}
 
-        /* Kartu */
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            justify-items: center;
-            align-items: stretch;
-        }
+    /* Kartu horizontal (menyamping) */
+    .card-strip{display:flex;gap:14px;align-items:stretch;overflow-x:auto;padding:6px 2px 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+    .card-strip::-webkit-scrollbar{height:7px}
+    .card-strip::-webkit-scrollbar-thumb{background:#d5dbe4;border-radius:999px}
 
-        .card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            padding: 15px;
-        }
+    .card{
+      flex:0 0 var(--card-w);scroll-snap-align:start;background:var(--card);
+      border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow);
+      padding:12px;display:flex;flex-direction:column;text-align:center;transition:.22s transform,.22s box-shadow,.22s border-color
+    }
+    .card:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(2,8,23,.12);border-color:color-mix(in oklab,var(--brand) 28%,transparent)}
+    .card img{width:100%;height:var(--thumb-h);object-fit:cover;object-position:center;border-radius:12px;margin-bottom:8px;background:#eaeef4}
+    .card h3{font-size:16px;font-weight:800;margin-bottom:6px;color:var(--text)}
+    .card p{font-size:13px;color:var(--muted);margin-bottom:10px;text-wrap:balance;min-height:34px}
+    .card a{
+      margin-top:auto;display:inline-flex;align-items:center;justify-content:center;width:100%;
+      padding:.58rem .8rem;border-radius:.7rem;background:linear-gradient(135deg,var(--brand),var(--brand-600));
+      color:#fff;font-weight:800;letter-spacing:.2px;border:1px solid transparent;transition:.18s filter,.18s transform,.18s box-shadow;box-shadow:0 8px 18px rgba(2,8,23,.12)
+    }
+    .card a:hover{filter:brightness(1.05);transform:translateY(-1px)}
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
+    /* Kontak & Footer */
+    #contact p{text-align:center;font-size:15px;margin:8px 0;color:var(--text)}
+    #contact a{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;background:#f0f0f0;color:#000;font-weight:700;border-radius:10px;border:1px solid color-mix(in oklab,var(--muted) 25%, transparent)}
+    #contact a:hover{background:#54616a;color:#fff}
+    footer{margin-top:auto;color:var(--muted);border-top:1px solid color-mix(in oklab,var(--muted) 20%, transparent);padding:18px}
+    .foot-inner{max-width:var(--container);margin-inline:auto;text-align:center;padding-inline:1rem}
 
-        .card img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            font-size: 18px;
-            margin-bottom: 12px;
-            color: #2c3e50;
-            font-weight: bold;
-        }
-
-        .card p {
-            color: #7f8c8d;
-            margin-bottom: 20px;
-            font-size: 14px;
-            flex-grow: 1;
-        }
-
-        .card a {
-            display: inline-block;
-            padding: 12px 20px;
-            background-color: #3498db;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 14px;
-            margin-top: auto;
-            transition: background-color 0.3s;
-            text-align: center;
-        }
-
-        .card a:hover {
-            background-color: #2980b9;
-        }
-
-        /* Kontak */
-        #contact p {
-            text-align: center;
-            font-size: 16px;
-            margin: 15px 0;
-        }
-
-        #contact a {
-            display: inline-block;
-            padding: 12px 20px;
-            color: #000000;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 10px auto;
-            transition: background-color 0.3s ease;
-            background-color: #f0f0f0;
-            font-weight: bold;
-        }
-
-        #contact a:hover {
-            background-color: #54616a;
-            color: #ffffff;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #2355d4;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            margin-top: auto;
-        }
-
-        footer p {
-            margin: 5px 0;
-        }
-
-        /* Responsif */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-            }
-
-            nav a {
-                margin: 5px 0;
-            }
-
-            .card-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    /* Responsif */
+    @media (max-width:520px){
+      .nav .inner{padding:8px 12px;gap:8px}
+      .navlinks{gap:10px}
+      .navlinks a{font-size:15px;padding:7px 10px;border-radius:10px}
+      :root{--card-w:200px;--thumb-h:90px}
+      .card{padding:11px}
+    }
+    @media (min-width:1280px){ :root{--card-w:230px} }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Platform Belajar Bermakna</h1>
-        <h1>Kelas 6</h1>
-    </header>
+  <!-- Header -->
+  <header class="hero">
+    <h1>Platform Belajar Bermakna</h1>
+    <p class="sub">Kelas 6</p>
+  </header>
 
-    <nav>
-        <a href="index.html">Home</a>
+  <!-- NAV putih + chip aktif biru muda (sesuai gambar) -->
+  <nav class="nav" role="navigation" aria-label="Navigasi utama">
+    <div class="inner">
+      <div class="navlinks">
+        <a href="index.html" aria-current="page">Home</a>
         <a href="bank soal.html">Bank Soal</a>
         <a href="modul ajar indo6.html">Modul Ajar</a>
         <a href="videopembelajaran.html">Video Pembelajaran</a>
         <a href="Bukudigital.html">Buku Digital</a>
         <a href="forum diskusi.html">Forum Diskusi</a>
-    </nav>
+      </div>
+    </div>
+  </nav>
 
-    <section id="courses">
-        <h2>Pasilitas Pembelajaran</h2>
-        <div class="card-container">
-            <div class="card">
-                <img src="banksoal.png" alt="Bank Soal">
-                <h3>Bank Soal</h3>
-                <p>Silahkan berlatih soal-soal dari berbagai mata pelajaran.</p>
-                <a href="bank soal.html">Lihat Soal</a>
-            </div>
-            <div class="card">
-                <img src="modulajar.png" alt="Sumber Belajar">
-                <h3>Modul Ajar</h3>
-                <p>Silahkan Gunakan Sumber Belajar.</p>
-                <a href="modul ajar indo6.html">Lihat Soal</a>
-            </div>
-            <div class="card">
-                <img src="videopembelajaran.png" alt="Video Pembelajaran">
-                <h3>Video Pembelajaran</h3>
-                <p>Silahkan Menggunakan Video Pembelajaran.</p>
-                <a href="videopembelajaran.html">Lihat Video</a>
-            </div>
-            <div class="card">
-                <img src="forumdiskusi.png" alt="Forum Diskusi">
-                <h3>Forum Diskusi</h3>
-                <p>Silahkan Gunakan Forum ini Untuk Berdiskusi.</p>
-                <a href="forum diskusi.html">Ayo diskusi</a>
-            </div>
-            <div class="card">
-                <img src="bukudigital.png" alt="Buku Digital">
-                <h3>Buku Digital atau E-book</h3>
-                <p>Silahkan Menggali informasi dengan membaca.</p>
-                <a href="Bukudigital.html">Lihat Buku</a>
-            </div>
-            <div class="card">
-                <img src="logocp.png" alt="Quiz Online">
-                <h3>Bank TP</h3>
-                <p>Ikuti quiz menarik untuk menambah wawasan.</p>
-                <a href="bank tp.html">Lihat TP</a>
-            </div>
-            <div class="card">
-                <img src="forumdiskusi.png" alt="Quiz Online">
-                <h3>Kumpulan CP</h3>
-                <p>Ikuti quiz menarik untuk menambah wawasan.</p>
-                <a href="quiz.html">Mulai Quiz</a>
-            </div>
-            <div class="card">
-                <img src="forumdiskusi.png" alt="Quiz Online">
-                <h3>Kumpulan CP</h3>
-                <p>Ikuti quiz menarik untuk menambah wawasan.</p>
-                <a href="quiz.html">Mulai Quiz</a>
-            </div>
-            <div class="card">
-                <img src="forumdiskusi.png" alt="Quiz Online">
-                <h3>Kumpulan CP</h3>
-                <p>Ikuti quiz menarik untuk menambah wawasan.</p>
-                <a href="quiz.html">Mulai Quiz</a>
-            </div>
-            <div class="card">
-                <img src="forumdiskusi.png" alt="Quiz Online">
-                <h3>Kumpulan CP</h3>
-                <p>Ikuti quiz menarik untuk menambah wawasan.</p>
-                <a href="baru.html">Mulai Quiz</a>
-            </div>
-        </div>
-    </section>
+  <!-- Fasilitas -->
+  <section class="section" id="courses">
+    <h2>Fasilitas Pembelajaran</h2>
+    <div class="card-strip" id="cards">
+      <article class="card">
+        <img src="banksoal.png" alt="Bank Soal">
+        <h3>Bank Soal</h3>
+        <p>Silahkan berlatih soal-soal dari berbagai mata pelajaran.</p>
+        <a href="bank soal.html">Lihat Soal</a>
+      </article>
 
-    <section id="contact">
-        <div class="contact-info">
-            <p><strong>📍 Alamat:</strong> Jalan Raya Taman Purbakala
+      <article class="card">
+        <img src="modulajar.png" alt="Modul Ajar">
+        <h3>Modul Ajar</h3>
+        <p>Silahkan Gunakan Sumber Belajar.</p>
+        <a href="modul ajar indo6.html">Lihat Soal</a>
+      </article>
 
-            <p><strong>📱 Telepon:</strong> 0881 2071 728</p>
-            <p><strong>✉️ Email:</strong> <a href="mailto:yadicahyadi71@guru.sd.belajar.id">yadicahyadi71@guru.sd.belajar.id</a></p>
-        </div>
-    </section>
+      <article class="card">
+        <img src="videopembelajaran.png" alt="Video Pembelajaran">
+        <h3>Video Pembelajaran</h3>
+        <p>Silahkan Menggunakan Video Pembelajaran.</p>
+        <a href="Video pembelajaran.html">Lihat Video</a>
+      </article>
 
-    <footer>
-        <p>&copy; 2024 Platform Pembelajaran Bermakna | Semua Hak Dilindungi</p>
-    </footer>
+      <article class="card">
+        <img src="forumdiskusi.png" alt="Forum Diskusi">
+        <h3>Forum Diskusi</h3>
+        <p>Silahkan Gunakan Forum ini Untuk Berdiskusi.</p>
+        <a href="forum diskusi.html">Ayo Diskusi</a>
+      </article>
+
+      <article class="card">
+        <img src="bukudigital.png" alt="Buku Digital">
+        <h3>Buku Digital atau E-book</h3>
+        <p>Silahkan Menggali informasi dengan membaca.</p>
+        <a href="Bukudigital.html">Lihat Buku</a>
+      </article>
+
+      <article class="card">
+        <img src="logocp.png" alt="Bank TP">
+        <h3>Bank TP</h3>
+        <p>Ikuti quiz menarik untuk menambah wawasan.</p>
+        <a href="bank tp.html">Lihat TP</a>
+      </article>
+
+      <article class="card">
+        <img src="forumdiskusi.png" alt="Kumpulan CP">
+        <h3>Kumpulan CP</h3>
+        <p>Ikuti quiz menarik untuk menambah wawasan.</p>
+        <a href="quiz.html">Mulai Quiz</a>
+      </article>
+
+      <article class="card">
+        <img src="forumdiskusi.png" alt="Kumpulan CP">
+        <h3>Kumpulan CP</h3>
+        <p>Ikuti quiz menarik untuk menambah wawasan.</p>
+        <a href="quiz.html">Mulai Quiz</a>
+      </article>
+
+      <article class="card">
+        <img src="forumdiskusi.png" alt="Kumpulan CP">
+        <h3>Kumpulan CP</h3>
+        <p>Ikuti quiz menarik untuk menambah wawasan.</p>
+        <a href="quiz.html">Mulai Quiz</a>
+      </article>
+
+      <article class="card">
+        <img src="forumdiskusi.png" alt="Fitur Baru">
+        <h3>Fitur Baru</h3>
+        <p>Ikuti quiz menarik untuk menambah wawasan.</p>
+        <a href="baru.html">Mulai Quiz</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Kontak -->
+  <section class="section" id="contact">
+    <div class="foot-inner">
+      <p><strong>📍 Alamat:</strong> Jalan Raya Taman Purbakala</p>
+      <p><strong>📱 Telepon:</strong> 0881 2071 728</p>
+      <p><strong>✉️ Email:</strong> <a href="mailto:yadicahyadi71@guru.sd.belajar.id">yadicahyadi71@guru.sd.belajar.id</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <div class="foot-inner">
+      <small>&copy; <span id="year"></span> Platform Pembelajaran Bermakna — Kelas 6. Semua Hak Dilindungi.</small>
+    </div>
+  </footer>
+
+  <script>
+    // Tahun dinamis
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // (Opsional) set "active" otomatis berdasar URL
+    const links = document.querySelectorAll('.navlinks a');
+    const here = location.pathname.split('/').pop() || 'index.html';
+    let matched = false;
+    links.forEach(a=>{
+      const file = a.getAttribute('href');
+      if(file && file.endsWith(here)){ a.setAttribute('aria-current','page'); matched = true; }
+    });
+    if(!matched){ links[0]?.setAttribute('aria-current','page'); }
+  </script>
 </body>
 </html>
