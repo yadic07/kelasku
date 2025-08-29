@@ -1,279 +1,734 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pembelajaran Bermakna</title>
-  <link rel="icon" href="dl.png" type="image/x-icon">
-  <meta name="description" content="Belajar bermakna dengan materi lengkap, interaktif, dan menyenangkan untuk Kelas 1–6.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembelajaran Bermakna - SD Kurikulum Merdeka</title>
+    
+    <!-- 
+    ========================================
+    CARA MENGGANTI FAVICON DENGAN GAMBAR ANDA:
+    ========================================
+    
+    1. CONVERT GAMBAR ANDA KE FAVICON:
+       - Kunjungi: https://favicon.io/favicon-converter/
+       - Upload gambar Anda (JPG/PNG apapun)
+       - Klik "Download" untuk dapat file ZIP
+       - Extract ZIP tersebut
+    
+    2. GANTI 4 FILE INI dengan hasil download:
+       - favicon.ico
+       - favicon-16x16.png  
+       - favicon-32x32.png
+       - apple-touch-icon.png
+    
+    3. LETAKKAN FILE di folder yang sama dengan HTML ini
+    
+    4. REFRESH BROWSER (Ctrl+F5) untuk melihat favicon baru
+    
+    ========================================
+    -->
+    
+    <!-- Favicon - Ikon yang muncul di tab browser -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="dl.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="dl.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="dl.png">
+    
+  
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; }
+        /* Background gradient - bisa diganti dengan warna solid atau gambar */
+        .gradient-bg { background: linear-gradient(135deg, #1e40af 0%, #0f172a 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        
+        /* Animasi bawah laut dengan lumba-lumba */
+        .underwater-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        /* Animasi logo naik turun */
+        .logo-float {
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
 
-  <style>
-    :root{
-      --brand:#0ea5e9;
-      --brand-600:#0284c7;
-      --accent:#ff6f00;
-      --accent-600:#e65c00;
-      --ink:#0f172a;
-      --muted:#475569;
-      --bg:#f8fafc;
-      --card:#ffffff;
-      --ring:rgba(14,165,233,.35);
-      --shadow:0 6px 24px rgba(0,0,0,.12);
-      --radius:16px;
-      --header-h:72px;
-    }
+        /* Gelembung air */
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: bubbleFloat ease-in-out infinite;
+        }
+        
+.bubble:nth-child(1) { width: 8px; height: 8px; left: 10%; animation-delay: 0s; animation-duration: 6s; }
+.bubble:nth-child(2) { width: 12px; height: 12px; left: 25%; animation-delay: 2s; animation-duration: 8s; }
+.bubble:nth-child(3) { width: 6px; height: 6px; left: 40%; animation-delay: 4s; animation-duration: 5s; }
+.bubble:nth-child(4) { width: 10px; height: 10px; left: 60%; animation-delay: 1s; animation-duration: 7s; }
+.bubble:nth-child(5) { width: 14px; height: 14px; left: 80%; animation-delay: 3s; animation-duration: 9s; }
+.bubble:nth-child(6) { width: 7px; height: 7px; left: 90%; animation-delay: 5s; animation-duration: 6s; }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-      color:var(--ink);
-      background:var(--bg);
-      display:flex;
-      flex-direction:column;
-    }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
+@keyframes bubbleFloat {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100px); }
+}
 
-    /* Header */
-    .header{
-      position:fixed; inset:0 0 auto 0; height:var(--header-h); z-index:50;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:0 16px; gap:12px;
-      background:rgba(255,255,255,.7);
-      backdrop-filter:saturate(140%) blur(10px);
-      border-bottom:1px solid rgba(2,8,23,.06);
-    }
-    .logo{width:180px;height:auto}
+        @keyframes bubbleFloat {
+            0% { 
+                transform: translateY(100vh) scale(0); 
+                opacity: 0; 
+            }
+            10% { 
+                opacity: 0.6; 
+                transform: scale(1); 
+            }
+            90% { 
+                opacity: 0.6; 
+            }
+            100% { 
+                transform: translateY(-50px) scale(0); 
+                opacity: 0; 
+            }
+        }
+        
 
-    .menu-icon{
-      display:flex; flex-direction:column; justify-content:space-between;
-      width:34px; height:22px; cursor:pointer; transition:.3s transform;
-    }
-    .menu-icon div{ height:3px; background:#0f172a; border-radius:999px; transition:.3s }
-    .menu-icon.open div:nth-child(1){ transform: translateY(9px) rotate(45deg) }
-    .menu-icon.open div:nth-child(2){ opacity:0 }
-    .menu-icon.open div:nth-child(3){ transform: translateY(-9px) rotate(-45deg) }
-
-    .dropdown-menu{
-      position:absolute; top:calc(var(--header-h) + 10px); right:12px;
-      display:none; flex-direction:column; width:220px; overflow:hidden;
-      background:var(--card); border:1px solid rgba(2,8,23,.08);
-      border-radius:14px; box-shadow:var(--shadow); animation:fadeIn .18s ease-out;
-    }
-    .dropdown-menu.open{display:flex}
-    .dropdown-menu a{
-      padding:12px 16px; font-size:14px; color:var(--ink);
-      border-bottom:1px solid rgba(2,8,23,.06);
-    }
-    .dropdown-menu a:last-child{border-bottom:none}
-    .dropdown-menu a:hover{ background:rgba(14,165,233,.08) }
-    @keyframes fadeIn{from{opacity:.6; transform:translateY(-6px)} to{opacity:1; transform:none}}
-
-    /* Hero + Video */
-    .hero-wrap{
-      position:relative; min-height:calc(100vh - var(--header-h));
-      display:grid; place-items:center; padding: clamp(56px,8vw,96px) 20px 64px;
-      margin-top:var(--header-h);
-      color:#fff; text-align:center;
-    }
-    .video-background{ position:absolute; inset:0; z-index:-2; overflow:hidden }
-    .video-background video{ width:100%; height:100%; object-fit:cover }
-    .hero-overlay{
-      position:absolute; inset:0; z-index:-1;
-      background:
-        linear-gradient(to bottom, rgba(2,8,23,.55), rgba(2,8,23,.35) 35%, rgba(2,8,23,.55)),
-        radial-gradient(1200px 700px at 50% 20%, rgba(14,165,233,.28), transparent 60%);
-    }
-    .hero{ max-width:900px; margin:auto }
-    .hero h1{
-      font-size: clamp(28px, 5vw, 48px);
-      line-height:1.1; letter-spacing:.2px; margin-bottom:14px; font-weight:800;
-      text-shadow:0 2px 18px rgba(0,0,0,.35);
-    }
-    .hero p{
-      font-size: clamp(15px, 2.2vw, 18px); line-height:1.7;
-      opacity:.95; margin:0 auto 22px; max-width:680px;
-      text-shadow:0 1px 12px rgba(0,0,0,.28);
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:14px 22px; font-size:16px; font-weight:700; letter-spacing:.2px;
-      color:#fff; background:linear-gradient(180deg, var(--accent), var(--accent-600));
-      border:none; border-radius:999px; cursor:pointer; transition:.22s transform, .22s box-shadow, .22s filter;
-      box-shadow:0 8px 20px rgba(230,92,0,.35);
-    }
-    .btn:hover{ transform:translateY(-2px); filter:saturate(1.05) }
-    .btn:focus-visible{ outline:3px solid var(--ring); outline-offset:3px }
-
-    /* Features */
-    .features{ background:var(--bg); padding:56px 18px 72px }
-    .features h2{
-      text-align:center; color:var(--brand-600);
-      font-size: clamp(22px, 3vw, 28px); margin:0 auto 20px;
-      font-weight:800; letter-spacing:.2px;
-    }
-    .feature-list{
-      --cols: 6;
-      display:grid; gap:18px; align-items:stretch;
-      grid-template-columns: repeat(var(--cols), minmax(0,1fr));
-      max-width:1200px; margin:24px auto 0; padding:0 4px;
-    }
-    @media (max-width:1200px){ .feature-list{ --cols: 4 } }
-    @media (max-width:900px){ .feature-list{ --cols: 3 } }
-    @media (max-width:640px){ .feature-list{ --cols: 2 } }
-    @media (max-width:420px){ .feature-list{ --cols: 1 } }
-
-    .feature{
-      background:var(--card);
-      border:1px solid rgba(2,8,23,.06);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:14px; display:flex; flex-direction:column; gap:12px;
-      transition:.2s transform, .2s box-shadow, .2s border-color;
-      text-align:center; /* teks tengah */
-    }
-    .feature:hover{ transform:translateY(-4px); box-shadow:0 16px 36px rgba(2,8,23,.12) }
-    .feature img{
-      width:100%;
-      height: clamp(160px, 22vw, 220px); /* seragam & responsif */
-      object-fit: cover;                 /* isi penuh, rapi */
-      object-position: center;
-      border-radius: calc(var(--radius) - 6px);
-      background: transparent;
-    }
-    .feature h3{
-      font-size:18px; font-weight:800; color:var(--ink);
-      margin:6px 4px 0; text-align:center;
-    }
-    .feature p{
-      font-size:14px; color:var(--muted);
-      margin:0 4px 6px; text-align:center;
-      text-wrap: balance;
-    }
-
-    /* Footer */
-    footer{
-      margin-top:auto; background:linear-gradient(180deg, var(--brand), var(--brand-600));
-      color:#fff; text-align:center; padding:20px;
-    }
-    footer p{margin:4px 0; font-size:14px}
-  </style>
+    </style>
 </head>
-<body>
+<body class="bg-gray-50">
+    <!-- Header dengan Logo -->
+    <header class="bg-white/95 backdrop-blur-md text-gray-800 shadow-lg sticky top-0 z-50 border-b border-gray-200/50">
+        <div class="container mx-auto px-6 py-4 relative">
+            <div class="flex items-center justify-between">
+                <!-- Logo di pojok kiri -->
+                <div class="flex items-center space-x-4">
+                    <!-- Logo Image - Ganti src dengan path gambar Anda -->
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-2 rounded-xl shadow-sm logo-float">
+                        <img src="logo.png" 
+                             alt="Logo Pembelajaran Bermakna" 
+                             class="w-10 h-10 object-contain rounded-lg"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        
+                        <!-- Fallback SVG jika gambar tidak ditemukan -->
+                        <svg width="40" height="40" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                            <!-- Body utama lumba-lumba -->
+                            <path d="M20 40 Q30 25 50 30 Q80 35 100 40 Q80 45 50 50 Q30 55 20 40" fill="#3B82F6"/>
+                            <!-- Gradient body untuk efek 3D -->
+                            <path d="M20 40 Q30 28 50 32 Q75 36 95 40 Q75 42 50 46 Q30 50 20 40" fill="#60A5FA"/>
+                            
+                            <!-- Ekor yang lebih proporsional -->
+                            <path d="M15 40 Q8 30 18 28 Q12 40 18 52 Q8 50 15 40" fill="#3B82F6"/>
+                            <path d="M15 40 Q10 32 16 30 Q12 40 16 50 Q10 48 15 40" fill="#60A5FA"/>
+                            
+                            <!-- Sirip punggung -->
+                            <path d="M45 30 Q50 20 60 25 Q55 35 45 30" fill="#1E40AF"/>
+                            
+                            <!-- Sirip samping -->
+                            <ellipse cx="35" cy="50" rx="12" ry="6" fill="#1E40AF" transform="rotate(-20 35 50)"/>
+                            
+                            <!-- Mata besar dan ekspresif -->
+                            <circle cx="70" cy="35" r="8" fill="white"/>
+                            <circle cx="72" cy="33" r="6" fill="#1F2937"/>
+                            <circle cx="74" cy="30" r="2" fill="white"/>
+                            <path d="M62 32 Q68 28 74 32" stroke="#1E40AF" stroke-width="1" fill="none"/>
+                            
+                            <!-- Hidung/moncong -->
+                            <ellipse cx="95" cy="40" rx="12" ry="8" fill="#60A5FA"/>
+                            <ellipse cx="95" cy="40" rx="8" ry="5" fill="#93C5FD"/>
+                            
+                            <!-- Senyuman yang manis -->
+                            <path d="M85 42 Q90 48 95 42" stroke="#1E40AF" stroke-width="2" fill="none" stroke-linecap="round"/>
+                            
+                            <!-- Highlight untuk efek mengkilap -->
+                            <ellipse cx="55" cy="35" rx="15" ry="5" fill="white" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <!-- Teks Logo -->
+                    <div class="hidden sm:block">
+                        <h1 class="text-xl font-bold bg-gradient-to-r from-blue-800 to-blue-600 bg-clip-text text-transparent">Pembelajaran Bermakna</h1>
+                        <p class="text-sm text-gray-500 font-medium">SD Kurikulum Merdeka</p>
+                    </div>
+                </div>
+                
+                <!-- Menu hamburger button untuk semua ukuran layar -->
+                <button class="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 transition-all duration-300 hover:scale-105" onclick="toggleMainMenu()" id="hamburgerBtn">
+                    <svg class="w-6 h-6 text-gray-700 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="hamburgerIcon">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" id="hamburgerLines"></path>
+                    </svg>
+                </button>
+            </div>
 
-  <!-- Header -->
-  <header class="header">
-    <img src="logosdn2krmgu.png" alt="Logo Sekolah" class="logo" />
-    <div class="menu-icon" aria-label="Buka menu" role="button" tabindex="0" onclick="toggleMenu()" onkeypress="if(event.key==='Enter'){toggleMenu()}">
-      <div></div><div></div><div></div>
+            <!-- Main menu dropdown - positioned absolutely -->
+            <div id="mainMenu" class="hidden absolute top-full right-0 w-48 bg-white/95 backdrop-blur-md shadow-lg border border-gray-200/50 rounded-lg z-50 mt-2 transform transition-all duration-300 ease-out opacity-0 scale-95">
+                <nav class="px-2 py-2 flex flex-col space-y-0.5">
+                    <!-- Menu Utama -->
+                    <a href="index.html" class="px-2 py-1.5 text-xs font-medium text-gray-700 rounded-md transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 hover:text-blue-700 flex items-center">
+                        <span>🏠 Beranda</span>
+                    </a>
+                    
+                    <a href="#subjects" onclick="scrollToSubjectsFromMenu(); setTimeout(toggleMainMenu, 100);" class="px-2 py-1.5 text-xs font-medium text-gray-700 rounded-md transition-all duration-300 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 hover:text-green-700 flex items-center">
+                        <span>📚 Layanan / Produk</span>
+                    </a>
+                    
+                    <a href="https://wa.me/6288120717728?text=Halo,%20saya%20tertarik%20dengan%20platform%20Pembelajaran%20Bermakna" target="_blank" class="px-2 py-1.5 text-xs font-medium text-gray-700 rounded-md transition-all duration-300 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-emerald-100 hover:text-emerald-700 flex items-center">
+                        <span>📱 Kontak / Hubungi Kami</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section - Background video yang memukau -->
+    <section class="text-white py-16 relative overflow-hidden" style="background: linear-gradient(135deg, #87CEEB 0%, #4682B4 25%, #1E90FF 50%, #0066CC 75%, #003D82 100%);">
+        <!-- Video Background -->
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0" 
+               onloadeddata="this.style.display='block'; this.nextElementSibling.style.display='none';"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <source src="videobg.mp4" type="video/mp4"/>
+            <source src="videobg.webm" type="video/webm"/>
+            <source src="videobg.ogv" type="video/ogg"/>
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Fallback background gradient jika video tidak tersedia -->
+        <div class="absolute inset-0 z-5" style="background: linear-gradient(135deg, #87CEEB 0%, #4682B4 25%, #1E90FF 50%, #0066CC 75%, #003D82 100%); display: block;"></div>
+        
+        <!-- Overlay untuk memastikan teks tetap terbaca -->
+        <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+        
+        <!-- Container animasi bawah laut -->
+        <div class="underwater-container z-20">
+            <!-- Gelembung air -->
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 text-center relative z-30">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-2xl" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5);">
+                Pembelajaran Bermakna untuk SD
+            </h2>
+            <p class="text-xl mb-8 text-white font-medium max-w-2xl mx-auto drop-shadow-xl" style="text-shadow: 1px 1px 6px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.4);">
+                Platform pembelajaran interaktif dengan ribuan soal dan materi berkualitas sesuai Kurikulum Merdeka
+            </p>
+            <!-- Tombol CTA - warna dan teks bisa diubah -->
+            <div class="flex justify-center">
+                <button onclick="scrollToSubjects()" class="bg-yellow-400 text-blue-900 px-8 py-3 rounded-full font-bold hover:bg-yellow-300 transition-all duration-300 shadow-2xl hover:shadow-yellow-400/50 transform hover:scale-105 cursor-pointer">
+                    Mulai Belajar
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Subject Cards - Kartu mata pelajaran bisa ditambah/dikurangi -->
+    <section id="subjects" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-800 mb-4">Pilih Mata Pelajaran</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">Temukan pembelajaran bermakna untuk semua mata pelajaran sesuai kurikulum merdeka</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Matematika - Warna dan konten bisa disesuaikan -->
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover cursor-pointer" onclick="openSubject('Matematika')">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                            <span class="text-2xl">🔢</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800">Matematika</h4>
+                            <p class="text-gray-600">1200 soal tersedia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Pembelajaran bermakna matematika dengan pendekatan kontekstual</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-blue-800 font-medium">Kelas 1-6</span>
+                        <button onclick="openSubject('Matematika')" class="bg-blue-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors">
+                            Mulai →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bahasa Indonesia -->
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover cursor-pointer" onclick="openSubject('Bahasa Indonesia')">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-100 p-3 rounded-lg mr-4">
+                            <span class="text-2xl">📚</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800">Bahasa Indonesia</h4>
+                            <p class="text-gray-600">950 soal tersedia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Pembelajaran literasi dan numerasi yang bermakna</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-red-600 font-medium">Kelas 1-6</span>
+                        <button onclick="openSubject('Bahasa Indonesia')" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
+                            Mulai →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- IPAS (gabungan IPA dan IPS) -->
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover cursor-pointer" onclick="openSubject('IPAS')">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 p-3 rounded-lg mr-4">
+                            <span class="text-2xl">🌱</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800">IPAS</h4>
+                            <p class="text-gray-600">850 soal tersedia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Ilmu Pengetahuan Alam dan Sosial terintegrasi</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-green-600 font-medium">Kelas 3-6</span>
+                        <button onclick="openSubject('IPAS')" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                            Mulai →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pendidikan Pancasila -->
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover cursor-pointer" onclick="openSubject('Pendidikan Pancasila')">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-yellow-100 p-3 rounded-lg mr-4">
+                            <span class="text-2xl">🏛️</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800">Pendidikan Pancasila</h4>
+                            <p class="text-gray-600">520 soal tersedia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Pembelajaran nilai-nilai Pancasila dan karakter</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-yellow-600 font-medium">Kelas 1-6</span>
+                        <button onclick="openSubject('Pendidikan Pancasila')" class="bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors">
+                            Mulai →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bahasa Inggris -->
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover cursor-pointer" onclick="openSubject('Bahasa Inggris')">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-lg mr-4">
+                            <span class="text-2xl">🇬🇧</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800">Bahasa Inggris</h4>
+                            <p class="text-gray-600">480 soal tersedia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Pembelajaran bahasa Inggris yang menyenangkan</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-indigo-600 font-medium">Kelas 4-6</span>
+                        <button onclick="openSubject('Bahasa Inggris')" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
+                            Mulai →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Seni - Mata pelajaran baru -->
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover cursor-pointer" onclick="openSubject('Seni')">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-pink-100 p-3 rounded-lg mr-4">
+                            <span class="text-2xl">🎨</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800">Seni</h4>
+                            <p class="text-gray-600">350 soal tersedia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Seni rupa, musik, tari, dan teater untuk kreativitas</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-pink-600 font-medium">Kelas 1-6</span>
+                        <button onclick="openSubject('Seni')" class="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition-colors">
+                            Mulai →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Soal PAdB - Mata pelajaran baru -->
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover cursor-pointer" onclick="openSubject('Soal PAdB')">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-teal-100 p-3 rounded-lg mr-4">
+                            <span class="text-2xl">📖</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800">Soal PAdB</h4>
+                            <p class="text-gray-600">420 soal tersedia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Soal-soal Pendidikan Agama dan Budi Pekerti</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-teal-600 font-medium">Kelas 1-6</span>
+                        <button onclick="openSubject('Soal PAdB')" class="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
+                            Mulai →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Koding & AI - Mata pelajaran baru -->
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover cursor-pointer" onclick="openSubject('Koding & AI')">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 p-3 rounded-lg mr-4">
+                            <span class="text-2xl">💻</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800">Koding & AI</h4>
+                            <p class="text-gray-600">280 soal tersedia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Pengenalan coding dan kecerdasan buatan untuk anak</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-purple-600 font-medium">Kelas 4-6</span>
+                        <button onclick="openSubject('Koding & AI')" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                            Mulai →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PJOK - Mata pelajaran baru -->
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover cursor-pointer" onclick="openSubject('PJOK')">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-orange-100 p-3 rounded-lg mr-4">
+                            <span class="text-2xl">⚽</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800">PJOK</h4>
+                            <p class="text-gray-600">380 soal tersedia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Pendidikan Jasmani, Olahraga, dan Kesehatan</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-orange-600 font-medium">Kelas 1-6</span>
+                        <button onclick="openSubject('PJOK')" class="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors">
+                            Mulai →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bahasa Sunda - Mata pelajaran baru -->
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover cursor-pointer" onclick="openSubject('Bahasa Sunda')">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-amber-100 p-3 rounded-lg mr-4">
+                            <span class="text-2xl">🏯</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800">Bahasa Sunda</h4>
+                            <p class="text-gray-600">320 soal tersedia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Pembelajaran bahasa dan budaya Sunda</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-amber-600 font-medium">Kelas 1-6</span>
+                        <button onclick="openSubject('Bahasa Sunda')" class="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors">
+                            Mulai →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section - Fitur bisa ditambah atau diubah -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-800 mb-4">Fitur Pembelajaran Bermakna</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">Platform yang dirancang untuk menciptakan pengalaman belajar yang bermakna dan menyenangkan</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">⚡</span>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">Pembelajaran Interaktif</h4>
+                    <p class="text-gray-600">Materi dan soal interaktif yang membuat belajar menjadi menyenangkan dan bermakna</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">📊</span>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">Laporan Progress</h4>
+                    <p class="text-gray-600">Pantau perkembangan pembelajaran dengan analisis yang mendalam dan mudah dipahami</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🎯</span>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">Sesuai Kurikulum Merdeka</h4>
+                    <p class="text-gray-600">Semua konten diselaraskan dengan prinsip pembelajaran bermakna Kurikulum Merdeka</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer sederhana hanya dengan copyright -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400">&copy; 2025 Pembelajaran Bermakna. Semua Hak Dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- Modal untuk Subject Detail - Styling bisa disesuaikan -->
+    <div id="subjectModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-xl p-8 max-w-md mx-4 transform transition-all">
+            <div class="text-center">
+                <div id="modalIcon" class="text-6xl mb-4">🔢</div>
+                <h3 id="modalTitle" class="text-2xl font-bold mb-4">Matematika</h3>
+                <p class="text-gray-600 mb-6">Pilih tingkat kelas untuk memulai pembelajaran bermakna</p>
+                
+                <!-- Grid kelas - Ganti nama file HTML di href sesuai kebutuhan -->
+                <div class="grid grid-cols-2 gap-3 mb-6" id="classGrid">
+                    <!-- Link akan diupdate otomatis berdasarkan mata pelajaran yang dipilih -->
+                    <a href="soal_indo_formatif_bab1.html" class="bg-blue-100 text-blue-800 py-3 px-4 rounded-lg hover:bg-blue-200 transition-colors text-center block" id="class1">
+                        Kelas 1
+                    </a>
+                    <a href="soal_indo_formatif_bab2.html" class="bg-blue-100 text-blue-800 py-3 px-4 rounded-lg hover:bg-blue-200 transition-colors text-center block" id="class2">
+                        Kelas 2
+                    </a>
+                    <a href="soal_indo_formatif_bab3.html" class="bg-blue-100 text-blue-800 py-3 px-4 rounded-lg hover:bg-blue-200 transition-colors text-center block" id="class3">
+                        Kelas 3
+                    </a>
+                    <a href="soal_indo_formatif_bab4.html" class="bg-blue-100 text-blue-800 py-3 px-4 rounded-lg hover:bg-blue-200 transition-colors text-center block" id="class4">
+                        Kelas 4
+                    </a>
+                    <a href="soal_indo_formatif_bab5.html" class="bg-blue-100 text-blue-800 py-3 px-4 rounded-lg hover:bg-blue-200 transition-colors text-center block" id="class5">
+                        Kelas 5
+                    </a>
+                    <a href="soal_indo_formatif_bab6.html" class="bg-blue-100 text-blue-800 py-3 px-4 rounded-lg hover:bg-blue-200 transition-colors text-center block" id="class6">
+                        Kelas 6
+                    </a>
+                </div>
+                
+                <a href="#" onclick="closeModal(); return false;" class="bg-gray-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-400 transition-colors inline-block">
+                    Tutup
+                </a>
+            </div>
+        </div>
     </div>
-    <nav class="dropdown-menu" id="dropdownMenu" aria-label="Menu Kelas">
-      <!-- langsung ke halaman, tanpa login -->
-      <a href="kelas1.html">Kelas 1</a>
-      <a href="kelas2.html">Kelas 2</a>
-      <a href="kelas3.html">Kelas 3</a>
-      <a href="kelas4.html">Kelas 4</a>
-      <a href="kelas5.html">Kelas 5</a>
-      <a href="kelas6.html">Kelas 6</a>
-    </nav>
-  </header>
 
-  <!-- Hero + Video -->
-  <section class="hero-wrap">
-    <div class="video-background" aria-hidden="true">
-      <video autoplay muted loop playsinline>
-        <source src="videobg.mp4" type="video/mp4"/>
-        Maaf, browser Anda tidak mendukung video.
-      </video>
-    </div>
-    <div class="hero-overlay" aria-hidden="true"></div>
+    <!-- JavaScript - Fungsi bisa ditambah atau dimodifikasi -->
+    <script>
+        // Fungsi untuk scroll ke bagian mata pelajaran dari tombol "Mulai Belajar"
+        function scrollToSubjects() {
+            const subjectsSection = document.getElementById('subjects');
+            const headerHeight = 80; // Tinggi header sticky
+            const additionalOffset = 0; // Versi 51 - scroll normal tanpa offset
+            const offsetTop = subjectsSection.offsetTop - headerHeight + additionalOffset;
+            
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
 
-    <div class="hero">
-      <h1>Selamat Datang di Belajar Bermakna</h1>
-      <p>Temukan materi pembelajaran lengkap, interaktif, dan menyenangkan. Dapatkan pengalaman belajar terbaik untuk meraih prestasi terbaik!</p>
-      <button class="btn" onclick="scrollToSection()">Mulai Belajar Sekarang</button>
-    </div>
-  </section>
+        // Fungsi untuk scroll ke bagian mata pelajaran dari menu "Layanan / Produk"
+        function scrollToSubjectsFromMenu() {
+            const subjectsSection = document.getElementById('subjects');
+            const headerHeight = 80; // Tinggi header sticky
+            const additionalOffset = -50; // Scroll sedikit ke atas untuk menu "Layanan / Produk"
+            const offsetTop = subjectsSection.offsetTop - headerHeight + additionalOffset;
+            
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
 
-  <!-- Features -->
-  <section class="features" id="pilihKelas">
-    <h2>Pilih Kelas</h2>
-    <div class="feature-list">
-      <!-- langsung link, tanpa JS login -->
-      <a href="kelas1.html" class="feature" aria-label="Masuk ke Kelas 1">
-        <img src="1.jpg" alt="Ilustrasi Kelas 1">
-        <h3>Kelas 1</h3>
-        <p>Latihan soal yang membantu siswa kelas 1.</p>
-      </a>
+        // Data mata pelajaran - bisa ditambah atau diubah
+        const subjectData = {
+            'Matematika': { icon: '🔢', color: 'blue' },
+            'Bahasa Indonesia': { icon: '📚', color: 'red' },
+            'IPAS': { icon: '🌱', color: 'green' },
+            'Pendidikan Pancasila': { icon: '🏛️', color: 'yellow' },
+            'Bahasa Inggris': { icon: '🇬🇧', color: 'indigo' },
+            'Seni': { icon: '🎨', color: 'pink' },
+            'Soal PAdB': { icon: '📖', color: 'teal' },
+            'Koding & AI': { icon: '💻', color: 'purple' },
+            'PJOK': { icon: '⚽', color: 'orange' },
+            'Bahasa Sunda': { icon: '🏯', color: 'amber' }
+        };
 
-      <a href="kelas2.html" class="feature" aria-label="Masuk ke Kelas 2">
-        <img src="2.jpg" alt="Ilustrasi Kelas 2">
-        <h3>Kelas 2</h3>
-        <p>Latihan soal yang membantu siswa kelas 2.</p>
-      </a>
+        // Fungsi untuk membuka modal mata pelajaran
+        function openSubject(subject) {
+            const modal = document.getElementById('subjectModal');
+            const modalIcon = document.getElementById('modalIcon');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            modalIcon.textContent = subjectData[subject].icon;
+            modalTitle.textContent = subject;
+            
+            // Update link href berdasarkan mata pelajaran yang dipilih
+            updateClassLinks(subject);
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
 
-      <a href="kelas3.html" class="feature" aria-label="Masuk ke Kelas 3">
-        <img src="3.jpg" alt="Ilustrasi Kelas 3">
-        <h3>Kelas 3</h3>
-        <p>Latihan soal yang membantu siswa kelas 3.</p>
-      </a>
+        // Fungsi untuk mengupdate href link berdasarkan mata pelajaran
+        function updateClassLinks(subject) {
+            // ===== PENGATURAN NAMA FILE HTML UNTUK SETIAP MATA PELAJARAN =====
+            const fileMapping = {
+                'Matematika': {
+                    1: 'mtk1.html',  // ← Ganti sesuai file Anda
+                    2: 'soal_indo_formatif_bab2.html',  // ← Ganti sesuai file Anda
+                    3: 'soal_indo_formatif_bab3.html',  // ← Ganti sesuai file Anda
+                    4: 'soal_indo_formatif_bab4.html',  // ← Ganti sesuai file Anda
+                    5: 'soal_indo_formatif_bab5.html',  // ← Ganti sesuai file Anda
+                    6: 'pilihanpembelajaran.html'   // ← Ganti sesuai file Anda
+                },
+                'Bahasa Indonesia': {
+                    1: 'bahasa-indonesia-kelas1.html',  // ← Ganti sesuai file Anda
+                    2: 'bahasa-indonesia-kelas2.html',  // ← Ganti sesuai file Anda
+                    3: 'bahasa-indonesia-kelas3.html',  // ← Ganti sesuai file Anda
+                    4: 'bahasa-indonesia-kelas4.html',  // ← Ganti sesuai file Anda
+                    5: 'bahasa-indonesia-kelas5.html',  // ← Ganti sesuai file Anda
+                    6: 'bahasa-indonesia-kelas6.html'   // ← Ganti sesuai file Anda
+                },
+                'IPAS': {
+                    3: 'ipas-kelas3.html',              // ← Ganti sesuai file Anda
+                    4: 'ipas-kelas4.html',              // ← Ganti sesuai file Anda
+                    5: 'ipas-kelas5.html',              // ← Ganti sesuai file Anda
+                    6: 'ipas-kelas6.html'               // ← Ganti sesuai file Anda
+                },
+                'Pendidikan Pancasila': {
+                    1: 'pancasila-kelas1.html',         // ← Ganti sesuai file Anda
+                    2: 'pancasila-kelas2.html',         // ← Ganti sesuai file Anda
+                    3: 'pancasila-kelas3.html',         // ← Ganti sesuai file Anda
+                    4: 'pancasila-kelas4.html',         // ← Ganti sesuai file Anda
+                    5: 'pancasila-kelas5.html',         // ← Ganti sesuai file Anda
+                    6: 'pancasila-kelas6.html'          // ← Ganti sesuai file Anda
+                },
+                'Bahasa Inggris': {
+                    4: 'bahasa-inggris-kelas4.html',    // ← Ganti sesuai file Anda
+                    5: 'bahasa-inggris-kelas5.html',    // ← Ganti sesuai file Anda
+                    6: 'bahasa-inggris-kelas6.html'     // ← Ganti sesuai file Anda
+                },
+                'Seni': {
+                    1: 'seni-kelas1.html',              // ← Ganti sesuai file Anda
+                    2: 'seni-kelas2.html',              // ← Ganti sesuai file Anda
+                    3: 'seni-kelas3.html',              // ← Ganti sesuai file Anda
+                    4: 'seni-kelas4.html',              // ← Ganti sesuai file Anda
+                    5: 'seni-kelas5.html',              // ← Ganti sesuai file Anda
+                    6: 'seni-kelas6.html'               // ← Ganti sesuai file Anda
+                },
+                'Soal PAdB': {
+                    1: 'padb-kelas1.html',              // ← Ganti sesuai file Anda
+                    2: 'padb-kelas2.html',              // ← Ganti sesuai file Anda
+                    3: 'padb-kelas3.html',              // ← Ganti sesuai file Anda
+                    4: 'padb-kelas4.html',              // ← Ganti sesuai file Anda
+                    5: 'padb-kelas5.html',              // ← Ganti sesuai file Anda
+                    6: 'padb-kelas6.html'               // ← Ganti sesuai file Anda
+                },
+                'Koding & AI': {
+                    4: 'koding-ai-kelas4.html',         // ← Ganti sesuai file Anda
+                    5: 'koding-ai-kelas5.html',         // ← Ganti sesuai file Anda
+                    6: 'koding-ai-kelas6.html'          // ← Ganti sesuai file Anda
+                },
+                'PJOK': {
+                    1: 'pjok-kelas1.html',              // ← Ganti sesuai file Anda
+                    2: 'pjok-kelas2.html',              // ← Ganti sesuai file Anda
+                    3: 'pjok-kelas3.html',              // ← Ganti sesuai file Anda
+                    4: 'pjok-kelas4.html',              // ← Ganti sesuai file Anda
+                    5: 'pjok-kelas5.html',              // ← Ganti sesuai file Anda
+                    6: 'pjok-kelas6.html'               // ← Ganti sesuai file Anda
+                },
+                'Bahasa Sunda': {
+                    1: 'bahasa-sunda-kelas1.html',      // ← Ganti sesuai file Anda
+                    2: 'bahasa-sunda-kelas2.html',      // ← Ganti sesuai file Anda
+                    3: 'bahasa-sunda-kelas3.html',      // ← Ganti sesuai file Anda
+                    4: 'bahasa-sunda-kelas4.html',      // ← Ganti sesuai file Anda
+                    5: 'bahasa-sunda-kelas5.html',      // ← Ganti sesuai file Anda
+                    6: 'bahasa-sunda-kelas6.html'       // ← Ganti sesuai file Anda
+                }
+            };
 
-      <a href="kelas4.html" class="feature" aria-label="Masuk ke Kelas 4">
-        <img src="4.jpg" alt="Ilustrasi Kelas 4">
-        <h3>Kelas 4</h3>
-        <p>Panduan belajar untuk siswa kelas 4 agar lebih siap ujian.</p>
-      </a>
+            // Update href untuk setiap link kelas
+            for (let grade = 1; grade <= 6; grade++) {
+                const linkElement = document.getElementById(`class${grade}`);
+                if (linkElement) {
+                    if (fileMapping[subject] && fileMapping[subject][grade]) {
+                        linkElement.href = fileMapping[subject][grade];
+                        linkElement.style.display = 'block';
+                    } else {
+                        // Jika tidak ada file untuk kelas ini, sembunyikan link
+                        linkElement.style.display = 'none';
+                    }
+                }
+            }
+        }
 
-      <a href="kelas5.html" class="feature" aria-label="Masuk ke Kelas 5">
-        <img src="5.jpg" alt="Ilustrasi Kelas 5">
-        <h3>Kelas 5</h3>
-        <p>Panduan belajar untuk siswa kelas 5 agar lebih siap ujian.</p>
-      </a>
+        // Fungsi untuk menutup modal
+        function closeModal() {
+            const modal = document.getElementById('subjectModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
 
-      <a href="kelas6.html" class="feature" aria-label="Masuk ke Kelas 6">
-        <img src="6.jpg" alt="Ilustrasi Kelas 6">
-        <h3>Kelas 6</h3>
-        <p>Panduan belajar untuk siswa kelas 6 agar lebih siap ujian.</p>
-      </a>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2024 Pembelajaran Bermakna. All rights reserved.</p>
-  </footer>
 
-  <script>
-    // Smooth scroll
-    function scrollToSection(){
-      const section = document.getElementById('pilihKelas');
-      section?.scrollIntoView({behavior:'smooth', block:'start'});
-    }
+        // Fungsi untuk toggle main menu dengan animasi modern
+        function toggleMainMenu() {
+            const mainMenu = document.getElementById('mainMenu');
+            const hamburgerIcon = document.getElementById('hamburgerIcon');
+            const hamburgerLines = document.getElementById('hamburgerLines');
+            
+            if (mainMenu.classList.contains('hidden')) {
+                // Buka menu
+                mainMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    mainMenu.classList.remove('opacity-0', 'scale-95');
+                    mainMenu.classList.add('opacity-100', 'scale-100');
+                }, 10);
+                
+                // Animasi hamburger ke X
+                hamburgerIcon.classList.add('rotate-90');
+                hamburgerLines.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            } else {
+                // Tutup menu
+                mainMenu.classList.remove('opacity-100', 'scale-100');
+                mainMenu.classList.add('opacity-0', 'scale-95');
+                setTimeout(() => {
+                    mainMenu.classList.add('hidden');
+                }, 300);
+                
+                // Animasi X kembali ke hamburger
+                hamburgerIcon.classList.remove('rotate-90');
+                hamburgerLines.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            }
+        }
 
-    // Toggle menu
-    function toggleMenu(){
-      const menu = document.getElementById('dropdownMenu');
-      const icon = document.querySelector('.menu-icon');
-      menu.classList.toggle('open');
-      icon.classList.toggle('open');
-    }
-
-    // Tutup dropdown saat klik di luar / pilih item
-    window.addEventListener('click', (e)=>{
-      const menu = document.getElementById('dropdownMenu');
-      const icon = document.querySelector('.menu-icon');
-      if (!menu.contains(e.target) && !icon.contains(e.target)){
-        menu.classList.remove('open'); icon.classList.remove('open');
-      }
-    });
-    document.getElementById('dropdownMenu').addEventListener('click', ()=> {
-      // saat user memilih kelas, tutup menu
-      const menu = document.getElementById('dropdownMenu');
-      const icon = document.querySelector('.menu-icon');
-      menu.classList.remove('open'); icon.classList.remove('open');
-    });
-  </script>
-</body>
+        // Menutup modal ketika klik di luar area modal
+        document.getElementById('subjectModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9760a1a19173ce13',t:'MTc1NjM1MDc5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
